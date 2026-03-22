@@ -9,14 +9,34 @@
   "flags": {
     "canUpload": true,
     "hotReload": {
-      "extensions": ["css", "html", "hbs", "json", "webp", "png", "jpg", "jpeg", "svg"],
+      "extensions": [
+        "css",
+        "html",
+        "hbs",
+        "json",
+        "webp",
+        "png",
+        "jpg",
+        "jpeg",
+        "svg"
+      ],
       "paths": ["artwork", "packs"]
     }
   },
   "packs": [
     {
+      "name": "journal",
+      "label": "Journaux",
+      "path": "packs/journal",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
       "name": "scenes",
-      "label": "Scenes",
+      "label": "Scènes",
       "banner": "modules/lazybobcat-generic-content/artwork/landing/table.webp",
       "path": "packs/scenes",
       "type": "Scene",
@@ -27,7 +47,7 @@
     },
     {
       "name": "cards",
-      "label": "Cards",
+      "label": "Jeux de cartes",
       "path": "packs/cards",
       "type": "Cards",
       "ownership": {
@@ -47,7 +67,7 @@
     },
     {
       "name": "tables",
-      "label": "Tables",
+      "label": "Tables aléatoires",
       "path": "packs/tables",
       "type": "RollTable",
       "ownership": {
