@@ -1,0 +1,12 @@
+Session.vim
+node_modules/
+dist/
+pnpm-debug.log*
+packs/
+packs-src/.state/
+.tmp/
+packs-src-test/
+
+
+/public/modules/lazybobcat-generic-content/artwork
+/public/modules/lazybobcat-generic-content/packs

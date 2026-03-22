@@ -1,0 +1,23 @@
+{
+  "type": "Scene",
+  "folder": null,
+  "name": "Landing page",
+  "color": "#f52323",
+  "sorting": "a",
+  "_id": "ikfBgbtPyHikQxK0",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757353783787,
+    "modifiedTime": 1757353783787,
+    "lastModifiedBy": "86Y8VrQcH0fnEvNP"
+  },
+  "_key": "!folders!ikfBgbtPyHikQxK0"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Noms",
+  "sorting": "a",
+  "folder": null,
+  "type": "RollTable",
+  "_id": "Ejq1ETlx4kN1tPZl",
+  "sort": 100000,
+  "color": "#4fba83",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751308,
+    "modifiedTime": 1757325751543,
+    "lastModifiedBy": "86Y8VrQcH0fnEvNP"
+  },
+  "description": "",
+  "_key": "!folders!Ejq1ETlx4kN1tPZl"
+}

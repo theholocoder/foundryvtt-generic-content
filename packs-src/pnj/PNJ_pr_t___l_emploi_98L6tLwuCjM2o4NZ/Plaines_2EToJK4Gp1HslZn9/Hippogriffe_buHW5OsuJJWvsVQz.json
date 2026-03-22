@@ -1,0 +1,585 @@
+{
+  "_id": "buHW5OsuJJWvsVQz",
+  "img": "systems/pf2e/icons/default-icons/npc.svg",
+  "items": [
+    {
+      "_id": "dplDPboVsTPEngpW",
+      "img": "systems/pf2e/icons/default-icons/melee.svg",
+      "name": "Bec",
+      "sort": 100000,
+      "system": {
+        "attackEffects": {
+          "value": []
+        },
+        "bonus": {
+          "value": 9
+        },
+        "damageRolls": {
+          "3j3vbh9hzbg5334pzli9": {
+            "damage": "1d10+3",
+            "damageType": "piercing",
+            "category": null
+          }
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "license": "ORC",
+          "remaster": true,
+          "title": "",
+          "authors": ""
+        },
+        "range": null,
+        "rules": [],
+        "slug": "beak",
+        "traits": {
+          "value": [
+            "unarmed"
+          ],
+          "otherTags": [],
+          "config": {}
+        },
+        "_migration": {
+          "version": 0.955,
+          "previous": null
+        },
+        "action": "strike",
+        "area": null
+      },
+      "type": "melee",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.10.1",
+        "lastModifiedBy": null
+      },
+      "effects": [],
+      "folder": null,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "babele": {
+          "translated": true,
+          "hasTranslation": true,
+          "originalName": "Beak"
+        }
+      },
+      "_key": "!actors.items!buHW5OsuJJWvsVQz.dplDPboVsTPEngpW"
+    },
+    {
+      "_id": "yiiBFzSFMWspwb05",
+      "img": "systems/pf2e/icons/default-icons/melee.svg",
+      "name": "Serre",
+      "sort": 200000,
+      "system": {
+        "attackEffects": {
+          "value": []
+        },
+        "bonus": {
+          "value": 9
+        },
+        "damageRolls": {
+          "izxanolmvfa1royftiq9": {
+            "damage": "1d6+3",
+            "damageType": "slashing",
+            "category": null
+          }
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "license": "ORC",
+          "remaster": true,
+          "title": "",
+          "authors": ""
+        },
+        "range": null,
+        "rules": [],
+        "slug": "talon",
+        "traits": {
+          "value": [
+            "agile",
+            "unarmed"
+          ],
+          "otherTags": [],
+          "config": {}
+        },
+        "_migration": {
+          "version": 0.955,
+          "previous": null
+        },
+        "action": "strike",
+        "area": null
+      },
+      "type": "melee",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.10.1",
+        "lastModifiedBy": null
+      },
+      "effects": [],
+      "folder": null,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "babele": {
+          "translated": true,
+          "hasTranslation": true,
+          "originalName": "Talon"
+        }
+      },
+      "_key": "!actors.items!buHW5OsuJJWvsVQz.yiiBFzSFMWspwb05"
+    },
+    {
+      "_id": "jJAZZAqxbrSxGLXv",
+      "img": "systems/pf2e/icons/default-icons/melee.svg",
+      "name": "Aile",
+      "sort": 300000,
+      "system": {
+        "attackEffects": {
+          "value": []
+        },
+        "bonus": {
+          "value": 9
+        },
+        "damageRolls": {
+          "afrz19qv3ah6f3ihh9c0": {
+            "damage": "1d6+3",
+            "damageType": "bludgeoning",
+            "category": null
+          }
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "license": "ORC",
+          "remaster": true,
+          "title": "",
+          "authors": ""
+        },
+        "range": null,
+        "rules": [],
+        "slug": "wing",
+        "traits": {
+          "value": [
+            "reach-10"
+          ],
+          "otherTags": [],
+          "config": {}
+        },
+        "_migration": {
+          "version": 0.955,
+          "previous": null
+        },
+        "action": "strike",
+        "area": null
+      },
+      "type": "melee",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.10.1",
+        "lastModifiedBy": null
+      },
+      "effects": [],
+      "folder": null,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "babele": {
+          "translated": true,
+          "hasTranslation": true,
+          "originalName": "Wing"
+        }
+      },
+      "_key": "!actors.items!buHW5OsuJJWvsVQz.jJAZZAqxbrSxGLXv"
+    },
+    {
+      "_id": "F1orhEfNkIuGNlEh",
+      "_stats": {
+        "compendiumSource": "Compendium.pf2e.bestiary-ability-glossary-srd.Item.nZMQh4AaBr291TUf",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.10.1",
+        "lastModifiedBy": null
+      },
+      "img": "systems/pf2e/icons/actions/Reaction.webp",
+      "name": "Désarçonner",
+      "sort": 400000,
+      "system": {
+        "actionType": {
+          "value": "reaction"
+        },
+        "actions": {
+          "value": null
+        },
+        "category": "defensive",
+        "description": {
+          "value": "<p>@Check[reflex|dc:17]</p>\n<p>@Localize[PF2E.NPC.Abilities.Glossary.Buck]</p>",
+          "gm": ""
+        },
+        "publication": {
+          "license": "ORC",
+          "remaster": true,
+          "title": "Pathfinder Monster Core",
+          "authors": ""
+        },
+        "rules": [],
+        "slug": "buck",
+        "traits": {
+          "value": [],
+          "otherTags": []
+        },
+        "_migration": {
+          "version": 0.955,
+          "previous": null
+        }
+      },
+      "type": "action",
+      "effects": [],
+      "folder": null,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "babele": {
+          "translated": true,
+          "hasTranslation": true,
+          "originalName": "Buck"
+        }
+      },
+      "_key": "!actors.items!buHW5OsuJJWvsVQz.F1orhEfNkIuGNlEh"
+    },
+    {
+      "_id": "NWD8KA0NNOrEyrvq",
+      "img": "systems/pf2e/icons/actions/TwoActions.webp",
+      "name": "Frappes en vol",
+      "sort": 500000,
+      "system": {
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 2
+        },
+        "category": "offensive",
+        "description": {
+          "value": "<p>L'hippogriffe Vole jusqu'à sa Vitesse maximale et effectue deux Frappes de serre à n'importe quel moment durant son déplacement. Chaque Frappe doit cibler une créature différente. Les attaques subissent la pénalité d'attaques multiples habituelle.</p>",
+          "gm": ""
+        },
+        "publication": {
+          "license": "ORC",
+          "remaster": true,
+          "title": "",
+          "authors": ""
+        },
+        "rules": [],
+        "slug": "flying-strafe",
+        "traits": {
+          "value": [],
+          "otherTags": []
+        },
+        "_migration": {
+          "version": 0.955,
+          "previous": null
+        }
+      },
+      "type": "action",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.10.1",
+        "lastModifiedBy": null
+      },
+      "effects": [],
+      "folder": null,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "babele": {
+          "translated": true,
+          "hasTranslation": true,
+          "originalName": "Flying Strafe"
+        }
+      },
+      "_key": "!actors.items!buHW5OsuJJWvsVQz.NWD8KA0NNOrEyrvq"
+    }
+  ],
+  "name": "Hippogriffe",
+  "system": {
+    "attributes": {
+      "hp": {
+        "value": 32,
+        "temp": 0,
+        "max": 32,
+        "details": ""
+      },
+      "ac": {
+        "value": 18,
+        "details": ""
+      },
+      "allSaves": {
+        "value": ""
+      },
+      "speed": {
+        "value": 30,
+        "otherSpeeds": [
+          {
+            "type": "fly",
+            "value": 65
+          }
+        ],
+        "details": ""
+      }
+    },
+    "initiative": {
+      "statistic": "perception"
+    },
+    "details": {
+      "languages": {
+        "value": [],
+        "details": ""
+      },
+      "level": {
+        "value": 2
+      },
+      "blurb": "",
+      "publicNotes": "<p>Avec l'allure fière d'un grand rapace et la magnificence d'un puissant cheval, certains pensent que les hippogriffes sont le résultat accidentel de la fusion de différentes créatures ou la création d'un magicien distordeur de chair doté d'un sens aigu de l'esthétisme. Quelle que soit leur origine, ces animaux sont désormais très communs dans le ciel au-dessus de leurs plaines de prédilection ou des régions de colline.</p>\n<p>Les hippogriffes portent les ailes, les pattes avant et la tête d'un oiseau de proie avec une coloration de plumes similaire à celle d'un faucon ou d'un aigle. Cependant, certains éleveurs sont parvenus à donner naissance à des espèces dotées de plumes blanches ou noires comme du charbon. Leur torse, leur train arrière et leur queue ressemblent à ceux d'un cheval et sont généralement de couleur baie, noisette ou grise, avec certaines robes ayant une coloration noire, pie ou même palomino.</p>\n<p>Les hippogriffes ont une taille similaire à celle de grands chevaux. Ils doivent souvent surveiller le ciel puisque, tout comme leurs cousins équidés, ils sont le repas favoris des griffons affamés et des vouivres. Seule leur vitesse exceptionnelle leur permet d'échapper à ces prédateurs.</p>\n<p>Les hippogriffes sont particulièrement territoriaux et protègent férocement les terres de leur domaine. Ils préfèrent généralement les grandes plaines d'herbes hautes, les régions à collines et les prairies. Les plus robustes établissent leur nid sur les falaises de canyons d'où ils ratissent les déserts rocailleux en quête de coyotes, de cerfs et parfois d'humanoïdes. Ils préfèrent chasser les mammifères, mais ils broutent de l'herbe après chaque repas pour les aider à digérer.</p>\n<p>Puisque les habitudes alimentaires de l'hippogriffe peuvent être dangereuses aussi bien pour les éleveurs que pour leur bétail, les communautés offrent souvent des récompenses pour l'élimination de ces créatures. En conséquence, au même titre que les cerfs, les élans et les ours, des hippogriffes empaillés décorent souvent les tavernes à la frontière des terres civilisées et celles des avant-postes lointains</p>\n<p>Cependant, dans d'autres communautés, les hippogriffes sont dressés dès leur naissance pour être chevauchés au combat par des soldats d'élite. Les plus connus dans la région de la Mer Intérieure sont les mercenaires de la Compagnie des sables de la cité-état de Korvosa. Quelques tentatives sont parfois faites pour dresser des hippogriffes adultes, mais cela s'avère généralement très difficile. Les chevaucheurs d'hippogriffes doivent utiliser des selles et des techniques de combat spéciales qui leur permettent d'agir de concert avec leur monture. Ainsi, ils peuvent combattre efficacement sans gêner les battements d'ailes de leur compagnon.</p>",
+      "privateNotes": "",
+      "publication": {
+        "title": "Pathfinder Monster Core",
+        "authors": "",
+        "license": "ORC",
+        "remaster": true
+      }
+    },
+    "resources": {},
+    "_migration": {
+      "version": 0.955,
+      "previous": null
+    },
+    "abilities": {
+      "str": {
+        "mod": 3
+      },
+      "dex": {
+        "mod": 3
+      },
+      "con": {
+        "mod": 2
+      },
+      "int": {
+        "mod": -4
+      },
+      "wis": {
+        "mod": 2
+      },
+      "cha": {
+        "mod": 0
+      }
+    },
+    "perception": {
+      "details": "",
+      "mod": 8,
+      "senses": [
+        {
+          "type": "darkvision"
+        },
+        {
+          "acuity": "imprecise",
+          "range": 30,
+          "type": "scent"
+        }
+      ],
+      "vision": true
+    },
+    "saves": {
+      "fortitude": {
+        "value": 8,
+        "saveDetail": ""
+      },
+      "reflex": {
+        "value": 9,
+        "saveDetail": ""
+      },
+      "will": {
+        "value": 6,
+        "saveDetail": ""
+      }
+    },
+    "skills": {
+      "acrobatics": {
+        "base": 7
+      },
+      "athletics": {
+        "base": 7
+      },
+      "survival": {
+        "base": 6
+      }
+    },
+    "traits": {
+      "value": [
+        "animal"
+      ],
+      "rarity": "common",
+      "size": {
+        "value": "lg"
+      }
+    }
+  },
+  "type": "npc",
+  "_stats": {
+    "compendiumSource": "Compendium.pf2e.pathfinder-monster-core.Actor.eFGPKbhix65FSG9u",
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.10.1",
+    "createdTime": 1771411178649,
+    "modifiedTime": 1771411178649,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP"
+  },
+  "effects": [],
+  "prototypeToken": {
+    "name": "Hippogriffe",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "https://cloudy-foundry.s3.gra.io.cloud.ovh.net/too-many-tokens-dnd/hippogriffmountains*.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "attributes.hp"
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 0,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {
+      "pf2e": {
+        "linkToActorSize": true,
+        "autoscale": true
+      },
+      "monks-tokenbar": {
+        "include": "default"
+      }
+    },
+    "randomImg": true,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "folder": "2EToJK4Gp1HslZn9",
+  "sort": 200000,
+  "ownership": {
+    "default": 0,
+    "cmVdgkCvP47fJwWP": 3
+  },
+  "flags": {
+    "babele": {
+      "translated": true,
+      "hasTranslation": true,
+      "originalName": "Hippogriff"
+    }
+  },
+  "_key": "!actors!buHW5OsuJJWvsVQz"
+}

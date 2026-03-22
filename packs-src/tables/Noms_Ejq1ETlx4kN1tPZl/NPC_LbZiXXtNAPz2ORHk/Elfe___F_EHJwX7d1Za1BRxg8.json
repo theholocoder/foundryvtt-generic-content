@@ -1,0 +1,510 @@
+{
+  "folder": "LbZiXXtNAPz2ORHk",
+  "name": "Elfe - F",
+  "_id": "EHJwX7d1Za1BRxg8",
+  "img": "systems/pf2e/icons/default-icons/alternatives/ancestries/elf.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_id": "MD3gMp7y2TOvKJaH",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Numiel Narándyëen",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.MD3gMp7y2TOvKJaH"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_id": "7x7EApQm3BG1UbeU",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Inen Lin",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.7x7EApQm3BG1UbeU"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_id": "elxVuftg2Xsn3oIZ",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Palil Amw",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.elxVuftg2Xsn3oIZ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_id": "2vAe8I0674bYMqc5",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Thanial Tarul",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.2vAe8I0674bYMqc5"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_id": "8675nxEbjyouFUXs",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Elillë Ciryambar",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.8675nxEbjyouFUXs"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_id": "1RkzhQF4SjzizEJr",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Turiel Elmeht",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.1RkzhQF4SjzizEJr"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_id": "7DkURUvqO7fcvuII",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Ciryiel Fil",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.7DkURUvqO7fcvuII"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_id": "I141HZDog2hPPlit",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Brimyë Hirë",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.I141HZDog2hPPlit"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_id": "cNQzd62jjO1HtxQP",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Calal Finisil",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.cNQzd62jjO1HtxQP"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_id": "BxWRAi354akXGoIS",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Dorillë Her",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.BxWRAi354akXGoIS"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_id": "K5fy3ALsfYaZyfpV",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Cemyë Fin",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.K5fy3ALsfYaZyfpV"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_id": "FRlgsrDQHtTf8JvI",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Laliel Elcaën",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.FRlgsrDQHtTf8JvI"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_id": "Bs1Cmetnc2tGlrcD",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Farial Thanamb",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.Bs1Cmetnc2tGlrcD"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_id": "brsXj2ANb6Le315O",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Ciryal Filtielen",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.brsXj2ANb6Le315O"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_id": "qx1RAV69OTEVvLXG",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Lalen Nimunúmiel",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.qx1RAV69OTEVvLXG"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_id": "2dCVTnPliX449pBV",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Final Lalialaliel",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.2dCVTnPliX449pBV"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_id": "HlKMuwkyRt4zShVh",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Fanal Lordac",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.HlKMuwkyRt4zShVh"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_id": "TvQCrwvCgFZUhi1z",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Palillë Terend",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.TvQCrwvCgFZUhi1z"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_id": "vZiG0DbRWINTPLwr",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Anial Finiel",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.vZiG0DbRWINTPLwr"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_id": "3WGczC67HVRzMGG1",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Narë Ataën",
+      "name": "",
+      "_key": "!tables.results!EHJwX7d1Za1BRxg8.3WGczC67HVRzMGG1"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "86Y8VrQcH0fnEvNP": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": "86Y8VrQcH0fnEvNP"
+  },
+  "formula": "1d20",
+  "_key": "!tables!EHJwX7d1Za1BRxg8"
+}

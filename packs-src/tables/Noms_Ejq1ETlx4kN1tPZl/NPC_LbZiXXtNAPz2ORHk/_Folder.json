@@ -1,0 +1,21 @@
+{
+  "name": "NPC",
+  "sorting": "a",
+  "folder": "Ejq1ETlx4kN1tPZl",
+  "type": "RollTable",
+  "_id": "LbZiXXtNAPz2ORHk",
+  "sort": 0,
+  "color": "#2a7e4a",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "lastModifiedBy": null
+  },
+  "description": "",
+  "_key": "!folders!LbZiXXtNAPz2ORHk"
+}

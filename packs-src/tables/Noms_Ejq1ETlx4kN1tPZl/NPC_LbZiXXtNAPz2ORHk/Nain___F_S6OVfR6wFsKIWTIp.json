@@ -1,0 +1,510 @@
+{
+  "folder": "LbZiXXtNAPz2ORHk",
+  "name": "Nain - F",
+  "_id": "S6OVfR6wFsKIWTIp",
+  "img": "systems/pf2e/icons/default-icons/alternatives/ancestries/dwarf.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_id": "ySm8jNV94llaptVg",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Gorkilinne Barbe hurlante",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.ySm8jNV94llaptVg"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_id": "mT5SxTVqr7QEo7l3",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Thareka Colère de feu",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.mT5SxTVqr7QEo7l3"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_id": "H2TsPTXcwtpCYBVD",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Nurrira Pierre brûlante",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.H2TsPTXcwtpCYBVD"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_id": "0TS0qP0i7ePG11dm",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Nôrïne Armure des mineurs",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.0TS0qP0i7ePG11dm"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_id": "KF74fn5L9Gx5pCIl",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Gorkîs Pic du dragon",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.KF74fn5L9Gx5pCIl"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_id": "hNsbmcNPzXd2lUER",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Thrôrilinne Roi rouge",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.hNsbmcNPzXd2lUER"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_id": "A4V4he07eab39s37",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Moradia Poing puissant",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.A4V4he07eab39s37"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_id": "r16JgT510kbyMRK3",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Bifie Colère des neiges",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.r16JgT510kbyMRK3"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_id": "6b1HKSMTxdEuQLTo",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Korbonde Pic solide",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.6b1HKSMTxdEuQLTo"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_id": "0xf3m98mQipgU1Fd",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Bombine Hache qui gronde",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.0xf3m98mQipgU1Fd"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_id": "lRiFwZaxSO9x9yIa",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Morîs Lumière de la caverne",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.lRiFwZaxSO9x9yIa"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_id": "2A2cNecSFkWzq8o8",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Darinna Couronne magnanime",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.2A2cNecSFkWzq8o8"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_id": "2uLrw3WA3KSaAeNv",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Orrime Epée hurlante",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.2uLrw3WA3KSaAeNv"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_id": "FOYP349tnarVFZhg",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Murime Gemme des braves",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.FOYP349tnarVFZhg"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_id": "YYPtvqqdAnPIIRlp",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Boradome Roi hurlant",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.YYPtvqqdAnPIIRlp"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_id": "n79DGz7jfVPgSdIl",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Theronde Casque rouge",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.n79DGz7jfVPgSdIl"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_id": "ers9gDpaQ85UY76n",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Ulfane Etoile brûlante",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.ers9gDpaQ85UY76n"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_id": "XO5ddyeEaDqcCaow",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Frereka Hache puissante",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.XO5ddyeEaDqcCaow"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_id": "YFyMf2oOylTO7m64",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Orrina Combat de feu",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.YFyMf2oOylTO7m64"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_id": "7s2jXZ3kP6JpvBfE",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Daonde Gardien doré",
+      "name": "",
+      "_key": "!tables.results!S6OVfR6wFsKIWTIp.7s2jXZ3kP6JpvBfE"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "86Y8VrQcH0fnEvNP": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": "86Y8VrQcH0fnEvNP"
+  },
+  "formula": "1d20",
+  "_key": "!tables!S6OVfR6wFsKIWTIp"
+}

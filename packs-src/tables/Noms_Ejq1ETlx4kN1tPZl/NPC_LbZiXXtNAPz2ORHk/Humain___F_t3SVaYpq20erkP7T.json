@@ -1,0 +1,558 @@
+{
+  "folder": "LbZiXXtNAPz2ORHk",
+  "name": "Humain - F",
+  "_id": "t3SVaYpq20erkP7T",
+  "img": "systems/pf2e/icons/default-icons/alternatives/ancestries/human.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_id": "WagdPgId0oRZHYnE",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Silvine Macus",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.WagdPgId0oRZHYnE"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_id": "NvJW09NUVGufY6jY",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Zaice Jisas",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.NvJW09NUVGufY6jY"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_id": "52eIhwk1BTkSnEle",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Hegrialle Tutir",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.52eIhwk1BTkSnEle"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_id": "RPYyWvRmiWoSZPsE",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Didia Drasert",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.RPYyWvRmiWoSZPsE"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_id": "b2xV7dF8juVcVI2W",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Brodisine Hedar",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.b2xV7dF8juVcVI2W"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_id": "ueTlg9aU0YD2GYyW",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Hacysse Hizin",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.ueTlg9aU0YD2GYyW"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_id": "BVDozCYFx8PtsD7C",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Basie Kopail",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.BVDozCYFx8PtsD7C"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_id": "wr5KACpxi7Yyvtkl",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Runica Retir",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.wr5KACpxi7Yyvtkl"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_id": "ICWcMAFqifgHkToA",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Resionne Ere",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.ICWcMAFqifgHkToA"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_id": "oGEtmKJKaMMNNoiO",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Thoscice Arsen",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.oGEtmKJKaMMNNoiO"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_id": "LA1Bck8UHeMF666z",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Gredella Dortath",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.LA1Bck8UHeMF666z"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_id": "KHHpFh6mAeOUFrMw",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Riscionne Jaran",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.KHHpFh6mAeOUFrMw"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_id": "P4ZdVG07X4KBv1GU",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Fisia Korcas",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.P4ZdVG07X4KBv1GU"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_id": "cjC7G44pd9FRnJLQ",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Runrcine Sabas",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.cjC7G44pd9FRnJLQ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_id": "7BYqrARPo9vXDzww",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Sarita Adan",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.7BYqrARPo9vXDzww"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_id": "V8ytZzfiFAFdOJ6N",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Bralembonde Koral",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.V8ytZzfiFAFdOJ6N"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_id": "aZxo6F7SP0ji3e5m",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Ritianne Leodath",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.aZxo6F7SP0ji3e5m"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_id": "1PzyLnrB31xp0S9P",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Yponne Sibard",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.1PzyLnrB31xp0S9P"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_id": "3hConm1KnYJE268s",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Grepelysse Oral",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.3hConm1KnYJE268s"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_id": "WbcP98CUxx5BWNVd",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Sirsielle Jacert",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.WbcP98CUxx5BWNVd"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "drawn": false,
+      "_id": "ykL4iYHTVhnlRWtS",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.ykL4iYHTVhnlRWtS"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "drawn": false,
+      "_id": "VmcU09tX1lyEr2am",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "",
+      "name": "",
+      "_key": "!tables.results!t3SVaYpq20erkP7T.VmcU09tX1lyEr2am"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "86Y8VrQcH0fnEvNP": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": "86Y8VrQcH0fnEvNP"
+  },
+  "formula": "",
+  "_key": "!tables!t3SVaYpq20erkP7T"
+}

@@ -1,0 +1,510 @@
+{
+  "folder": "LbZiXXtNAPz2ORHk",
+  "name": "Elfe - M",
+  "_id": "QlvSEsfkeLYIMgK6",
+  "img": "systems/pf2e/icons/default-icons/alternatives/ancestries/elf.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_id": "n6ZD2VERFfqakaAT",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Palon Faryëiel",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.n6ZD2VERFfqakaAT"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_id": "1lB3DZieF6l8bdr2",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Linir Athardor",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.1lB3DZieF6l8bdr2"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_id": "U5nsqawGZqOmFzaK",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Dorior Atelillë",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.U5nsqawGZqOmFzaK"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_id": "I7Me8SP0r9ZVm5R0",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Othaën Findyëel",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.I7Me8SP0r9ZVm5R0"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_id": "0jAogi3u4fY4ZQhl",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Arel Lorielial",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.0jAogi3u4fY4ZQhl"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_id": "WV5RtpO6rUTRpYM3",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Artë Paltin",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.WV5RtpO6rUTRpYM3"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_id": "Qc3JrReTeM5ncWgw",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Eärë Arëillë",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.Qc3JrReTeM5ncWgw"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_id": "vNmJlylGoK2vxB86",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Glorur Serw",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.vNmJlylGoK2vxB86"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_id": "pmFEXMnrnprdck9f",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Cemir Thanialal",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.pmFEXMnrnprdck9f"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_id": "eC7bTHwhmsgVpmSf",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Fanil Turadrur",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.eC7bTHwhmsgVpmSf"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_id": "OrC2NinLO9xB9BPd",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Filir Farr",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.OrC2NinLO9xB9BPd"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_id": "HUxoC0imbUFoC2Rf",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Inor Filac",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.HUxoC0imbUFoC2Rf"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_id": "RtcdCns7z2dtpd1x",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Toril Finon",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.RtcdCns7z2dtpd1x"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_id": "PdjtGgJl3DC8Bg5t",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Artion Anast",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.PdjtGgJl3DC8Bg5t"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_id": "IA96oPvjHCXr3I65",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Siren Finam",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.IA96oPvjHCXr3I65"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_id": "iQEdpBCQQDth5lG5",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Serir Dorambel",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.iQEdpBCQQDth5lG5"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_id": "lwBTwWvb6KvNGO7x",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Eärur Eäralial",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.lwBTwWvb6KvNGO7x"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_id": "yB2YIoNjJF7hYZIX",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Farin Isildion",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.yB2YIoNjJF7hYZIX"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_id": "bFYUoHmjdoWzkdpa",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Ciryil Heril",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.bFYUoHmjdoWzkdpa"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_id": "qV1jxaVOv4Y6VeiR",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": null
+      },
+      "description": "Finer Elor",
+      "name": "",
+      "_key": "!tables.results!QlvSEsfkeLYIMgK6.qV1jxaVOv4Y6VeiR"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "86Y8VrQcH0fnEvNP": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": "86Y8VrQcH0fnEvNP"
+  },
+  "formula": "1d20",
+  "_key": "!tables!QlvSEsfkeLYIMgK6"
+}

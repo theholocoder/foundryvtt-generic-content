@@ -1,0 +1,855 @@
+{
+  "folder": "d0OxVZ6zGiVpmgRV",
+  "name": "Deck Bond",
+  "type": "deck",
+  "description": "<p>This Path provides archetypes to represent the different kinds of people who may have had the most lasting impact on your character's life thus far. They could be important figures in a community, a passerby, a close acquaintance, or someone they have never seen in person. These can be as intimate and personal or as formal and distanced as you want. Someone can just as easily change your life from next door as they can from a world away! Keep distance in mind and whether this person is aware of your character or not. They may play a pivotal role in your story—but are you even a footnote in theirs? Perhaps not yet…</p>",
+  "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/back.webp",
+  "system": {},
+  "cards": [
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/1-ally.webp",
+          "text": "Un complice dont les objectifs et les désirs sont alignés sur les vôtres. Quel événement vous a fait réaliser que vous étiez tous les deux du même côté ? Quand êtes-vous venu à leur aide pour la première fois ou eux à la vôtre ? Qu’avez-vous affronté ensemble jusqu’à présent ? Qu’est-ce que vous admirez le plus chez l’autre ?"
+        }
+      ],
+      "face": 0,
+      "name": "Allié",
+      "_id": "L60HGHD3STrQh9Cz",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 8,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180648861
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.L60HGHD3STrQh9Cz"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/2-love.webp",
+          "text": "BIEN-AIMÉ.\nQuelqu'un qui a entièrement votre cœur et votre admiration et qui a le vôtre. Comment ont-ils attiré votre attention pour la première fois ? Qu’est-ce qui vous attire chez eux ? Combien de temps lui a-t-il fallu pour vous rendre votre affection ou pour que vous lui rendiez la leur ? Quand avez-vous réalisé qu’elle/il était tout ce que vous vouliez ?"
+        }
+      ],
+      "face": 0,
+      "name": "Bien-aimé",
+      "_id": "XqFyptet6FnU1fMr",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 16,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180692273
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.XqFyptet6FnU1fMr"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/3-curruptor.webp",
+          "text": "Quelle est leur position et quel pouvoir détiennent-ils ? Comment l’utilisent-ils ? Qui ciblent-ils avec leurs machinations ? Quel impact y a-t-il sur la hiérarchie qu’ils s’efforcent d’éroder ? Quel chaos ont-ils provoqué ?"
+        }
+      ],
+      "face": 0,
+      "name": "Corrupteur",
+      "_id": "cfkTtM625GlAwYel",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 17,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180697808
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.cfkTtM625GlAwYel"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/4-diviner.webp",
+          "text": "Quelqu’un avec une vision des choses qui ne se sont pas encore produites. Quel avenir envisagent-ils ? Est-ce que quelqu'un les croit ? Ont-ils été acceptés dans la société ou opèrent-ils en marge ? Pensez-vous qu’ils disent la vérité ou vaut-il mieux que leurs visions soient fausses et ne se réalisent jamais ?"
+        }
+      ],
+      "face": 0,
+      "name": "Voyant",
+      "_id": "KVxwzsfgjEE9IW9D",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 10,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180660432
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.KVxwzsfgjEE9IW9D"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/5-elder.webp",
+          "text": "Une personne d’une grande autorité avec l’oreille de beaucoup. Comment avez-vous attiré leur attention pour la première fois ? Que s’est-il passé pour leur montrer votre potentiel et votre importance inexploités ? Comment ont-ils choisi d’investir en vous ? Quel bien ou quel mal les avez-vous vu faire ? Votre opinion à leur sujet a-t-elle changé avec le temps ?"
+        }
+      ],
+      "face": 0,
+      "name": "Aîné",
+      "_id": "PMzJ1DtkPRC8rkGN",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 13,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180674790
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.PMzJ1DtkPRC8rkGN"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/6-friend.webp",
+          "text": "Quelqu'un sur qui vous pouvez toujours compter, quoi qu'il arrive. Où vous êtes-vous rencontré pour la première fois ? Qu’est-ce qui a déclenché l’approfondissement de votre connexion ? Comment en êtes-vous arrivés à vous voir comme des compagnons ? Pourquoi comptez-vous les uns sur les autres ? Quels secrets avez-vous partagés avec eux seuls ?"
+        }
+      ],
+      "face": 0,
+      "name": "Ami",
+      "_id": "VPFPha2mvKjc9LFj",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 11,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180665213
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.VPFPha2mvKjc9LFj"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/7-guide.webp",
+          "text": "Quelqu'un pour donner la direction à ceux qui sont perdus, comme une lumière dans l'obscurité. Qui sont-ils dans la structure sociale de votre monde ? Quels chemins indiquent-ils? Comment leur message a-t-il été reçu ? Quand avez-vous entendu leurs conseils et vers quoi cela vous a-t-il conduit ?"
+        }
+      ],
+      "face": 0,
+      "name": "Guide",
+      "_id": "OcSlgOAg4ar4ohNw",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 7,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180638020
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.OcSlgOAg4ar4ohNw"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/8-hero.webp",
+          "text": "Une personne qui se dresse contre des obstacles autrement écrasants. Quelle grande action ont-ils accomplie ? Quelle était la probabilité de leur victoire et ont-ils survécu à leurs épreuves ? Contre quoi se sont-ils opposés et qu’est-ce qui les a poussés à le faire ? Comment ont-ils croisé votre chemin ?"
+        }
+      ],
+      "face": 0,
+      "name": "Héros",
+      "_id": "LiM2Zw0vgKNAq1bq",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 14,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180681187
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.LiM2Zw0vgKNAq1bq"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/9-instructor.webp",
+          "text": "Un professeur avec des paroles sages et des leçons plus sages à prodiguer. Comment êtes-vous devenu leur élève ? Dans quels domaines ont-ils offert des conseils ? Lequel de leurs enseignements a le plus influencé l’orientation de votre vie ? Quelle leçon a été la plus difficile à apprendre ?"
+        }
+      ],
+      "face": 0,
+      "name": "Instructeur",
+      "_id": "7I7osVukPdT384N6",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 4,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180627471
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.7I7osVukPdT384N6"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/10-kindred.webp",
+          "text": "Quelqu'un sur qui vous pouvez toujours compter dans les moments difficiles. Comment en êtes-vous arrivé à compter sur eux pour ces assurances ? Quel secret partagez-vous tous les deux ? Est-ce le vôtre ou le leur ? Pourquoi leur faites-vous confiance plutôt que les autres ? Quel est l’enjeu si cette information est divulguée ?"
+        }
+      ],
+      "face": 0,
+      "name": "Parenté",
+      "_id": "bmRQVQg8YLGHpGt1",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 15,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180686251
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.bmRQVQg8YLGHpGt1"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/11-liar.webp",
+          "text": "Une personne a la langue bien pendue et qui répond le poison avec ses mots. Quels mensonges propagent-ils ? Pourquoi pensez-vous qu'ils mentent ? Qui ou quoi ciblent-ils avec leurs mensonges ? Comment leurs paroles et leurs actions ont-elles eu un impact sur votre vie ? Croient-ils à leurs propres mensonges ?"
+        }
+      ],
+      "face": 0,
+      "name": "Menteur",
+      "_id": "rK5ECcwfkB1BRoNX",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 12,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180670112
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.rK5ECcwfkB1BRoNX"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/12-mystic.webp",
+          "text": "Quelqu'un proche des choses cachées et invisibles. Que prétendent-ils savoir ? Quels rites pratiquent-ils ? Qui gardent-ils autour d’eux et qui se rassemble à leurs côtés ? Comment vous êtes-vous rencontrés et quelles connaissances vous ont été transmises ? Gardent-ils encore des secrets ?"
+        }
+      ],
+      "face": 0,
+      "name": "Mystique",
+      "_id": "C6AJmEWaK6bU369u",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 19,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180708246
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.C6AJmEWaK6bU369u"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/13-nemesis.webp",
+          "text": "Un adversaire inévitable, étant donné où se situent vos deux loyautés. Quand avez-vous appris pour la première fois que cette personne serait votre ennemi ? Quelle circonstance rend impossible la résolution d’un conflit entre vous deux ? Qu’êtes-vous prêt à faire pour les contrecarrer ?"
+        }
+      ],
+      "face": 0,
+      "name": "Némésis",
+      "_id": "zYKo6vQ2jgAc02Cr",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 1,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774179332487
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.zYKo6vQ2jgAc02Cr"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/14-oathbreaker.webp",
+          "text": "Une promesse faite et non tenue est pire qu'une promesse non-faite. Qu'est-ce qui a été juré ? Pourquoi ont-ils prêté ce serment ? Qui sont-ils pour vous ou votre communauté ? Comment cet engagement a-t-il été rompu et quelles ont été les conséquences par la suite ? Cette blessure est-elle guérie ?"
+        }
+      ],
+      "face": 0,
+      "name": "Brise-serment",
+      "_id": "MBbUUhXOgBUYFgrv",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 0,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "tZbN4KcBYp8FFjDi",
+        "modifiedTime": 1774193021093
+      },
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.MBbUUhXOgBUYFgrv",
+      "cards": []
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/15-rival.webp",
+          "text": "Celui qui fait obstacle à ce que vous voulez désespérément. Qu’est-ce qui vous met en désaccord ? Qu’est-ce qui vous pousse à vous surpasser ? Quels conflits sont survenus entre vous ? Les conflits sont-ils restés ludiques ou se transforment-ils en quelque chose de plus sombre ? Quels problèmes futurs posent-ils ?"
+        }
+      ],
+      "face": 0,
+      "name": "Rival",
+      "_id": "UmzZPgZHth1saFNT",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 9,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180653985
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.UmzZPgZHth1saFNT"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/16-sovereign.webp",
+          "text": "Une force résolue à la barre pour guider tous ceux qui suivent. Comment en sont-ils arrivés à cette position ? Sont-ils un leader juste ou affichent-ils leur pouvoir ? Quels changements ont-ils apportés à votre monde ? Qu’est-ce que vous admirez ou méprisez-vous le plus chez eux ?"
+        }
+      ],
+      "face": 0,
+      "name": "Souverain",
+      "_id": "bg11lRP2yv9l9CEY",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 5,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180631795
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.bg11lRP2yv9l9CEY"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/17-traitor.webp",
+          "text": "Quelqu'un qui a tourné le dos à un ami, un pays et un principe pour son propre bénéfice. Quelle promesse a été trahie ? Comment cette tromperie a-t-elle été découverte ? Quelle a été la réaction une fois cette trahison révélée ? Quel a été le prix à payer par la suite ?"
+        }
+      ],
+      "face": 0,
+      "name": "Traitre",
+      "_id": "GYUFILbakA6nbQX4",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 6,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180643055
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.GYUFILbakA6nbQX4"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/18-vagabond.webp",
+          "text": "Une fraude dans presque tout ce qu'ils font. Quelle est leur arnaque la plus courante ? Qui ciblent-ils et pourquoi ? Avaient-ils toujours besoin de profiter des autres ? Sont-ils bons dans leur choix, ou est-ce trop évident ? Comment avez-vous été impliqué dans leurs stratagèmes ?"
+        }
+      ],
+      "face": 0,
+      "name": "Vagabond",
+      "_id": "8YgUx7T34owg8qnd",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 18,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180716271
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.8YgUx7T34owg8qnd"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/19-watcher.webp",
+          "text": "Celui qui monte la garde silencieuse sur un lieu digne de protection. Cette charge leur a-t-elle été confiée par d’autres ou l’ont-ils choisi ? Contre quoi se défendent-ils ? Dans quelle mesure assument-ils cette responsabilité ? Qu’est-ce que vous les avez déjà vu accomplir ?"
+        }
+      ],
+      "face": 0,
+      "name": "Gardien",
+      "_id": "AqKaD3BAEqixhjHi",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 2,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180616922
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.AqKaD3BAEqixhjHi"
+    },
+    {
+      "faces": [
+        {
+          "name": "",
+          "img": "modules/lazybobcat-generic-content/artwork/session-zero/bond/20-zealot.webp",
+          "text": "Un homme si profondément ancré dans ses croyances qu’il est impossible de le faire ressortir. Quelle est la principale motivation de leur fanatisme ? Quelle parole font-ils passer ? Qui cherchent-ils à les rejoindre ? Comment en êtes-vous arrivé à les entendre ? Comment ont-ils essayé de vous piéger avec leur zèle ?"
+        }
+      ],
+      "face": 0,
+      "name": "Fanatique",
+      "_id": "d5Nlx7JtdVMgwft8",
+      "description": "",
+      "type": "base",
+      "system": {},
+      "value": null,
+      "back": {
+        "text": "",
+        "name": "",
+        "img": null
+      },
+      "drawn": false,
+      "origin": null,
+      "width": null,
+      "height": null,
+      "rotation": 0,
+      "sort": 3,
+      "flags": {},
+      "suit": "",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "modifiedTime": 1774180622250
+      },
+      "cards": [],
+      "_key": "!cards.cards!hJEqEqwWu9VPRzvC.d5Nlx7JtdVMgwft8"
+    }
+  ],
+  "width": null,
+  "height": null,
+  "rotation": 0,
+  "displayCount": false,
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325715350,
+    "modifiedTime": 1774180612951,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP"
+  },
+  "ownership": {
+    "default": 0,
+    "86Y8VrQcH0fnEvNP": 3
+  },
+  "_id": "hJEqEqwWu9VPRzvC",
+  "sort": 0,
+  "_key": "!cards!hJEqEqwWu9VPRzvC"
+}
