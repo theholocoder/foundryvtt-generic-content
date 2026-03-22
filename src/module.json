@@ -75,6 +75,7 @@
   ],
   "description": "",
   "esmodules": ["lazybobcat-generic-content.js"],
+  "styles": ["styles/lazybobcat-generic-content.css"],
   "url": "",
   "manifest": "",
   "download": ""
