@@ -1,5 +1,9 @@
 type PMDispatch = (tr: any) => void;
-type PMCommand = (state: any, dispatch: PMDispatch | undefined, view: any) => boolean;
+type PMCommand = (
+  state: any,
+  dispatch: PMDispatch | undefined,
+  view: any,
+) => boolean;
 
 const DROPDOWN_KEY = "lgcBoxes";
 
@@ -11,7 +15,9 @@ function insertHtmlCommand(html: string): PMCommand {
       const wrap = document.createElement("div");
       wrap.innerHTML = html.trim();
 
-      const parser = foundry.prosemirror.DOMParser.fromSchema(state.schema) as any;
+      const parser = foundry.prosemirror.DOMParser.fromSchema(
+        state.schema,
+      ) as any;
       const slice = parser.parseSlice(wrap);
 
       dispatch(state.tr.replaceSelection(slice).scrollIntoView());
@@ -25,98 +31,127 @@ function insertHtmlCommand(html: string): PMCommand {
 }
 
 export function registerProseMirrorBoxes(): void {
-  Hooks.on("getProseMirrorMenuDropDowns" as any, (_menu: any, dropdowns: any) => {
-    const cfg = dropdowns as any;
-    if (cfg[DROPDOWN_KEY]) return;
+  Hooks.on(
+    "getProseMirrorMenuDropDowns" as any,
+    (_menu: any, dropdowns: any) => {
+      const cfg = dropdowns as any;
+      if (cfg[DROPDOWN_KEY]) return;
 
-    const entries = [
-      {
-        action: "lgc-box-narration",
-        title: "Narration",
-        icon: '<i class="fa-solid fa-book-open"></i>',
-        cmd: insertHtmlCommand(
-          [
-            '<blockquote class="lgc-box-text narrative">',
-            "  <p>The content of the narrative<br>Can span across multiple lines</p>",
-            "</blockquote>",
-          ].join("\n"),
-        ),
-      },
-      {
-        action: "lgc-box-citation",
-        title: "Citation",
-        icon: '<i class="fa-solid fa-quote-left"></i>',
-        cmd: insertHtmlCommand(
-          [
-            '<blockquote class="lgc-box-text citation">',
-            "    <p>\u00ab Dans les cendres du monde br\u00fbl\u00e9, le Psylith s\u2019\u00e9l\u00e8ve \u2014 une seule volont\u00e9, des milliers de corps, une perfection \u00e9ternelle. \u00bb</p>",
-            "    <p><strong>\u2014 Auteur.</strong></p>",
-            "</blockquote>",
-          ].join("\n"),
-        ),
-      },
-      {
-        action: "lgc-box-fvtt",
-        title: "FVTT",
-        icon: '<i class="fa-solid fa-dice-d20"></i>',
-        cmd: insertHtmlCommand(
-          [
-            '<section class="lgc-box-text fvtt">',
-            "    <header>",
-            '        <img src="icons/vtt-512.png" width="100">',
-            "        <h2>Foundry VTT Advice</h2>",
-            "    </header>",
-            "    <article>",
-            "        <p>One of the most commonly used call-outs, a box which looks like this one will give you instructions specific to using features of Foundry VTT.</p>",
-            "    </article>",
-            "</section>",
-          ].join("\n"),
-        ),
-      },
-      {
-        action: "lgc-box-encounter",
-        title: "Rencontre",
-        icon: '<i class="fa-solid fa-dragon"></i>',
-        cmd: insertHtmlCommand(
-          [
-            '<section class="lgc-box-text encounter">',
-            "    <header>",
-            '        <img src="modules/pf2e-beginner-box/assets/artwork-other/icon-monster.webp" width="100">',
-            "        <h2>Encounters</h2>",
-            "    </header>",
-            "    <article>",
-            "        <p>A box which looks like this one contains references to creatures or threats that are dangerous to the player characters, as well as tactics and advice for how to facilitate the encounter. Usually, the top of the box will contain a dynamic link to relevant Actor sheets so that you can quickly reference character stats or make rolls.</p>",
-            "    </article>",
-            "</section>",
-          ].join("\n"),
-        ),
-      },
-      {
-        action: "lgc-box-treasure",
-        title: "Tr\u00e9sor",
-        icon: '<i class="fa-solid fa-gem"></i>',
-        cmd: insertHtmlCommand(
-          [
-            '<section class="lgc-box-text treasure">',
-            "    <header>",
-            '        <img src="modules/pf2e-beginner-box/assets/artwork-other/icon-treasure.webp" width="100">',
-            "        <h2>Treasure</h2>",
-            "    </header>",
-            "    <article>",
-            "        <p>Treasure text boxes contain a summary of special items and goods to reward your players for their successes, and usually follow an encounter. You will find that most of these link to a special type of Actor Sheet called a \"Loot Sheet\" which contains all the special items and currency to be shared.</p>",
-            "    </article>",
-            "</section>",
-          ].join("\n"),
-        ),
-      },
-    ];
+      const entries = [
+        {
+          action: "lgc-box-narration",
+          title: "Narration",
+          icon: '<i class="fa-solid fa-book-open"></i>',
+          cmd: insertHtmlCommand(
+            [
+              '<blockquote class="lgc-box-text narrative">',
+              "  <p>Une description d'une scène ou un élément à donner aux joueurs.<br>Peut-être sur plusieurs lignes.</p>",
+              "</blockquote>",
+              "<p></p>",
+            ].join("\n"),
+          ),
+        },
+        {
+          action: "lgc-box-citation",
+          title: "Citation",
+          icon: '<i class="fa-solid fa-quote-left"></i>',
+          cmd: insertHtmlCommand(
+            [
+              '<blockquote class="lgc-box-text citation">',
+              "    <p>« Dans les cendres du monde brûlé, le Psylith s’élève — une seule volonté, des milliers de corps, une perfection éternelle. »</p>",
+              "    <p><strong>— Auteur.</strong></p>",
+              "</blockquote>",
+              "<p></p>",
+            ].join("\n"),
+          ),
+        },
+        {
+          action: "lgc-box-fvtt",
+          title: "Bloc : jets possibles",
+          icon: '<i class="fa-solid fa-dice-d20"></i>',
+          cmd: insertHtmlCommand(
+            [
+              '<section class="lgc-box-text dice-roll">',
+              "    <header>",
+              '        <img src="icons/svg/d20.svg" width="96">',
+              "        <h2>Jets possibles</h2>",
+              "    </header>",
+              "    <article>",
+              "        <p>Lister les jets possibles à effectuer et les résultats attendus ici.</p>",
+              "        <table><tbody><tr><th>Rechercher</th><td>@Check[type:perception|dc:25]</td></tr></tbody></table>",
+              "    </article>",
+              "</section>",
+              "<p></p>",
+            ].join("\n"),
+          ),
+        },
+        {
+          action: "lgc-box-encounter",
+          title: "Bloc : rencontre",
+          icon: '<i class="fa-solid fa-dragon"></i>',
+          cmd: insertHtmlCommand(
+            [
+              '<section class="lgc-box-text encounter">',
+              "    <header>",
+              '        <img src="icons/svg/sword.svg" width="96">',
+              "        <h2>Rencontre</h2>",
+              "    </header>",
+              "    <article>",
+              "        <p>Il peut s'agit d'une rencontre de combat ou d'une rencontre \"roleplay\". Vous pouvez lister les adversaires ici et laisser quelques notes sur leur stratégie.</p>",
+              "    </article>",
+              "</section>",
+              "<p></p>",
+            ].join("\n"),
+          ),
+        },
+        {
+          action: "lgc-box-treasure",
+          title: "Bloc : trésor",
+          icon: '<i class="fa-solid fa-gem"></i>',
+          cmd: insertHtmlCommand(
+            [
+              '<section class="lgc-box-text treasure">',
+              "    <header>",
+              '        <img src="icons/svg/coins.svg" width="96">',
+              "        <h2>Récompenses</h2>",
+              "    </header>",
+              "    <article>",
+              "        <p>Listez ici les objets et pièces d'or trouvés par les personnages.</p>",
+              "    </article>",
+              "</section>",
+              "<p></p>",
+            ].join("\n"),
+          ),
+        },
+        {
+          action: "lgc-box-investigation",
+          title: "Bloc : investigation",
+          icon: '<i class="fa-solid fa-gem"></i>',
+          cmd: insertHtmlCommand(
+            [
+              '<section class="lgc-box-text investigation">',
+              "    <header>",
+              '        <img src="icons/svg/door-locked-outline.svg" width="96">',
+              "        <h2>Investigation</h2>",
+              "    </header>",
+              "    <article>",
+              "        <p>Lister les informations à trouver et le type de jet à effectuer ici.</p>",
+              "        <table><tbody><tr><th>Rechercher</th><td>@Check[type:perception|dc:25]</td></tr></tbody></table>",
+              "    </article>",
+              "</section>",
+              "<p></p>",
+            ].join("\n"),
+          ),
+        },
+      ];
 
-    cfg[DROPDOWN_KEY] = {
-      action: "lgc-boxes",
-      title: "LGC",
-      cssClass: "lgc-prosemirror-dropdown",
-      icon: '<i class="fa-solid fa-cat fa-fw"></i>',
-      entries,
-    };
-  });
+      cfg[DROPDOWN_KEY] = {
+        action: "lgc-boxes",
+        title: "LGC",
+        cssClass: "lgc-prosemirror-dropdown",
+        icon: '<i class="fa-solid fa-cat fa-fw"></i>',
+        entries,
+      };
+    },
+  );
 }
