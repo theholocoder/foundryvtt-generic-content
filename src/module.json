@@ -23,12 +23,35 @@
       "paths": ["artwork", "packs"]
     }
   },
+  "authors": [
+    {
+      "name": "TheHolocoder",
+      "url": "https://github.com/theholocoder",
+      "flags": {}
+    }
+  ],
+  "description": "This module provides useful content and tools for session preparation and game improvisation in FoundryVTT.",
+  "esmodules": ["lazybobcat-generic-content.js"],
+  "styles": ["styles/lazybobcat-generic-content.css"],
+  "url": "https://github.com/theholocoder/foundryvtt-generic-content",
+  "manifest": "",
+  "download": "",
+  "media": [
+    {
+      "type": "setup",
+      "caption": "Lazybobcat - Generic Content",
+      "thumbnail": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
+      "loop": false,
+      "flags": {}
+    }
+  ],
   "packs": [
     {
       "name": "journal",
       "label": "Journaux",
       "path": "packs/journal",
       "type": "JournalEntry",
+      "banner": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -37,9 +60,9 @@
     {
       "name": "scenes",
       "label": "Scènes",
-      "banner": "modules/lazybobcat-generic-content/artwork/landing/table.webp",
       "path": "packs/scenes",
       "type": "Scene",
+      "banner": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -50,6 +73,7 @@
       "label": "Jeux de cartes",
       "path": "packs/cards",
       "type": "Cards",
+      "banner": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -60,6 +84,7 @@
       "label": "Playlists",
       "path": "packs/playlists",
       "type": "Playlist",
+      "banner": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -70,6 +95,7 @@
       "label": "Tables aléatoires",
       "path": "packs/tables",
       "type": "RollTable",
+      "banner": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
@@ -81,22 +107,11 @@
       "path": "packs/pnj",
       "type": "Actor",
       "system": "pf2e",
+      "banner": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
       }
     }
-  ],
-  "authors": [
-    {
-      "name": "Lazybobcat",
-      "flags": {}
-    }
-  ],
-  "description": "",
-  "esmodules": ["lazybobcat-generic-content.js"],
-  "styles": ["styles/lazybobcat-generic-content.css"],
-  "url": "",
-  "manifest": "",
-  "download": ""
+  ]
 }

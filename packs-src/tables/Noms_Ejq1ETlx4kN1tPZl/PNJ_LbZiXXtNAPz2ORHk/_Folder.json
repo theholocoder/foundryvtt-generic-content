@@ -1,5 +1,5 @@
 {
-  "name": "NPC",
+  "name": "PNJ",
   "sorting": "a",
   "folder": "Ejq1ETlx4kN1tPZl",
   "type": "RollTable",
@@ -11,10 +11,11 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.351",
     "systemId": "pf2e",
     "systemVersion": "7.3.0",
-    "lastModifiedBy": null
+    "lastModifiedBy": "tZbN4KcBYp8FFjDi",
+    "modifiedTime": 1774259755228
   },
   "description": "",
   "_key": "!folders!LbZiXXtNAPz2ORHk"
