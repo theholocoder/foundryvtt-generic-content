@@ -18,6 +18,12 @@ mkdirSync(stateDir, { recursive: true });
 const manifest = readManifest();
 const packs = getPacksFromManifest(manifest);
 
+function safeName(s) {
+  if (!s) return "";
+  // Match fvtt-cli getSafeFilename behavior for stability.
+  return String(s).replace(/[^a-zA-Z0-9А-я]/g, "_");
+}
+
 for (const p of packs) {
   const distPackDir = path.join(root, "dist", p.path);
   if (!isClassicLevelPackDir(distPackDir)) {
@@ -30,6 +36,9 @@ for (const p of packs) {
   const destDir = path.join(root, "packs-src", p.name);
 
   const tmpDir = path.join(root, ".tmp", "packs", p.name);
+
+  const seenPaths = new Set();
+  const seenFolderNamesByParent = new Map();
 
   console.log(`[packs:unpack] ${p.name} (${p.path}) -> ${path.relative(root, destDir)}`);
 
@@ -48,6 +57,50 @@ for (const p of packs) {
       folders: true,
       omitVolatile: true,
       jsonOptions: { space: 2 },
+      transformFolderName: async (doc) => {
+        const parent = doc?.folder ?? "__root__";
+        const name = safeName(doc?.name);
+        if (!name) {
+          throw new Error(
+            `[packs:unpack] Folder has no name; cannot create stable path without id. Folder id=${doc?._id ?? "(unknown)"}`
+          );
+        }
+
+        let set = seenFolderNamesByParent.get(parent);
+        if (!set) {
+          set = new Set();
+          seenFolderNamesByParent.set(parent, set);
+        }
+
+        if (set.has(name)) {
+          throw new Error(
+            `[packs:unpack] Folder name collision under same parent: '${name}'. Rename one folder in Foundry to make names unique.`
+          );
+        }
+        set.add(name);
+        return name;
+      },
+      transformName: async (doc, context) => {
+        // Let fvtt-cli handle folder metadata filenames (_Folder.json).
+        if (typeof doc?._key === "string" && doc._key.startsWith("!folders")) return;
+
+        const folder = context?.folder ? String(context.folder) : "";
+        const name = safeName(doc?.name);
+        if (!name) {
+          throw new Error(
+            `[packs:unpack] Document has no name; cannot create stable filename without id. key=${doc?._key ?? "(unknown)"} id=${doc?._id ?? "(unknown)"}`
+          );
+        }
+
+        const rel = path.join(folder, `${name}.json`);
+        if (seenPaths.has(rel)) {
+          throw new Error(
+            `[packs:unpack] Document filename collision: '${rel}'. Rename one of the colliding entries in Foundry to make names unique.`
+          );
+        }
+        seenPaths.add(rel);
+        return rel;
+      },
     });
   } catch (err) {
     console.error(`[packs:unpack] Failed for ${p.name} from ${srcPackDir}`);

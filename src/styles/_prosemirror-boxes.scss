@@ -1,0 +1,181 @@
+/******************************************************************************
+ * General styles
+ *****************************************************************************/
+.lgc-box-text {
+  /* --pf2e-red: #5e0000; */
+  /* --pf2e-gold: #c5832b; */
+  /* --paizo-blue-light: #7c7bab; */
+  /* --paizo-blue-dark: #171f69; */
+  /* --h2-font: 'Modesto Condensed', serif; */
+  /* --h2-sidebar: 'Modesto Condensed', serif; */
+  /* --h2-sidebar-font-size: 1.5rem; */
+  /* --h2-font-size: 1.35rem; */
+  /* --bb-gold: #e9b770; */
+  /* --bb-gold-dark: #956321; */
+  /* --bb-white: #ffffff; */
+  /* --bb-green: #186925; */
+  /* --bb-green-light: #f1f2df; */
+  /* --fvtt-orange: #ff812f; */
+  /* General */
+  --main-font: Vollkorn, sans-serif;
+  --main-font-size: .9rem;
+  /* Narrative Text */
+  --narrative-font: Vollkorn, sans-serif;
+  --narrative-font-size: 1rem;
+  --narrative-border-color: #115c13;
+  --narrative-background-color: rgba(255, 255, 255, 0.2);
+  /* Citation Text */
+  --citation-font: Vollkorn, sans-serif;
+  --citation-font-size: 1rem;
+  --citation-border-color: #cccccc;
+  --citation-background-color: rgba(0, 0, 0, 0.7);
+  /* Blocks */
+  --block-border-color: black;
+  --block-background-color: rgba(255, 255, 255, 0.2);
+  --block-dice-roll-color: white;
+  --block-dice-roll-background: rgba(0, 0, 0, 0.7);
+  --block-encounter-color: white;
+  --block-encounter-background: #5e0000;
+  --block-treasure-color: white;
+  --block-treasure-background: #ad7c2d;
+  --block-investigation-color: white;
+  --block-investigation-background: #171f69;
+}
+.lgc-box-text {
+  border: 2px solid black;
+  margin: 1rem 2%;
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
+}
+
+
+/******************************************************************************
+ * Narrative
+ *****************************************************************************/
+.lgc-box-text {
+  &.narrative, &.citation {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5em;
+    border-left: none;
+    border-right: none;
+    padding: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  &.narrative {
+    background: var(--narrative-background-color);
+    box-shadow: 0 5px 10px -8px var(--color-shadow-dark);
+    font-family: var(--narrative-font);
+    border-top: 1px ridge var(--narrative-border-color);
+    border-bottom: 1px ridge var(--narrative-border-color);
+    color: var(--narrative-border-color);
+  }
+}
+
+
+/******************************************************************************
+ * Citation
+ *****************************************************************************/
+.lgc-box-text {
+  &.citation {
+    background: var(--citation-background-color);
+    box-shadow: 0 5px 10px -8px var(--color-shadow-dark);
+    font-family: var(--citation-font);
+    border-top: 2px ridge var(--citation-border-color);
+    border-bottom: 2px ridge var(--citation-border-color);
+    color: var(--citation-border-color);
+  }
+}
+
+
+/******************************************************************************
+ * Bloc : dice roll
+ *****************************************************************************/
+.lgc-box-text {
+  &.dice-roll, &.encounter, &.treasure, &.investigation {
+    display: block;
+    border-radius: 8px;
+    background: var(--block-background-color);
+
+    header {
+      position: relative;
+      border-bottom: 2px solid var(--block-border-color);
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 64px;
+        border: none;
+        filter: drop-shadow(2px 2px 4px black);
+        margin-right: 1rem;
+      }
+
+      h1, h2 {
+        margin: 0;
+        padding: 0;
+        flex-grow: 2;
+        filter: drop-shadow(2px 2px 4px black);
+      }
+    }
+
+    article {
+      padding: 1rem 1rem 0.25rem 1rem;
+
+      table {
+        font-family: Signika, sans-serif;
+      }
+    }
+  }
+
+  &.dice-roll {
+    header {
+      color: var(--block-dice-roll-color);
+      background: var(--block-dice-roll-background);
+
+      h2, h3, h4, h5, h6 {
+        color: var(--block-dice-roll-color);
+      }
+    }
+  }
+}
+
+
+/******************************************************************************
+ * Encounter
+ *****************************************************************************/
+.lgc-box-text {
+  &.encounter {
+    header {
+      color: var(--block-encounter-color);
+      background: var(--block-encounter-background);
+    }
+  }
+}
+
+
+/******************************************************************************
+ * Treasure
+ *****************************************************************************/
+.lgc-box-text {
+  &.treasure {
+    header {
+      color: var(--block-treasure-color);
+      background: var(--block-treasure-background);
+    }
+  }
+}
+
+
+/******************************************************************************
+ * Investigation
+ *****************************************************************************/
+.lgc-box-text {
+  &.investigation {
+    header {
+      color: var(--block-investigation-color);
+      background: var(--block-investigation-background);
+    }
+  }
+}
+

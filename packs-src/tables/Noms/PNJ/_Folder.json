@@ -1,0 +1,22 @@
+{
+  "name": "PNJ",
+  "sorting": "a",
+  "folder": "Ejq1ETlx4kN1tPZl",
+  "type": "RollTable",
+  "_id": "LbZiXXtNAPz2ORHk",
+  "sort": 0,
+  "color": "#2a7e4a",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "lastModifiedBy": "tZbN4KcBYp8FFjDi",
+    "modifiedTime": 1774259755228
+  },
+  "description": "",
+  "_key": "!folders!LbZiXXtNAPz2ORHk"
+}
