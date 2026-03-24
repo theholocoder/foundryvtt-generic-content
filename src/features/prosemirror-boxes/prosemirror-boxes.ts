@@ -143,6 +143,34 @@ export function registerProseMirrorBoxes(): void {
             ].join("\n"),
           ),
         },
+        {
+          action: "lgc-box-simple-npc",
+          title: "Bloc : PNJ",
+          icon: '<i class="fa-solid fa-user"></i>',
+          cmd: insertHtmlCommand(
+            [
+              '<div class="lgc-box-text simple-npc">',
+              '    <div class="simple-npc__description">',
+              "        <h2>Apparence</h2>",
+              "        <p>TODO</p>",
+              "        <h2>Informations</h2>",
+              "        <p>TODO</p>",
+              "    </div>",
+              '    <div class="simple-npc__attributes">',
+              "        <section>",
+              "            <div>",
+              "                <p><strong>Ascendance</strong> <span>humain</span></p>",
+              "            </div>",
+              "            <div>",
+              "                <p><strong>Statut</strong> <span>vivant</span></p>",
+              "            </div>",
+              "        </section>",
+              "    </div>",
+              "</div>",
+              "<p></p>",
+            ].join("\n"),
+          ),
+        },
       ];
 
       cfg[DROPDOWN_KEY] = {
