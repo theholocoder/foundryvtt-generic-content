@@ -45,6 +45,11 @@
   --simple-npc-attributes-background-color: rgba(0, 0, 0, 0.7);
   --simple-npc-attributes-color: #eeeeee;
   --simple-npc-border-color: rgba(0, 0, 0, 0.7);
+  /* Statblock : influence */
+  --statblock-influence-background-color: rgba(0, 0, 0, 0.7);
+  --statblock-influence-name-background-color: rgb(98, 125, 98);
+  --statblock-influence-color: #eeeeee;
+  --statblock-influence-border-color: rgba(0, 0, 0, 0.7);
 }
 .lgc-box-text {
   border: 2px solid black;
@@ -231,6 +236,36 @@
             font-size: 0.8rem;
           }
         }
+      }
+    }
+  }
+}
+
+
+/******************************************************************************
+ * Statblock : influence
+ *****************************************************************************/
+.lgc-box-text {
+  &.statblock-influence {
+    background: var(--statblock-influence-background-color);
+    color: var(--statblock-influence-color);
+
+    .statblock-influence__name {
+      background: var(--statblock-influence-name-background-color);
+      padding: 0.2rem 0.5rem;
+      font-family: var(--main-font);
+      text-transform: uppercase;
+      font-size: .9rem;
+      font-weight: bold;
+    }
+
+    .statblock-influence__content {
+      padding: 0 .5rem;
+      font-size: .85rem;
+
+      strong {
+        font-family: var(--default-font);
+        margin-right: 0.5rem;
       }
     }
   }
