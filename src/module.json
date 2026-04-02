@@ -1,7 +1,7 @@
 {
   "id": "lazybobcat-generic-content",
   "title": "Lazybobcat - Generic Content",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
