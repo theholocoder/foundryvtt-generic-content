@@ -788,12 +788,12 @@ function applyLanguages(
 type ParsedSenses = {
   slugs: string[];
   custom: string[];
-  frLabels: string[];
+  labels: string[];
 };
 
 function parseSenses(raw: string | null): ParsedSenses {
   const src = normalizeBlank(raw);
-  if (!src) return { slugs: [], custom: [], frLabels: [] };
+  if (!src) return { slugs: [], custom: [], labels: [] };
 
   const parts = src
     .split(/[,;\n]+/g)
@@ -802,18 +802,18 @@ function parseSenses(raw: string | null): ParsedSenses {
 
   const slugs: string[] = [];
   const custom: string[] = [];
-  const frLabels: string[] = [];
+  const labels: string[] = [];
 
   for (const p of parts) {
     const k = p.trim().toLowerCase();
     if (k === "darkvision") {
       slugs.push("darkvision");
-      frLabels.push("vision dans le noir");
+      labels.push("Darkvision");
       continue;
     }
     if (k === "low-light" || k === "lowlight" || k === "low-light vision" || k === "low light") {
       slugs.push("lowLightVision");
-      frLabels.push("vision en faible luminosite");
+      labels.push("Low-Light Vision");
       continue;
     }
 
@@ -823,7 +823,7 @@ function parseSenses(raw: string | null): ParsedSenses {
   return {
     slugs: Array.from(new Set(slugs)),
     custom: Array.from(new Set(custom)),
-    frLabels: Array.from(new Set(frLabels)),
+    labels: Array.from(new Set(labels)),
   };
 }
 
@@ -834,6 +834,63 @@ function applySenses(
 ): void {
   const parsed = parseSenses(raw);
   if (!parsed.slugs.length && !parsed.custom.length) return;
+
+  // 1) Perception special senses (this is what the NPC sheet shows)
+  const perceptionSenses = foundry.utils.getProperty(sys, "perception.senses") as any;
+  if (Array.isArray(perceptionSenses)) {
+    const baseTemplate =
+      perceptionSenses.find((v) => v && typeof v === "object") ??
+      {
+        type: "darkvision",
+        acuity: "precise",
+        range: null,
+        source: null,
+        label: "Darkvision",
+        emphasizeLabel: false,
+      };
+
+    const makeSense = (type: string, label: string): any => {
+      const next = { ...baseTemplate };
+      next.type = type;
+      next.label = label;
+      // Keep these stable defaults unless template already differs
+      if (next.acuity === undefined) next.acuity = "precise";
+      if (next.range === undefined) next.range = null;
+      if (next.source === undefined) next.source = null;
+      if (next.emphasizeLabel === undefined) next.emphasizeLabel = false;
+      return next;
+    };
+
+    const desired: any[] = [];
+    for (const slug of parsed.slugs) {
+      if (slug === "darkvision") desired.push(makeSense("darkvision", "Darkvision"));
+      else if (slug === "lowLightVision") {
+        desired.push(makeSense("lowLightVision", "Low-Light Vision"));
+      }
+    }
+
+    const keyOf = (s: any) => `${String(s?.type ?? "").toLowerCase()}|${String(s?.range ?? "")}`;
+    const merged = [...perceptionSenses];
+    const existingKeys = new Set(merged.map(keyOf));
+    for (const s of desired) {
+      const k = keyOf(s);
+      if (!existingKeys.has(k)) {
+        merged.push(s);
+        existingKeys.add(k);
+      }
+    }
+
+    updates["system.perception.senses"] = merged;
+
+    if (parsed.custom.length) {
+      const curDetails = foundry.utils.getProperty(sys, "perception.details");
+      if (typeof curDetails === "string") {
+        const suffix = parsed.custom.join(", ");
+        const next = curDetails ? `${curDetails}\n${suffix}` : suffix;
+        updates["system.perception.details"] = next;
+      }
+    }
+  }
 
   const sensesObj = foundry.utils.getProperty(sys, "traits.senses") as any;
   if (sensesObj && typeof sensesObj === "object") {
@@ -1348,7 +1405,7 @@ function buildNpcJournalHtml(
   const appearance = npc.description ? toHtml(npc.description) : "<p>TODO</p>";
   const info = npc.info ? toHtml(npc.info) : "<p>TODO</p>";
   const ancestry = npc.ancestryLike ?? npc.creatureType ?? "TODO";
-  const sensesLabel = formatSensesFr(npc.sensesRaw) ?? "-";
+  const sensesLabel = formatSensesForJournal(npc.sensesRaw) ?? "-";
   const languagesLabel = formatLanguagesForJournal(npc.languagesRaw) ?? "-";
 
   const simpleNpc = [
@@ -1516,10 +1573,10 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-function formatSensesFr(raw: string | null): string | null {
+function formatSensesForJournal(raw: string | null): string | null {
   const parsed = parseSenses(raw);
   const parts: string[] = [];
-  if (parsed.frLabels.length) parts.push(...parsed.frLabels);
+  if (parsed.labels.length) parts.push(...parsed.labels);
   if (parsed.custom.length) parts.push(...parsed.custom);
   const out = parts.map((s) => s.trim()).filter(Boolean).join(", ");
   return out ? out : null;
