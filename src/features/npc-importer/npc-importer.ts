@@ -471,20 +471,15 @@ async function createPf2eNpcActor(
 
   // HP: try multiple shapes; ensure value == max.
   if (npc.hp !== null) {
-    const hpObj = foundry.utils.getProperty(sys, "attributes.hp") as any;
-    if (hpObj && typeof hpObj === "object") {
-      const next: any = { ...hpObj };
-      if (hpObj.max !== undefined) next.max = npc.hp;
-      if (hpObj.value !== undefined) next.value = npc.hp;
-      if (hpObj.temp !== undefined && typeof hpObj.temp !== "number") next.temp = 0;
-      updates["system.attributes.hp"] = next;
-    }
-    // Also try direct keys, if present
+    // Only set leaf fields; avoid overwriting derived hp object.
     if (foundry.utils.getProperty(sys, "attributes.hp.max") !== undefined) {
       updates["system.attributes.hp.max"] = npc.hp;
     }
     if (foundry.utils.getProperty(sys, "attributes.hp.value") !== undefined) {
       updates["system.attributes.hp.value"] = npc.hp;
+    }
+    if (foundry.utils.getProperty(sys, "attributes.hp.temp") !== undefined) {
+      updates["system.attributes.hp.temp"] = 0;
     }
   }
 
@@ -555,6 +550,22 @@ async function createPf2eNpcActor(
     } catch (err) {
       console.error("LGC | Spellcasting creation failed", err, { npc });
       ui.notifications?.warn("LGC | Actor created but spells failed (see console)");
+    }
+  }
+
+  // Finalize HP last: PF2e prepare can reset current HP.
+  if (npc.hp !== null) {
+    try {
+      const hpUpdate: Record<string, unknown> = {
+        "system.attributes.hp.max": npc.hp,
+        "system.attributes.hp.value": npc.hp,
+      };
+      if (foundry.utils.getProperty((actor as any).system, "attributes.hp.temp") !== undefined) {
+        hpUpdate["system.attributes.hp.temp"] = 0;
+      }
+      await actor.update(hpUpdate);
+    } catch (err) {
+      console.error("LGC | Failed to finalize HP", err, { npc });
     }
   }
 
