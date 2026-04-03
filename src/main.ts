@@ -1,12 +1,12 @@
 import { registerProseMirrorBoxes } from "./features/prosemirror-boxes/prosemirror-boxes";
-import { registerNpcGenerator } from "./features/npc-generator/npc-generator";
+import { registerNpcImporter } from "./features/npc-importer/npc-importer";
 
 import "./styles/main.scss";
 
 Hooks.once("init", async function () {
   console.log("LGC | Initializing...");
   registerProseMirrorBoxes();
-  registerNpcGenerator();
+  registerNpcImporter();
 });
 
 Hooks.once("ready", async function () {

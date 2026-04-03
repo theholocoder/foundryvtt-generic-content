@@ -31,6 +31,9 @@ type NormalizedNpc = {
   img: string | null;
   description: string | null;
   info: string | null;
+  speedRaw: string | null;
+  languagesRaw: string | null;
+  sensesRaw: string | null;
   ac: number | null;
   hp: number | null;
   perception: number | null;
@@ -50,6 +53,8 @@ type NormalizedNpc = {
   skills: Record<string, number>; // legacy slugs if they match
   skillsRaw: Record<string, number>; // pf2.tools keys (intimidation, nature, ...)
   resistancesRaw: string | null;
+  weaknessesRaw: string | null;
+  immunitiesRaw: string | null;
   strikes: NormalizedStrike[];
   specials: NormalizedSpecial[];
   spellcasting: {
@@ -73,7 +78,7 @@ type NormalizedNpc = {
 const MODULE_ID = "lazybobcat-generic-content";
 const BTN_ID = "lgc-import-npc-json";
 
-export function registerNpcGenerator(): void {
+export function registerNpcImporter(): void {
   Hooks.on("renderActorDirectory" as any, (_app: any, html: any) => {
     try {
       const $html = toJQuery(html);
@@ -239,12 +244,17 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
   const name = asNonEmptyString(o.name) ?? "";
   const level = asNumber(o.level);
   const alignment = normalizeBlank(asNonEmptyString(o.alignment));
-  const size = normalizeBlank(asNonEmptyString(o.size));
+  const size = mapSizeToPf2e(normalizeBlank(asNonEmptyString(o.size)));
   const creatureType = normalizeBlank(asNonEmptyString(o.type));
   const ancestryLike = normalizeBlank(asNonEmptyString(o.traits));
   const img = normalizeBlank(asNonEmptyString(o.imgurl));
   const description = normalizeBlank(asNonEmptyString(o.description));
   const info = normalizeBlank(asNonEmptyString(o.info));
+  const speedRaw = normalizeBlank(asNonEmptyString(o.speed));
+  const languagesRaw = normalizeBlank(asNonEmptyString(o.languages));
+  const sensesRaw = normalizeBlank(
+    asNonEmptyString((o.perception as JSONObject | undefined)?.note),
+  );
 
   const ac = asNumber((o.ac as JSONObject | undefined)?.value);
   const hp = asNumber((o.hp as JSONObject | undefined)?.value);
@@ -267,6 +277,12 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
 
   const resistancesRaw = normalizeBlank(
     asNonEmptyString((o.resistance as JSONObject | undefined)?.value),
+  );
+  const weaknessesRaw = normalizeBlank(
+    asNonEmptyString((o.weakness as JSONObject | undefined)?.value),
+  );
+  const immunitiesRaw = normalizeBlank(
+    asNonEmptyString((o.immunity as JSONObject | undefined)?.value),
   );
 
   const skills: Record<string, number> = {};
@@ -352,6 +368,9 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
     img,
     description,
     info,
+    speedRaw,
+    languagesRaw,
+    sensesRaw,
     ac: typeof ac === "number" ? ac : null,
     hp: typeof hp === "number" ? hp : null,
     perception: typeof perception === "number" ? perception : null,
@@ -360,6 +379,8 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
     skills,
     skillsRaw,
     resistancesRaw,
+    weaknessesRaw,
+    immunitiesRaw,
     strikes,
     specials,
     spellcasting: {
@@ -426,6 +447,19 @@ async function createPf2eNpcActor(
   setIfExists("details.level.value", npc.level);
   setIfExists("traits.size.value", npc.size);
 
+  // Traits: set creature type into system trait list if present.
+  applyActorTraits(updates, sys, npc);
+
+  // Speed
+  applySpeed(updates, sys, npc.speedRaw);
+
+  // Senses + languages
+  applySenses(updates, sys, npc.sensesRaw);
+  applyLanguages(updates, sys, npc.languagesRaw);
+
+  // Actor description (HTML)
+  applyActorDescription(updates, sys, npc);
+
   setAbilityMod(setIfExists, sys, "str", npc.abilities.str);
   setAbilityMod(setIfExists, sys, "dex", npc.abilities.dex);
   setAbilityMod(setIfExists, sys, "con", npc.abilities.con);
@@ -458,6 +492,11 @@ async function createPf2eNpcActor(
   setIfExists("saves.fortitude.value", npc.saves.fortitude);
   setIfExists("saves.reflex.value", npc.saves.reflex);
   setIfExists("saves.will.value", npc.saves.will);
+
+  // Resistances / weaknesses / immunities
+  applyIwr(updates, sys, "attributes.resistances", parseIwrWithValues(npc.resistancesRaw));
+  applyIwr(updates, sys, "attributes.weaknesses", parseIwrWithValues(npc.weaknessesRaw));
+  applyIwr(updates, sys, "attributes.immunities", parseIwrNoValues(npc.immunitiesRaw));
 
   // Skills: map pf2.tools skill keys onto PF2e skills object.
   const skillsObj = foundry.utils.getProperty(sys, "skills") as
@@ -536,6 +575,431 @@ function setAbilityMod(
     setIfExists(`abilities.${abil}.mod`, mod);
   } else if (foundry.utils.getProperty(base, "value") !== undefined) {
     setIfExists(`abilities.${abil}.value`, mod);
+  }
+}
+
+function mapSizeToPf2e(raw: string | null): string | null {
+  const v = normalizeBlank(raw);
+  if (!v) return null;
+  const s = v.trim().toLowerCase();
+
+  // Already PF2e-like codes
+  if (["tiny", "sm", "med", "lg", "huge", "grg"].includes(s)) return s;
+
+  const map: Record<string, string> = {
+    tiny: "tiny",
+    small: "sm",
+    medium: "med",
+    large: "lg",
+    huge: "huge",
+    gargantuan: "grg",
+  };
+
+  return map[s] ?? null;
+}
+
+function applyActorTraits(
+  updates: Record<string, unknown>,
+  sys: any,
+  npc: NormalizedNpc,
+): void {
+  const traitsObj = foundry.utils.getProperty(sys, "traits") as any;
+  if (!traitsObj || typeof traitsObj !== "object") return;
+
+  const addSystemTrait = (slug: string) => {
+    const existing = foundry.utils.getProperty(sys, "traits.value");
+    if (!Array.isArray(existing)) return;
+    const next = Array.from(new Set([...(existing as string[]), slug]));
+    updates["system.traits.value"] = next;
+  };
+
+  const addCustomTrait = (label: string) => {
+    // PF2e often stores custom traits in traits.otherTags (array of labels)
+    const other = foundry.utils.getProperty(sys, "traits.otherTags");
+    if (Array.isArray(other)) {
+      const next = Array.from(new Set([...(other as string[]), label]));
+      updates["system.traits.otherTags"] = next;
+      return;
+    }
+
+    // Fallback: traits.custom (string)
+    const custom = foundry.utils.getProperty(sys, "traits.custom");
+    if (typeof custom === "string") {
+      const parts = custom
+        .split(/[,;]+/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+      const next = Array.from(new Set([...parts, label])).join(", ");
+      updates["system.traits.custom"] = next;
+    }
+  };
+
+  if (npc.creatureType) {
+    addSystemTrait(slugifyTrait(npc.creatureType));
+  }
+
+  if (npc.ancestryLike) {
+    // This might not exist in PF2e's trait dictionary; store as custom.
+    addCustomTrait(npc.ancestryLike);
+  }
+}
+
+type ParsedSpeed = {
+  land: number | null;
+  other: Array<{ type: "fly" | "swim" | "climb" | "burrow"; value: number }>;
+};
+
+function parseSpeed(raw: string | null): ParsedSpeed {
+  const src = normalizeBlank(raw);
+  if (!src) return { land: null, other: [] };
+
+  const parts = src
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  let land: number | null = null;
+  const other: ParsedSpeed["other"] = [];
+
+  for (const p of parts) {
+    const n = Number((p.match(/(\d+)/)?.[1] ?? ""));
+    if (!Number.isFinite(n)) continue;
+    const lower = p.toLowerCase();
+
+    const pick = (type: ParsedSpeed["other"][number]["type"]) => {
+      other.push({ type, value: n });
+    };
+
+    if (lower.includes("fly")) pick("fly");
+    else if (lower.includes("swim")) pick("swim");
+    else if (lower.includes("climb")) pick("climb");
+    else if (lower.includes("burrow")) pick("burrow");
+    else land = n;
+  }
+
+  return { land, other };
+}
+
+function applySpeed(
+  updates: Record<string, unknown>,
+  sys: any,
+  raw: string | null,
+): void {
+  const parsed = parseSpeed(raw);
+  if (parsed.land === null && !parsed.other.length) return;
+
+  const speedObj = foundry.utils.getProperty(sys, "attributes.speed") as any;
+  if (speedObj && typeof speedObj === "object") {
+    const next: any = { ...speedObj };
+    if (parsed.land !== null && speedObj.value !== undefined) next.value = parsed.land;
+
+    if (parsed.other.length) {
+      const curOther = speedObj.otherSpeeds;
+      if (Array.isArray(curOther)) {
+        const base = curOther.find((v: any) => v && typeof v === "object") ?? {};
+        next.otherSpeeds = parsed.other.map((s) => ({ ...base, ...s }));
+      } else {
+        next.otherSpeeds = parsed.other.map((s) => ({ ...s }));
+      }
+    }
+
+    updates["system.attributes.speed"] = next;
+    return;
+  }
+
+  // Fallback
+  if (parsed.land !== null) {
+    updates["system.attributes.speed.value"] = parsed.land;
+  }
+}
+
+type ParsedLanguages = {
+  known: string[];
+  custom: string[];
+};
+
+function parseLanguages(raw: string | null): ParsedLanguages {
+  const src = normalizeBlank(raw);
+  if (!src) return { known: [], custom: [] };
+
+  const parts = src
+    .split(/[,;\n]+/g)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const known: string[] = [];
+  const custom: string[] = [];
+
+  for (const p of parts) {
+    const slug = slugifyTrait(p);
+    const mapped = mapLanguageSlug(slug);
+    if (mapped) known.push(mapped);
+    else custom.push(p);
+  }
+
+  return {
+    known: Array.from(new Set(known)),
+    custom: Array.from(new Set(custom)),
+  };
+}
+
+function mapLanguageSlug(slug: string): string | null {
+  if (!slug) return null;
+  // Common PF2e language slugs
+  if (slug === "common") return "common";
+  if (slug === "elvish" || slug === "elven") return "elven";
+  if (slug === "dwarvish" || slug === "dwarven") return "dwarven";
+  if (slug === "gnomish") return "gnomish";
+  if (slug === "goblin") return "goblin";
+  if (slug === "halfling") return "halfling";
+  if (slug === "orc") return "orc";
+  if (slug === "draconic") return "draconic";
+  return slug;
+}
+
+function applyLanguages(
+  updates: Record<string, unknown>,
+  sys: any,
+  raw: string | null,
+): void {
+  const parsed = parseLanguages(raw);
+  if (!parsed.known.length && !parsed.custom.length) return;
+
+  const langObj = foundry.utils.getProperty(sys, "details.languages") as any;
+  if (langObj && typeof langObj === "object") {
+    const next: any = { ...langObj };
+    if (Array.isArray(langObj.value)) next.value = parsed.known;
+    if (typeof langObj.custom === "string" && parsed.custom.length) {
+      next.custom = parsed.custom.join(", ");
+    }
+    updates["system.details.languages"] = next;
+    return;
+  }
+
+  // Fallback direct
+  if (foundry.utils.getProperty(sys, "details.languages.value") !== undefined) {
+    updates["system.details.languages.value"] = parsed.known;
+  }
+  if (parsed.custom.length && foundry.utils.getProperty(sys, "details.languages.custom") !== undefined) {
+    updates["system.details.languages.custom"] = parsed.custom.join(", ");
+  }
+}
+
+type ParsedSenses = {
+  slugs: string[];
+  custom: string[];
+  frLabels: string[];
+};
+
+function parseSenses(raw: string | null): ParsedSenses {
+  const src = normalizeBlank(raw);
+  if (!src) return { slugs: [], custom: [], frLabels: [] };
+
+  const parts = src
+    .split(/[,;\n]+/g)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const slugs: string[] = [];
+  const custom: string[] = [];
+  const frLabels: string[] = [];
+
+  for (const p of parts) {
+    const k = p.trim().toLowerCase();
+    if (k === "darkvision") {
+      slugs.push("darkvision");
+      frLabels.push("vision dans le noir");
+      continue;
+    }
+    if (k === "low-light" || k === "lowlight" || k === "low-light vision" || k === "low light") {
+      slugs.push("lowLightVision");
+      frLabels.push("vision en faible luminosite");
+      continue;
+    }
+
+    custom.push(p);
+  }
+
+  return {
+    slugs: Array.from(new Set(slugs)),
+    custom: Array.from(new Set(custom)),
+    frLabels: Array.from(new Set(frLabels)),
+  };
+}
+
+function applySenses(
+  updates: Record<string, unknown>,
+  sys: any,
+  raw: string | null,
+): void {
+  const parsed = parseSenses(raw);
+  if (!parsed.slugs.length && !parsed.custom.length) return;
+
+  const sensesObj = foundry.utils.getProperty(sys, "traits.senses") as any;
+  if (sensesObj && typeof sensesObj === "object") {
+    const next: any = { ...sensesObj };
+    if (Array.isArray(sensesObj.value)) {
+      // Only set if array is string-ish.
+      const sample = sensesObj.value.find((v: any) => v !== undefined);
+      if (sample === undefined || typeof sample === "string") {
+        next.value = parsed.slugs;
+      }
+    }
+    if (typeof sensesObj.custom === "string" && parsed.custom.length) {
+      next.custom = parsed.custom.join(", ");
+    }
+    if (typeof sensesObj.details === "string" && parsed.custom.length) {
+      next.details = parsed.custom.join(", ");
+    }
+    updates["system.traits.senses"] = next;
+    return;
+  }
+
+  if (foundry.utils.getProperty(sys, "traits.senses.value") !== undefined) {
+    updates["system.traits.senses.value"] = parsed.slugs;
+  }
+  if (parsed.custom.length && foundry.utils.getProperty(sys, "traits.senses.custom") !== undefined) {
+    updates["system.traits.senses.custom"] = parsed.custom.join(", ");
+  }
+}
+
+function applyActorDescription(
+  updates: Record<string, unknown>,
+  sys: any,
+  npc: NormalizedNpc,
+): void {
+  const desc = normalizeBlank(npc.description);
+  if (!desc) return;
+  const html = toHtml(desc);
+
+  const candidates = [
+    "details.publicNotes",
+    "details.biography.value",
+    "details.biography",
+    "details.description",
+  ];
+
+  for (const rel of candidates) {
+    const cur = foundry.utils.getProperty(sys, rel);
+    if (cur !== undefined) {
+      updates[`system.${rel}`] = html;
+      return;
+    }
+  }
+}
+
+type IwrWithValue = { type: string; value: number; exceptions?: string };
+type IwrNoValue = { type: string; exceptions?: string };
+
+function parseIwrWithValues(raw: string | null): IwrWithValue[] {
+  const src = normalizeBlank(raw);
+  if (!src) return [];
+  const parts = src
+    .split(/[\n,;]+/g)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const out: IwrWithValue[] = [];
+  for (const p of parts) {
+    const m = p.match(/^([a-zA-Z\-\s]+?)\s+(\d+)\s*(?:\(([^)]+)\))?$/);
+    if (!m) continue;
+    out.push({
+      type: slugifyTrait(m[1]),
+      value: Number(m[2]),
+      exceptions: normalizeBlank(m[3]?.trim() ?? null) ?? undefined,
+    });
+  }
+  return out;
+}
+
+function parseIwrNoValues(raw: string | null): IwrNoValue[] {
+  const src = normalizeBlank(raw);
+  if (!src) return [];
+  const parts = src
+    .split(/[\n,;]+/g)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const out: IwrNoValue[] = [];
+  for (const p of parts) {
+    const m = p.match(/^([a-zA-Z\-\s]+?)\s*(?:\(([^)]+)\))?$/);
+    if (!m) continue;
+    out.push({
+      type: slugifyTrait(m[1]),
+      exceptions: normalizeBlank(m[2]?.trim() ?? null) ?? undefined,
+    });
+  }
+  return out;
+}
+
+function applyIwr(
+  updates: Record<string, unknown>,
+  sys: any,
+  relativePath: string,
+  entries: Array<IwrWithValue | IwrNoValue>,
+): void {
+  if (!entries.length) return;
+
+  const existing = foundry.utils.getProperty(sys, relativePath);
+  if (existing === undefined) return;
+
+  const setArray = (arr: any[], path: string) => {
+    updates[`system.${path}`] = arr;
+  };
+
+  const buildArrayEntry = (
+    base: any,
+    e: IwrWithValue | IwrNoValue,
+  ): any => {
+    const next: any = base && typeof base === "object" ? { ...base } : {};
+    next.type = (e as any).type;
+    if ("value" in e) next.value = (e as IwrWithValue).value;
+    if ((e as any).exceptions !== undefined) next.exceptions = (e as any).exceptions;
+    return next;
+  };
+
+  // Case 1: direct array
+  if (Array.isArray(existing)) {
+    const base = existing.find((v) => v && typeof v === "object") ?? {};
+    const next = entries.map((e) => buildArrayEntry(base, e));
+    setArray(next, relativePath);
+    return;
+  }
+
+  // Case 2: wrapper object with .value array
+  if (existing && typeof existing === "object" && Array.isArray((existing as any).value)) {
+    const base = ((existing as any).value as any[]).find(
+      (v) => v && typeof v === "object",
+    ) ?? {};
+    const nextValue = entries.map((e) => buildArrayEntry(base, e));
+    updates[`system.${relativePath}.value`] = nextValue;
+    return;
+  }
+
+  // Case 3: record/object
+  if (existing && typeof existing === "object") {
+    const obj = existing as Record<string, any>;
+    const sample = Object.values(obj).find((v) => v !== undefined);
+    const next: any = { ...obj };
+
+    if (typeof sample === "number") {
+      for (const e of entries) {
+        if ("value" in e) next[(e as any).type] = (e as IwrWithValue).value;
+        else next[(e as any).type] = 1;
+      }
+      updates[`system.${relativePath}`] = next;
+      return;
+    }
+
+    if (sample && typeof sample === "object") {
+      for (const e of entries) {
+        const base = sample;
+        const built = buildArrayEntry(base, e);
+        next[(e as any).type] = built;
+      }
+      updates[`system.${relativePath}`] = next;
+      return;
+    }
   }
 }
 
@@ -884,6 +1348,8 @@ function buildNpcJournalHtml(
   const appearance = npc.description ? toHtml(npc.description) : "<p>TODO</p>";
   const info = npc.info ? toHtml(npc.info) : "<p>TODO</p>";
   const ancestry = npc.ancestryLike ?? npc.creatureType ?? "TODO";
+  const sensesLabel = formatSensesFr(npc.sensesRaw) ?? "-";
+  const languagesLabel = formatLanguagesForJournal(npc.languagesRaw) ?? "-";
 
   const simpleNpc = [
     '<div class="lgc-box-text simple-npc">',
@@ -902,6 +1368,14 @@ function buildNpcJournalHtml(
     "      <div>",
     "        <p><strong>Statut</strong> ",
     "          <span>vivant</span></p>",
+    "      </div>",
+    "      <div>",
+    "        <p><strong>Langues</strong> ",
+    `          <span>${escapeHtml(languagesLabel)}</span></p>`,
+    "      </div>",
+    "      <div>",
+    "        <p><strong>Sens</strong> ",
+    `          <span>${escapeHtml(sensesLabel)}</span></p>`,
     "      </div>",
     "    </section>",
     "  </div>",
@@ -1040,6 +1514,25 @@ function escapeHtml(s: string): string {
     .replace(/>/g, "&gt;")
     .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function formatSensesFr(raw: string | null): string | null {
+  const parsed = parseSenses(raw);
+  const parts: string[] = [];
+  if (parsed.frLabels.length) parts.push(...parsed.frLabels);
+  if (parsed.custom.length) parts.push(...parsed.custom);
+  const out = parts.map((s) => s.trim()).filter(Boolean).join(", ");
+  return out ? out : null;
+}
+
+function formatLanguagesForJournal(raw: string | null): string | null {
+  const src = normalizeBlank(raw);
+  if (!src) return null;
+  return src
+    .split(/[,;\n]+/g)
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .join(", ");
 }
 
 function normalizeBlank(s: string | null | undefined): string | null {
