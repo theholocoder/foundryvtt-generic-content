@@ -1458,13 +1458,13 @@ function buildNpcJournalHtml(
     ? buildInfluenceStatblockHtml(npc)
     : "";
 
-  return [actorLink, simpleNpc, influence].filter(Boolean).join("\n<hr />\n");
+  return [simpleNpc, influence, actorLink].filter(Boolean).join("\n<hr />\n");
 }
 
 function buildInfluenceStatblockHtml(npc: NormalizedNpc): string {
   const traits: string[] = [];
   if (npc.creatureType) traits.push(npc.creatureType);
-  if (npc.size) traits.push(npc.size);
+  if (npc.size) traits.push(sizeCodeToLabel(npc.size) ?? npc.size);
   if (npc.alignment) traits.push(npc.alignment);
 
   const perception = npc.perception !== null ? `+${npc.perception}` : "TODO";
@@ -1498,6 +1498,21 @@ function buildInfluenceStatblockHtml(npc: NormalizedNpc): string {
     "  </section>",
     "</div>",
   ].join("\n");
+}
+
+function sizeCodeToLabel(size: string | null): string | null {
+  const s = normalizeBlank(size);
+  if (!s) return null;
+  const v = s.trim().toLowerCase();
+
+  const map: Record<string, string> = {
+    sm: "small",
+    med: "medium",
+    lg: "large",
+    grg: "gargantuan",
+  };
+
+  return map[v] ?? s;
 }
 
 function parseDamageString(raw: string): {
