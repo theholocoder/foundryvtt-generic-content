@@ -28,6 +28,8 @@ type NormalizedNpc = {
   size: string | null;
   creatureType: string | null;
   ancestryLike: string | null;
+  customTraits: string[];
+  rarity: string | null;
   img: string | null;
   description: string | null;
   info: string | null;
@@ -246,7 +248,14 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
   const alignment = normalizeBlank(asNonEmptyString(o.alignment));
   const size = mapSizeToPf2e(normalizeBlank(asNonEmptyString(o.size)));
   const creatureType = normalizeBlank(asNonEmptyString(o.type));
-  const ancestryLike = normalizeBlank(asNonEmptyString(o.traits));
+
+  const rawTraitTokens = splitCsv(asNonEmptyString(o.traits));
+  const rarityToken = rawTraitTokens
+    .map((t) => t.toLowerCase())
+    .find((t) => t === "common" || t === "uncommon" || t === "rare" || t === "unique");
+  const rarity = rarityToken ?? null;
+  const customTraits = rawTraitTokens.filter((t) => t.toLowerCase() !== rarityToken);
+  const ancestryLike = customTraits[0] ? normalizeBlank(customTraits[0]) : null;
   const img = normalizeBlank(asNonEmptyString(o.imgurl));
   const description = normalizeBlank(asNonEmptyString(o.description));
   const info = normalizeBlank(asNonEmptyString(o.info));
@@ -365,6 +374,8 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
     size,
     creatureType,
     ancestryLike,
+    customTraits,
+    rarity,
     img,
     description,
     info,
@@ -449,6 +460,9 @@ async function createPf2eNpcActor(
 
   // Traits: set creature type into system trait list if present.
   applyActorTraits(updates, sys, npc);
+
+  // Rarity
+  applyRarity(updates, sys, npc.rarity);
 
   // Speed
   applySpeed(updates, sys, npc.speedRaw);
@@ -649,9 +663,28 @@ function applyActorTraits(
     addSystemTrait(slugifyTrait(npc.creatureType));
   }
 
-  if (npc.ancestryLike) {
-    // This might not exist in PF2e's trait dictionary; store as custom.
-    addCustomTrait(npc.ancestryLike);
+  for (const t of npc.customTraits ?? []) {
+    const v = normalizeBlank(t);
+    if (!v) continue;
+    addCustomTrait(v);
+  }
+}
+
+function applyRarity(
+  updates: Record<string, unknown>,
+  sys: any,
+  rarity: string | null,
+): void {
+  const r = normalizeBlank(rarity);
+  if (!r) return;
+
+  // Only set if the field exists on this PF2e version.
+  if (foundry.utils.getProperty(sys, "traits.rarity.value") !== undefined) {
+    updates["system.traits.rarity.value"] = r;
+    return;
+  }
+  if (foundry.utils.getProperty(sys, "traits.rarity") !== undefined) {
+    updates["system.traits.rarity"] = r;
   }
 }
 
@@ -1465,6 +1498,7 @@ function buildInfluenceStatblockHtml(npc: NormalizedNpc): string {
   const traits: string[] = [];
   if (npc.creatureType) traits.push(npc.creatureType);
   if (npc.size) traits.push(sizeCodeToLabel(npc.size) ?? npc.size);
+  if (npc.rarity && npc.rarity !== "common") traits.push(npc.rarity);
   if (npc.alignment) traits.push(npc.alignment);
 
   const perception = npc.perception !== null ? `+${npc.perception}` : "TODO";
@@ -1641,6 +1675,15 @@ function asNumber(v: unknown): number | null {
     if (Number.isFinite(n)) return n;
   }
   return null;
+}
+
+function splitCsv(raw: string | null | undefined): string[] {
+  const src = normalizeBlank(raw);
+  if (!src) return [];
+  return src
+    .split(/[,;]+/g)
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 function deepClone<T>(v: T): T {
