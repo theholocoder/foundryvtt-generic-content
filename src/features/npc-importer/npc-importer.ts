@@ -77,6 +77,10 @@ type NormalizedNpc = {
   raw: unknown;
 };
 
+type ImportContext = {
+  spellIndex: Map<string, { pack: any; id: string }> | null;
+};
+
 const MODULE_ID = "lazybobcat-generic-content";
 const BTN_ID = "lgc-import-npc-json";
 
@@ -217,7 +221,9 @@ async function importNpcFromJson(
     return;
   }
 
-  const created = await createPf2eNpcActor(npc);
+  const ctx: ImportContext = { spellIndex: null };
+
+  const created = await createPf2eNpcActor(ctx, npc);
   if (!created) return;
 
   const { actor } = created;
@@ -231,6 +237,12 @@ async function importNpcFromJson(
       await (journal as any).setFlag(MODULE_ID, "actorUuid", actor.uuid);
       journal.sheet?.render(true);
     }
+  }
+
+  // PF2e can reset current HP after later actor updates (e.g. setFlag) due to
+  // derived-data prep timing. Re-apply max/value at the very end of import.
+  if (npc.hp !== null) {
+    await finalizeHp(actor, npc.hp);
   }
 
   actor.sheet?.render(true);
@@ -250,9 +262,13 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
   const creatureType = normalizeBlank(asNonEmptyString(o.type));
 
   const rawTraitTokens = splitCsv(asNonEmptyString(o.traits));
-  const rarityToken = rawTraitTokens
+  const rarityCandidates = rawTraitTokens
     .map((t) => t.toLowerCase())
-    .find((t) => t === "common" || t === "uncommon" || t === "rare" || t === "unique");
+    .filter((t) => t === "common" || t === "uncommon" || t === "rare" || t === "unique");
+  if (rarityCandidates.length > 1) {
+    console.warn("LGC | Multiple rarity tokens found in traits", rarityCandidates, rawTraitTokens);
+  }
+  const rarityToken = rarityCandidates[0] ?? null;
   const rarity = rarityToken ?? null;
   const customTraits = rawTraitTokens.filter((t) => t.toLowerCase() !== rarityToken);
   const ancestryLike = customTraits[0] ? normalizeBlank(customTraits[0]) : null;
@@ -427,6 +443,7 @@ const SKILL_MAP: Record<string, string> = {
 };
 
 async function createPf2eNpcActor(
+  ctx: ImportContext,
   npc: NormalizedNpc,
 ): Promise<{ actor: Actor } | null> {
   let actor: Actor;
@@ -444,71 +461,60 @@ async function createPf2eNpcActor(
     return null;
   }
 
-  const sys: any = (actor as any).system;
-  if (!sys) return { actor };
+  const sysInitial: any = (actor as any).system;
+  if (!sysInitial) return { actor };
 
-  const updates: Record<string, unknown> = {};
-  const setIfExists = (relativePath: string, value: unknown) => {
+  const updatesPre: Record<string, unknown> = {};
+  const setIfExistsPre = (relativePath: string, value: unknown) => {
     if (value === null || value === undefined) return;
-    const cur = foundry.utils.getProperty(sys, relativePath);
+    const cur = foundry.utils.getProperty(sysInitial, relativePath);
     if (cur === undefined) return;
-    updates[`system.${relativePath}`] = value;
+    updatesPre[`system.${relativePath}`] = value;
   };
 
-  setIfExists("details.level.value", npc.level);
-  setIfExists("traits.size.value", npc.size);
+  setIfExistsPre("details.level.value", npc.level);
+  setIfExistsPre("traits.size.value", npc.size);
 
-  // Traits: set creature type into system trait list if present.
-  applyActorTraits(updates, sys, npc);
+  // Traits + rarity
+  applyActorTraits(updatesPre, sysInitial, npc);
+  applyRarity(updatesPre, sysInitial, npc.rarity);
 
-  // Rarity
-  applyRarity(updates, sys, npc.rarity);
+  setAbilityMod(setIfExistsPre, sysInitial, "str", npc.abilities.str);
+  setAbilityMod(setIfExistsPre, sysInitial, "dex", npc.abilities.dex);
+  setAbilityMod(setIfExistsPre, sysInitial, "con", npc.abilities.con);
+  setAbilityMod(setIfExistsPre, sysInitial, "int", npc.abilities.int);
+  setAbilityMod(setIfExistsPre, sysInitial, "wis", npc.abilities.wis);
+  setAbilityMod(setIfExistsPre, sysInitial, "cha", npc.abilities.cha);
 
-  // Speed
-  applySpeed(updates, sys, npc.speedRaw);
+  setIfExistsPre("attributes.ac.value", npc.ac);
 
-  // Senses + languages
-  applySenses(updates, sys, npc.sensesRaw);
-  applyLanguages(updates, sys, npc.languagesRaw);
-
-  // Actor description (HTML)
-  applyActorDescription(updates, sys, npc);
-
-  setAbilityMod(setIfExists, sys, "str", npc.abilities.str);
-  setAbilityMod(setIfExists, sys, "dex", npc.abilities.dex);
-  setAbilityMod(setIfExists, sys, "con", npc.abilities.con);
-  setAbilityMod(setIfExists, sys, "int", npc.abilities.int);
-  setAbilityMod(setIfExists, sys, "wis", npc.abilities.wis);
-  setAbilityMod(setIfExists, sys, "cha", npc.abilities.cha);
-
-  setIfExists("attributes.ac.value", npc.ac);
-
-  // HP: try multiple shapes; ensure value == max.
-  if (npc.hp !== null) {
-    // Only set leaf fields; avoid overwriting derived hp object.
-    if (foundry.utils.getProperty(sys, "attributes.hp.max") !== undefined) {
-      updates["system.attributes.hp.max"] = npc.hp;
-    }
-    if (foundry.utils.getProperty(sys, "attributes.hp.value") !== undefined) {
-      updates["system.attributes.hp.value"] = npc.hp;
-    }
-    if (foundry.utils.getProperty(sys, "attributes.hp.temp") !== undefined) {
-      updates["system.attributes.hp.temp"] = 0;
-    }
-  }
-
-  setIfExists("perception.mod", npc.perception);
-  setIfExists("saves.fortitude.value", npc.saves.fortitude);
-  setIfExists("saves.reflex.value", npc.saves.reflex);
-  setIfExists("saves.will.value", npc.saves.will);
+  setIfExistsPre("perception.mod", npc.perception);
+  setIfExistsPre("saves.fortitude.value", npc.saves.fortitude);
+  setIfExistsPre("saves.reflex.value", npc.saves.reflex);
+  setIfExistsPre("saves.will.value", npc.saves.will);
 
   // Resistances / weaknesses / immunities
-  applyIwr(updates, sys, "attributes.resistances", parseIwrWithValues(npc.resistancesRaw));
-  applyIwr(updates, sys, "attributes.weaknesses", parseIwrWithValues(npc.weaknessesRaw));
-  applyIwr(updates, sys, "attributes.immunities", parseIwrNoValues(npc.immunitiesRaw));
+  applyIwr(
+    updatesPre,
+    sysInitial,
+    "attributes.resistances",
+    parseIwrWithValues(npc.resistancesRaw),
+  );
+  applyIwr(
+    updatesPre,
+    sysInitial,
+    "attributes.weaknesses",
+    parseIwrWithValues(npc.weaknessesRaw),
+  );
+  applyIwr(
+    updatesPre,
+    sysInitial,
+    "attributes.immunities",
+    parseIwrNoValues(npc.immunitiesRaw),
+  );
 
   // Skills: map pf2.tools skill keys onto PF2e skills object.
-  const skillsObj = foundry.utils.getProperty(sys, "skills") as
+  const skillsObj = foundry.utils.getProperty(sysInitial, "skills") as
     | Record<string, unknown>
     | undefined;
   if (skillsObj && typeof skillsObj === "object") {
@@ -528,20 +534,20 @@ async function createPf2eNpcActor(
       ];
       for (const p of possible) {
         const rel = p.replace(/^system\./, "");
-        const cur = foundry.utils.getProperty(sys, rel);
+        const cur = foundry.utils.getProperty(sysInitial, rel);
         if (cur !== undefined) {
-          updates[p] = mod;
+          updatesPre[p] = mod;
           break;
         }
       }
     }
   }
 
-  if (Object.keys(updates).length) {
+  if (Object.keys(updatesPre).length) {
     try {
-      await actor.update(updates);
+      await actor.update(updatesPre);
     } catch (err) {
-      console.error("LGC | Actor system update failed", err, { updates, npc });
+      console.error("LGC | Actor system update failed", err, { updates: updatesPre, npc });
       ui.notifications?.warn("LGC | Actor created but some fields not applied");
     }
   }
@@ -560,30 +566,52 @@ async function createPf2eNpcActor(
   // Spellcasting entry + spells
   if (npc.spellcasting.spellsByLevel.some((g) => g.names.length)) {
     try {
-      await createSpellcasting(actor, npc);
+      await createSpellcasting(ctx, actor, npc);
     } catch (err) {
       console.error("LGC | Spellcasting creation failed", err, { npc });
       ui.notifications?.warn("LGC | Actor created but spells failed (see console)");
     }
   }
 
-  // Finalize HP last: PF2e prepare can reset current HP.
-  if (npc.hp !== null) {
-    try {
-      const hpUpdate: Record<string, unknown> = {
-        "system.attributes.hp.max": npc.hp,
-        "system.attributes.hp.value": npc.hp,
-      };
-      if (foundry.utils.getProperty((actor as any).system, "attributes.hp.temp") !== undefined) {
-        hpUpdate["system.attributes.hp.temp"] = 0;
+  // Post-embedded finalize: these can be affected by PF2e prepare.
+  const sysPost: any = (actor as any).system;
+  if (sysPost) {
+    const updatesPost: Record<string, unknown> = {};
+    applySpeed(updatesPost, sysPost, npc.speedRaw);
+    applySenses(updatesPost, sysPost, npc.sensesRaw);
+    applyLanguages(updatesPost, sysPost, npc.languagesRaw);
+    applyActorDescription(updatesPost, sysPost, npc);
+
+    if (Object.keys(updatesPost).length) {
+      try {
+        await actor.update(updatesPost);
+      } catch (err) {
+        console.error("LGC | Actor finalize update failed", err, { updates: updatesPost, npc });
       }
-      await actor.update(hpUpdate);
-    } catch (err) {
-      console.error("LGC | Failed to finalize HP", err, { npc });
     }
   }
 
+  // Finalize HP last: PF2e prepare can reset current HP.
+  if (npc.hp !== null) {
+    await finalizeHp(actor, npc.hp);
+  }
+
   return { actor };
+}
+
+async function finalizeHp(actor: Actor, hp: number): Promise<void> {
+  try {
+    const hpUpdate: Record<string, unknown> = {
+      "system.attributes.hp.max": hp,
+      "system.attributes.hp.value": hp,
+    };
+    if (foundry.utils.getProperty((actor as any).system, "attributes.hp.temp") !== undefined) {
+      hpUpdate["system.attributes.hp.temp"] = 0;
+    }
+    await actor.update(hpUpdate);
+  } catch (err) {
+    console.error("LGC | Failed to finalize HP", err, { actor: actor?.name, hp });
+  }
 }
 
 function setAbilityMod(
@@ -697,6 +725,8 @@ function parseSpeed(raw: string | null): ParsedSpeed {
   const src = normalizeBlank(raw);
   if (!src) return { land: null, other: [] };
 
+  // Units are intentionally ignored; all values interpreted as feet.
+
   const parts = src
     .split(",")
     .map((s) => s.trim())
@@ -757,36 +787,6 @@ function applySpeed(
   }
 }
 
-type ParsedLanguages = {
-  known: string[];
-  custom: string[];
-};
-
-function parseLanguages(raw: string | null): ParsedLanguages {
-  const src = normalizeBlank(raw);
-  if (!src) return { known: [], custom: [] };
-
-  const parts = src
-    .split(/[,;\n]+/g)
-    .map((s) => s.trim())
-    .filter(Boolean);
-
-  const known: string[] = [];
-  const custom: string[] = [];
-
-  for (const p of parts) {
-    const slug = slugifyTrait(p);
-    const mapped = mapLanguageSlug(slug);
-    if (mapped) known.push(mapped);
-    else custom.push(p);
-  }
-
-  return {
-    known: Array.from(new Set(known)),
-    custom: Array.from(new Set(custom)),
-  };
-}
-
 function mapLanguageSlug(slug: string): string | null {
   if (!slug) return null;
   // Common PF2e language slugs
@@ -806,15 +806,41 @@ function applyLanguages(
   sys: any,
   raw: string | null,
 ): void {
-  const parsed = parseLanguages(raw);
-  if (!parsed.known.length && !parsed.custom.length) return;
+  const src = normalizeBlank(raw);
+  if (!src) return;
+
+  const allowedLangs = new Set(
+    Object.keys(((globalThis as any).CONFIG?.PF2E?.languages as any) ?? {}),
+  );
+  const enforce = allowedLangs.size > 0;
+
+  const parts = src
+    .split(/[,;\n]+/g)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const known: string[] = [];
+  const custom: string[] = [];
+  for (const p of parts) {
+    const slug = mapLanguageSlug(slugifyTrait(p));
+    if (!slug) {
+      custom.push(p);
+      continue;
+    }
+    if (!enforce || allowedLangs.has(slug)) known.push(slug);
+    else custom.push(p);
+  }
+
+  const knownUniq = Array.from(new Set(known));
+  const customUniq = Array.from(new Set(custom));
+  if (!knownUniq.length && !customUniq.length) return;
 
   const langObj = foundry.utils.getProperty(sys, "details.languages") as any;
   if (langObj && typeof langObj === "object") {
     const next: any = { ...langObj };
-    if (Array.isArray(langObj.value)) next.value = parsed.known;
-    if (typeof langObj.custom === "string" && parsed.custom.length) {
-      next.custom = parsed.custom.join(", ");
+    if (Array.isArray(langObj.value)) next.value = knownUniq;
+    if (typeof langObj.custom === "string" && customUniq.length) {
+      next.custom = customUniq.join(", ");
     }
     updates["system.details.languages"] = next;
     return;
@@ -822,22 +848,21 @@ function applyLanguages(
 
   // Fallback direct
   if (foundry.utils.getProperty(sys, "details.languages.value") !== undefined) {
-    updates["system.details.languages.value"] = parsed.known;
+    updates["system.details.languages.value"] = knownUniq;
   }
-  if (parsed.custom.length && foundry.utils.getProperty(sys, "details.languages.custom") !== undefined) {
-    updates["system.details.languages.custom"] = parsed.custom.join(", ");
+  if (customUniq.length && foundry.utils.getProperty(sys, "details.languages.custom") !== undefined) {
+    updates["system.details.languages.custom"] = customUniq.join(", ");
   }
 }
 
 type ParsedSenses = {
   slugs: string[];
   custom: string[];
-  labels: string[];
 };
 
 function parseSenses(raw: string | null): ParsedSenses {
   const src = normalizeBlank(raw);
-  if (!src) return { slugs: [], custom: [], labels: [] };
+  if (!src) return { slugs: [], custom: [] };
 
   const parts = src
     .split(/[,;\n]+/g)
@@ -846,18 +871,15 @@ function parseSenses(raw: string | null): ParsedSenses {
 
   const slugs: string[] = [];
   const custom: string[] = [];
-  const labels: string[] = [];
 
   for (const p of parts) {
     const k = p.trim().toLowerCase();
     if (k === "darkvision") {
       slugs.push("darkvision");
-      labels.push("Darkvision");
       continue;
     }
     if (k === "low-light" || k === "lowlight" || k === "low-light vision" || k === "low light") {
       slugs.push("lowLightVision");
-      labels.push("Low-Light Vision");
       continue;
     }
 
@@ -867,7 +889,6 @@ function parseSenses(raw: string | null): ParsedSenses {
   return {
     slugs: Array.from(new Set(slugs)),
     custom: Array.from(new Set(custom)),
-    labels: Array.from(new Set(labels)),
   };
 }
 
@@ -907,9 +928,9 @@ function applySenses(
 
     const desired: any[] = [];
     for (const slug of parsed.slugs) {
-      if (slug === "darkvision") desired.push(makeSense("darkvision", "Darkvision"));
+      if (slug === "darkvision") desired.push(makeSense("darkvision", getSenseLabel("darkvision")));
       else if (slug === "lowLightVision") {
-        desired.push(makeSense("lowLightVision", "Low-Light Vision"));
+        desired.push(makeSense("lowLightVision", getSenseLabel("lowLightVision")));
       }
     }
 
@@ -962,6 +983,20 @@ function applySenses(
   if (parsed.custom.length && foundry.utils.getProperty(sys, "traits.senses.custom") !== undefined) {
     updates["system.traits.senses.custom"] = parsed.custom.join(", ");
   }
+}
+
+function getSenseLabel(type: string): string {
+  const cfg = (globalThis as any).CONFIG?.PF2E;
+  const senses = cfg?.senses;
+  const direct = senses?.[type] ?? senses?.[String(type).toLowerCase()];
+  if (typeof direct === "string") return game.i18n?.localize(direct) ?? direct;
+
+  const fallback = type === "darkvision"
+    ? "Darkvision"
+    : type === "lowLightVision"
+      ? "Low-Light Vision"
+      : type;
+  return game.i18n?.localize(fallback) ?? fallback;
 }
 
 function applyActorDescription(
@@ -1169,7 +1204,12 @@ function buildEmbeddedItems(npc: NormalizedNpc): any[] {
     // Attack bonus
     if (s.attack !== null) {
       // PF2e NPC strikes typically use system.bonus.value.
-      setFirstExisting(data.system, ["bonus.value", "bonus", "attack.value"], s.attack);
+      setFirstExisting(
+        data.system,
+        ["bonus.value", "bonus", "attack.value"],
+        s.attack,
+        { allowCreate: true, debugLabel: "melee.bonus" },
+      );
       // Some schemas wrap bonus as object.
       if (typeof data.system.bonus === "number") data.system.bonus = { value: data.system.bonus };
       if (data.system.bonus && typeof data.system.bonus === "object" && data.system.bonus.value === undefined) {
@@ -1265,21 +1305,30 @@ function applyActionCost(systemData: any, raw: string | null): void {
   if (v === "free") {
     systemData.actions.type = "free";
     systemData.actions.value = null;
-    setFirstExisting(systemData, ["actionType.value", "actionType"], "free");
+    setFirstExisting(systemData, ["actionType.value", "actionType"], "free", {
+      allowCreate: true,
+      debugLabel: "action.actionType",
+    });
     return;
   }
 
   if (v === "reaction") {
     systemData.actions.type = "reaction";
     systemData.actions.value = null;
-    setFirstExisting(systemData, ["actionType.value", "actionType"], "reaction");
+    setFirstExisting(systemData, ["actionType.value", "actionType"], "reaction", {
+      allowCreate: true,
+      debugLabel: "action.actionType",
+    });
     return;
   }
 
   if (!v || v === "none") {
     systemData.actions.type = "passive";
     systemData.actions.value = null;
-    setFirstExisting(systemData, ["actionType.value", "actionType"], "passive");
+    setFirstExisting(systemData, ["actionType.value", "actionType"], "passive", {
+      allowCreate: true,
+      debugLabel: "action.actionType",
+    });
     return;
   }
 
@@ -1287,23 +1336,47 @@ function applyActionCost(systemData: any, raw: string | null): void {
   if (v in toCount) {
     systemData.actions.type = "action";
     systemData.actions.value = toCount[v];
-    setFirstExisting(systemData, ["actionType.value", "actionType"], "action");
+    setFirstExisting(systemData, ["actionType.value", "actionType"], "action", {
+      allowCreate: true,
+      debugLabel: "action.actionType",
+    });
   }
 }
 
-function setFirstExisting(target: any, paths: string[], value: unknown): void {
+function setFirstExisting(
+  target: any,
+  paths: string[],
+  value: unknown,
+  options?: { allowCreate?: boolean; debugLabel?: string },
+): boolean {
   for (const p of paths) {
     const cur = foundry.utils.getProperty(target, p);
     if (cur !== undefined) {
       foundry.utils.setProperty(target, p, value);
-      return;
+      return true;
     }
   }
-  // If none exist, set first path anyway (best-effort)
-  if (paths.length) foundry.utils.setProperty(target, paths[0], value);
+
+  if (options?.allowCreate && paths.length) {
+    foundry.utils.setProperty(target, paths[0], value);
+    return true;
+  }
+
+  if (paths.length) {
+    console.debug(
+      "LGC | Missing target paths for setFirstExisting",
+      options?.debugLabel ?? "",
+      paths,
+    );
+  }
+  return false;
 }
 
-async function createSpellcasting(actor: Actor, npc: NormalizedNpc): Promise<void> {
+async function createSpellcasting(
+  ctx: ImportContext,
+  actor: Actor,
+  npc: NormalizedNpc,
+): Promise<void> {
   const tradition = npc.spellcasting.tradition ?? "occult";
   const preparation = npc.spellcasting.preparation ?? "innate";
 
@@ -1315,26 +1388,89 @@ async function createSpellcasting(actor: Actor, npc: NormalizedNpc): Promise<voi
   };
 
   // Best-effort assign common spellcasting entry fields.
-  setFirstExisting(entryData.system, ["tradition.value", "tradition"], tradition);
-  setFirstExisting(entryData.system, ["preparation.value", "preparation"], preparation);
-  setFirstExisting(entryData.system, ["prepared.value", "prepared"], preparation);
+  setFirstExisting(entryData.system, ["tradition.value", "tradition"], tradition, {
+    allowCreate: true,
+    debugLabel: "spellcasting.tradition",
+  });
+  setFirstExisting(entryData.system, ["preparation.value", "preparation"], preparation, {
+    allowCreate: true,
+    debugLabel: "spellcasting.preparation",
+  });
+  setFirstExisting(entryData.system, ["prepared.value", "prepared"], preparation, {
+    allowCreate: true,
+    debugLabel: "spellcasting.prepared",
+  });
 
   if (npc.spellcasting.spellAttack !== null) {
-    setFirstExisting(entryData.system, ["spellcasting.statistic.attack", "statistic.attack"], npc.spellcasting.spellAttack);
-    setFirstExisting(entryData.system, ["attack.value", "attack"], npc.spellcasting.spellAttack);
+    setFirstExisting(
+      entryData.system,
+      ["spellcasting.statistic.attack", "statistic.attack"],
+      npc.spellcasting.spellAttack,
+      { allowCreate: true, debugLabel: "spellcasting.attack" },
+    );
+    setFirstExisting(entryData.system, ["attack.value", "attack"], npc.spellcasting.spellAttack, {
+      allowCreate: true,
+      debugLabel: "spellcasting.attack",
+    });
   }
   if (npc.spellcasting.spellDc !== null) {
-    setFirstExisting(entryData.system, ["spellcasting.statistic.dc", "statistic.dc"], npc.spellcasting.spellDc);
-    setFirstExisting(entryData.system, ["dc.value", "dc"], npc.spellcasting.spellDc);
+    setFirstExisting(
+      entryData.system,
+      ["spellcasting.statistic.dc", "statistic.dc"],
+      npc.spellcasting.spellDc,
+      { allowCreate: true, debugLabel: "spellcasting.dc" },
+    );
+    setFirstExisting(entryData.system, ["dc.value", "dc"], npc.spellcasting.spellDc, {
+      allowCreate: true,
+      debugLabel: "spellcasting.dc",
+    });
   }
 
   const [entry] = (await actor.createEmbeddedDocuments("Item", [entryData])) as any[];
   if (!entry) return;
 
+  // PF2e uses system.spelldc for displayed spell attack/DC on the entry.
+  // Set the canonical fields explicitly after creation.
+  try {
+    const entrySys: any = (entry as any).system;
+    const upd: Record<string, unknown> = {};
+    if (npc.spellcasting.spellAttack !== null) {
+      if (foundry.utils.getProperty(entrySys, "spelldc.value") !== undefined) {
+        upd["system.spelldc.value"] = npc.spellcasting.spellAttack;
+      }
+      if (foundry.utils.getProperty(entrySys, "attack.value") !== undefined) {
+        upd["system.attack.value"] = npc.spellcasting.spellAttack;
+      }
+      if (foundry.utils.getProperty(entrySys, "spellcasting.statistic.attack") !== undefined) {
+        upd["system.spellcasting.statistic.attack"] = npc.spellcasting.spellAttack;
+      }
+    }
+    if (npc.spellcasting.spellDc !== null) {
+      if (foundry.utils.getProperty(entrySys, "spelldc.dc") !== undefined) {
+        upd["system.spelldc.dc"] = npc.spellcasting.spellDc;
+      }
+      if (foundry.utils.getProperty(entrySys, "dc.value") !== undefined) {
+        upd["system.dc.value"] = npc.spellcasting.spellDc;
+      }
+      if (foundry.utils.getProperty(entrySys, "spellcasting.statistic.dc") !== undefined) {
+        upd["system.spellcasting.statistic.dc"] = npc.spellcasting.spellDc;
+      }
+    }
+
+    if (Object.keys(upd).length) {
+      await (entry as any).update(upd);
+    }
+  } catch (err) {
+    console.error("LGC | Failed to finalize spellcasting entry attack/DC", err, {
+      actor: actor.name,
+      entryId: (entry as any).id,
+    });
+  }
+
   const spells: any[] = [];
   for (const group of npc.spellcasting.spellsByLevel) {
     for (const spellName of group.names) {
-      const spell = await findSpellByName(spellName);
+      const spell = await findSpellByName(ctx, spellName);
       const spellData = spell
         ? spell.toObject()
         : {
@@ -1346,8 +1482,14 @@ async function createSpellcasting(actor: Actor, npc: NormalizedNpc): Promise<voi
           };
 
       // Ensure linked to entry
-      setFirstExisting(spellData.system, ["location.value", "location"], entry.id);
-      setFirstExisting(spellData.system, ["level.value", "level"], group.level);
+      setFirstExisting(spellData.system, ["location.value", "location"], entry.id, {
+        allowCreate: true,
+        debugLabel: "spell.location",
+      });
+      setFirstExisting(spellData.system, ["level.value", "level"], group.level, {
+        allowCreate: true,
+        debugLabel: "spell.level",
+      });
       spells.push(spellData);
     }
   }
@@ -1357,44 +1499,70 @@ async function createSpellcasting(actor: Actor, npc: NormalizedNpc): Promise<voi
   }
 }
 
-async function findSpellByName(name: string): Promise<Item | null> {
+async function findSpellByName(ctx: ImportContext, name: string): Promise<Item | null> {
   const target = name.trim().toLowerCase();
   if (!target) return null;
 
-  const preferred = (game as any).packs?.get?.("pf2e.spells-srd") as any;
-  if (preferred) {
-    const doc = await findInPack(preferred, target);
-    if (doc) return doc;
-  }
+  const index = await getSpellIndex(ctx);
+  const hit = index.get(target);
+  if (!hit) return null;
 
+  try {
+    return (await hit.pack.getDocument(hit.id)) as Item;
+  } catch {
+    return null;
+  }
+}
+
+async function getSpellIndex(
+  ctx: ImportContext,
+): Promise<Map<string, { pack: any; id: string }>> {
+  if (ctx.spellIndex) return ctx.spellIndex;
+
+  const map = new Map<string, { pack: any; id: string }>();
   const packs = Array.from((game as any).packs?.values?.() ?? []) as any[];
-  for (const pack of packs) {
+
+  // Prefer spells-srd first if present.
+  const preferred = (game as any).packs?.get?.("pf2e.spells-srd");
+  const ordered = preferred
+    ? [preferred, ...packs.filter((p) => p !== preferred)]
+    : packs;
+
+  for (const pack of ordered) {
     try {
       if (pack.documentName !== "Item") continue;
-      const doc = await findInPack(pack, target);
-      if (doc) return doc;
-    } catch {
-      // ignore
+      const index = await pack.getIndex({ fields: ["name", "type"] } as any);
+      for (const e of index as any[]) {
+        if (String(e.type) !== "spell") continue;
+        const key = String(e.name ?? "").trim().toLowerCase();
+        if (!key) continue;
+        if (!map.has(key)) map.set(key, { pack, id: e._id });
+      }
+    } catch (err) {
+      console.debug("LGC | Skipping pack during spell index build", err);
     }
   }
 
-  return null;
-}
-
-async function findInPack(pack: any, targetLower: string): Promise<Item | null> {
-  const index = await pack.getIndex({ fields: ["name", "type"] } as any);
-  const hit = (index as any[]).find(
-    (e) => String(e.type) === "spell" && String(e.name).trim().toLowerCase() === targetLower,
-  );
-  if (!hit?._id) return null;
-  return (await pack.getDocument(hit._id)) as Item;
+  ctx.spellIndex = map;
+  return map;
 }
 
 function normalizeSpellsByLevel(raw: unknown): Array<{ level: number; names: string[] }> {
   if (!Array.isArray(raw)) return [];
 
-  // pf2.tools exports an array where the *end* contains the lowest levels/cantrips.
-  // We interpret last element as cantrips (0), previous as 1st, previous as 2nd, etc.
+  // pf2.tools export assumption:
+  // array tail contains the lowest levels/cantrips. We interpret last element as cantrips (0),
+  // previous as 1st, previous as 2nd, etc.
+  // If this ever changes upstream, spell levels will be mis-assigned.
+
+  const first = raw[0];
+  const last = raw[raw.length - 1];
+  if (typeof first === "string" && first.trim() && typeof last === "string" && last.trim()) {
+    console.debug("LGC | Spells array has non-empty head and tail; export ordering may differ", {
+      head: first,
+      tail: last,
+    });
+  }
   const out: Array<{ level: number; names: string[] }> = [];
   const len = raw.length;
   for (let i = 0; i < len; i++) {
@@ -1449,8 +1617,8 @@ function buildNpcJournalHtml(
   const appearance = npc.description ? toHtml(npc.description) : "<p>TODO</p>";
   const info = npc.info ? toHtml(npc.info) : "<p>TODO</p>";
   const ancestry = npc.ancestryLike ?? npc.creatureType ?? "TODO";
-  const sensesLabel = formatSensesForJournal(npc.sensesRaw) ?? "-";
-  const languagesLabel = formatLanguagesForJournal(npc.languagesRaw) ?? "-";
+  const sensesLabel = formatSensesForJournalFromActor(actor) ?? "-";
+  const languagesLabel = formatLanguagesForJournalFromActor(actor) ?? "-";
 
   const simpleNpc = [
     '<div class="lgc-box-text simple-npc">',
@@ -1633,23 +1801,51 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-function formatSensesForJournal(raw: string | null): string | null {
-  const parsed = parseSenses(raw);
+function formatSensesForJournalFromActor(actor: Actor): string | null {
+  const senses = foundry.utils.getProperty(
+    (actor as any).system,
+    "perception.senses",
+  ) as any;
+  const details = foundry.utils.getProperty(
+    (actor as any).system,
+    "perception.details",
+  );
+
   const parts: string[] = [];
-  if (parsed.labels.length) parts.push(...parsed.labels);
-  if (parsed.custom.length) parts.push(...parsed.custom);
+  if (Array.isArray(senses)) {
+    for (const s of senses) {
+      const label = (s && typeof s === "object") ? (s.label ?? s.type) : s;
+      if (typeof label === "string" && label.trim()) {
+        parts.push(game.i18n?.localize(label) ?? label);
+      }
+    }
+  }
+  if (typeof details === "string" && details.trim()) parts.push(details.trim());
+
   const out = parts.map((s) => s.trim()).filter(Boolean).join(", ");
   return out ? out : null;
 }
 
-function formatLanguagesForJournal(raw: string | null): string | null {
-  const src = normalizeBlank(raw);
-  if (!src) return null;
-  return src
-    .split(/[,;\n]+/g)
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .join(", ");
+function formatLanguagesForJournalFromActor(actor: Actor): string | null {
+  const sys: any = (actor as any).system;
+  if (!sys) return null;
+
+  const langs = foundry.utils.getProperty(sys, "details.languages.value") as any;
+  const custom = foundry.utils.getProperty(sys, "details.languages.custom");
+
+  const parts: string[] = [];
+  if (Array.isArray(langs)) {
+    for (const slug of langs) {
+      if (typeof slug !== "string" || !slug.trim()) continue;
+      const cfg = (globalThis as any).CONFIG?.PF2E?.languages?.[slug];
+      const label = typeof cfg === "string" ? cfg : slug;
+      parts.push(game.i18n?.localize(label) ?? label);
+    }
+  }
+  if (typeof custom === "string" && custom.trim()) parts.push(custom.trim());
+
+  const out = parts.map((s) => s.trim()).filter(Boolean).join(", ");
+  return out ? out : null;
 }
 
 function normalizeBlank(s: string | null | undefined): string | null {
