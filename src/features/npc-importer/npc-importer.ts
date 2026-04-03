@@ -373,6 +373,8 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
   const cantripLevel = asNumber(o.cantriplevel);
 
   const spellsByLevel = normalizeSpellsByLevel(o.spells);
+  const spelltypeRaw = normalizeBlank(asNonEmptyString(o.spelltype));
+  const spelltype = spelltypeRaw ? spelltypeRaw.trim().toLowerCase() : null;
 
   // Default decision: occult/innate when spells present.
   const hasAnySpells = spellsByLevel.some((g) => g.names.length);
@@ -380,7 +382,11 @@ function normalizePf2ToolsNpc(raw: unknown): NormalizedNpc {
     ? "occult"
     : null;
   const preparation: NormalizedNpc["spellcasting"]["preparation"] = hasAnySpells
-    ? "innate"
+    ? (spelltype === "prepared" ||
+        spelltype === "innate" ||
+        spelltype === "spontaneous"
+        ? (spelltype as any)
+        : "innate")
     : null;
 
   return {
@@ -1434,6 +1440,17 @@ async function createSpellcasting(
   try {
     const entrySys: any = (entry as any).system;
     const upd: Record<string, unknown> = {};
+
+    // Preparation type (innate/prepared/spontaneous)
+    if (foundry.utils.getProperty(entrySys, "prepared.value") !== undefined) {
+      upd["system.prepared.value"] = preparation;
+    }
+    if (foundry.utils.getProperty(entrySys, "preparation.value") !== undefined) {
+      upd["system.preparation.value"] = preparation;
+    }
+    if (foundry.utils.getProperty(entrySys, "prepared.flexible") !== undefined) {
+      upd["system.prepared.flexible"] = false;
+    }
     if (npc.spellcasting.spellAttack !== null) {
       if (foundry.utils.getProperty(entrySys, "spelldc.value") !== undefined) {
         upd["system.spelldc.value"] = npc.spellcasting.spellAttack;
@@ -1494,8 +1511,48 @@ async function createSpellcasting(
     }
   }
 
+  let createdSpells: any[] = [];
   if (spells.length) {
-    await actor.createEmbeddedDocuments("Item", spells);
+    createdSpells = (await actor.createEmbeddedDocuments("Item", spells)) as any[];
+  }
+
+  // For prepared/spontaneous: set slot maxima based on spells listed.
+  // For prepared: also pre-fill prepared slots with the spells.
+  if (preparation === "prepared" || preparation === "spontaneous") {
+    try {
+      const entrySys: any = (entry as any).system;
+      const slots = foundry.utils.getProperty(entrySys, "slots") as any;
+      if (slots && typeof slots === "object") {
+        const createdByLevel = new Map<number, string[]>();
+        for (const sp of createdSpells) {
+          const lvl = Number(foundry.utils.getProperty(sp, "system.level.value") ?? foundry.utils.getProperty(sp, "system.level") ?? NaN);
+          if (!Number.isFinite(lvl)) continue;
+          const arr = createdByLevel.get(lvl) ?? [];
+          arr.push(String(sp.id));
+          createdByLevel.set(lvl, arr);
+        }
+
+        const slotUpdates: Record<string, unknown> = {};
+        for (const [lvl, ids] of createdByLevel.entries()) {
+          const key = `slot${lvl}`;
+          const slot = slots[key];
+          if (!slot || typeof slot !== "object") continue;
+
+          if (slot.max !== undefined) slotUpdates[`system.slots.${key}.max`] = ids.length;
+          if (slot.value !== undefined) slotUpdates[`system.slots.${key}.value`] = 0;
+
+          if (preparation === "prepared" && Array.isArray(slot.prepared)) {
+            slotUpdates[`system.slots.${key}.prepared`] = ids.map((id) => ({ id }));
+          }
+        }
+
+        if (Object.keys(slotUpdates).length) {
+          await (entry as any).update(slotUpdates);
+        }
+      }
+    } catch (err) {
+      console.error("LGC | Failed to apply spell slots", err, { actor: actor.name, entryId: (entry as any).id });
+    }
   }
 }
 
