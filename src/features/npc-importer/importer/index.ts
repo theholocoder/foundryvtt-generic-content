@@ -1,7 +1,8 @@
 import type { ImportContext } from "./types";
 import { normalizePf2ToolsNpc } from "./normalize";
-import { createPf2eNpcActor, finalizeHp } from "./pf2e-actor";
-import { createNpcJournal } from "./journal";
+import { createPf2eNpcActor } from "../actor/pf2e-actor";
+import { createNpcJournal } from "../journal/journal";
+import { finalizeHp } from "../../../lib/pf2e/actor";
 
 const MODULE_ID = "lazybobcat-generic-content";
 const t = (k: string) => game.i18n?.localize(k) ?? k;

@@ -13,7 +13,16 @@ import {
   getAbilityMod,
   rankFromUi,
 } from "../data/creature-numbers";
-import { deepClone } from "../utils";
+import { deepClone } from "../../../lib/foundry";
+import { escapeHtml } from "../../../lib/html";
+import { finalizeHp, setFirstExisting } from "../../../lib/pf2e/actor";
+import { sizeCodeToLabel } from "../../../lib/pf2e/traits";
+import {
+  buildNpcBlockHtml,
+  buildInfluenceBlockHtml,
+  createJournalEntry,
+} from "../../../lib/pf2e/journal";
+import type { JournalPageSpec } from "../../../lib/pf2e/journal";
 
 const MODULE_ID = "lazybobcat-generic-content";
 
@@ -84,7 +93,7 @@ export async function generateNpc(result: WizardResult): Promise<void> {
   await finalizeHp(actor, getHp(tblLevel, hpRank) ?? 0);
 
   if (result.tier >= 2) {
-    const journal = await createJournal(result, actor, concept);
+    const journal = await createJournal(result, actor);
     if (journal) {
       await (actor as any).setFlag(MODULE_ID, "journalUuid", journal.uuid);
       await (journal as any).setFlag(MODULE_ID, "actorUuid", actor.uuid);
@@ -94,18 +103,6 @@ export async function generateNpc(result: WizardResult): Promise<void> {
 
   actor.sheet?.render(true);
   ui.notifications?.info((game.i18n?.localize("LGC.NpcWizard.ActorCreated") ?? "Created NPC: {name}").replace("{name}", actor.name));
-}
-
-async function finalizeHp(actor: Actor, hp: number): Promise<void> {
-  if (!hp) return;
-  try {
-    // Two separate updates: PF2e may clamp value = min(old_value, new_max) during
-    // preUpdateActor hooks, so setting both in one call can leave value at the old default.
-    await actor.update({ "system.attributes.hp.max": hp });
-    await actor.update({ "system.attributes.hp.value": hp });
-  } catch (err) {
-    console.error("LGC | Failed to finalize HP", err, { actor: actor?.name, hp });
-  }
 }
 
 async function createActor(name: string, level: number, img: string): Promise<Actor | null> {
@@ -232,7 +229,6 @@ function normalizeSkillKey(display: string): string {
   return display.toLowerCase().replace(/\s+/g, "");
 }
 
-
 async function createStrikes(
   actor: Actor,
   level: number,
@@ -358,188 +354,56 @@ async function createSpellcastingEntry(
   }
 }
 
-function setFirstExisting(
-  target: any,
-  paths: string[],
-  value: unknown,
-  options?: { allowCreate?: boolean },
-): boolean {
-  for (const p of paths) {
-    const cur = foundry.utils.getProperty(target, p);
-    if (cur !== undefined) {
-      foundry.utils.setProperty(target, p, value);
-      return true;
-    }
-  }
-  if (options?.allowCreate && paths.length) {
-    foundry.utils.setProperty(target, paths[0], value);
-    return true;
-  }
-  return false;
-}
-
 async function createJournal(
   result: WizardResult,
   actor: Actor,
-  concept: Concept,
 ): Promise<JournalEntry | null> {
-  const t = (k: string) => game.i18n?.localize(k) ?? k;
-  const conceptLabel = game.i18n?.localize(concept.localizationKey) ?? concept.id;
+  const npcBlock = buildNpcBlockHtml({
+    appearance: "<p>TODO</p>",
+    info: "<p>TODO</p>",
+    ancestry: result.traits.map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(", ") || "-",
+    status: "TODO",
+  });
 
-  const pages: any[] = [];
+  let influenceBlock = "";
+  if (result.tier === 3) {
+    const traitLabels: string[] = [];
+    const creatureTraits = foundry.utils.getProperty(
+      (actor as any).system,
+      "traits.value",
+    ) as string[] | undefined;
+    if (Array.isArray(creatureTraits)) {
+      for (const slug of creatureTraits) {
+        traitLabels.push(slug.charAt(0).toUpperCase() + slug.slice(1));
+      }
+    }
+    const size = (actor as any).system?.traits?.size?.value;
+    if (size) traitLabels.push(sizeCodeToLabel(size));
+    const rarity = (actor as any).system?.traits?.rarity?.value;
+    if (rarity && rarity !== "common") traitLabels.push(rarity);
 
-  const npcBlock = buildNpcBlock(result.name, conceptLabel, result.traits, actor);
-  const influenceBlock = result.tier === 3 ? buildInfluenceBlock(result, actor) : "";
+    const perception = (actor as any).system?.perception?.mod;
+    const will = (actor as any).system?.saves?.will?.value;
+
+    influenceBlock = buildInfluenceBlockHtml({
+      name: result.name,
+      traits: traitLabels,
+      perception: perception !== undefined ? `+${perception}` : "TODO",
+      will: will !== undefined ? `+${will}` : "TODO",
+      thresholds: result.thresholds,
+    });
+  }
+
   const actorLink = actor?.uuid
     ? `<p>@UUID[${escapeHtml(actor.uuid)}]{${escapeHtml(actor.name)}}</p>`
     : "";
 
   const page1Content = [npcBlock, influenceBlock, actorLink].filter(Boolean).join("\n<hr />\n");
 
-  pages.push({
-    name: result.name,
-    type: "text",
-    text: {
-      format: (CONST as any).JOURNAL_ENTRY_PAGE_FORMATS?.HTML ?? 1,
-      content: page1Content,
-    },
-  });
-
+  const pages: JournalPageSpec[] = [{ name: result.name, type: "text", content: page1Content }];
   if (result.img && result.img !== "icons/svg/mystery-man.svg") {
-    pages.push({
-      name: "Image",
-      type: "image",
-      src: result.img,
-    });
+    pages.push({ name: "Image", type: "image", src: result.img });
   }
 
-  try {
-    return (await JournalEntry.create({
-      name: result.name,
-      pages,
-    } as any)) as JournalEntry;
-  } catch (err) {
-    console.error("LGC | Journal creation failed", err);
-    ui.notifications?.warn(t("LGC.NpcWizard.ActorCreatedButJournal"));
-    return null;
-  }
-}
-
-function buildNpcBlock(name: string, concept: string, traits: string[], actor: Actor): string {
-  const t = (k: string) => game.i18n?.localize(k) ?? k;
-  const ancestryLabel = traits.map((slug) => slug.charAt(0).toUpperCase() + slug.slice(1)).join(", ") || "-";
-
-  return [
-    '<div class="lgc-box-text simple-npc">',
-    '  <div class="simple-npc__description">',
-    `    <h2>${t("LGC.NpcWizard.Journal.Appearance")}</h2>`,
-    "    <p>TODO</p>",
-    `    <h2>${t("LGC.NpcWizard.Journal.Information")}</h2>`,
-    "    <p>TODO</p>",
-    "  </div>",
-    '  <div class="simple-npc__attributes">',
-    "    <section>",
-    "      <div>",
-    `        <p><strong>${t("LGC.NpcWizard.Journal.Ancestry")}</strong> <span>${escapeHtml(ancestryLabel)}</span></p>`,
-    "      </div>",
-    "      <div>",
-    `        <p><strong>${t("LGC.NpcWizard.Journal.Status")}</strong> <span>TODO</span></p>`,
-    "      </div>",
-    "    </section>",
-    "  </div>",
-    "</div>",
-  ].join("\n");
-}
-
-function buildInfluenceBlock(result: WizardResult, actor: Actor): string {
-  const t = (k: string) => game.i18n?.localize(k) ?? k;
-
-  // Creature traits: from result + size + rarity
-  const traitLabels: string[] = [];
-  const creatureTraits = foundry.utils.getProperty((actor as any).system, "traits.value") as string[] | undefined;
-  if (Array.isArray(creatureTraits)) {
-    for (const slug of creatureTraits) {
-      traitLabels.push(slug.charAt(0).toUpperCase() + slug.slice(1));
-    }
-  }
-  const size = (actor as any).system?.traits?.size?.value;
-  if (size) traitLabels.push(sizeCodeToLabel(size));
-  const rarity = (actor as any).system?.traits?.rarity?.value;
-  if (rarity && rarity !== "common") traitLabels.push(rarity);
-
-  const perception = (actor as any).system?.perception?.mod;
-  const will = (actor as any).system?.saves?.will?.value;
-
-  const thresholds = result.thresholds
-    .map((th) => `    <p><strong>${t("LGC.NpcWizard.Journal.InfluenceAt")} ${th.number}</strong> ${escapeHtml(th.description)}</p>`)
-    .join("\n");
-
-  return [
-    '<div class="lgc-box-text statblock-influence">',
-    `  <h4 class="statblock-influence__name">${escapeHtml(result.name)}</h4>`,
-    '  <section class="statblock-influence__content">',
-    '    <section class="traits">',
-    ...traitLabels.map((label) => `      <p>${escapeHtml(label)}</p>`),
-    "    </section>",
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Perception")}</strong> ${perception !== undefined ? `+${perception}` : "TODO"}</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Will")}</strong> ${will !== undefined ? `+${will}` : "TODO"}</p>`,
-    "    <hr>",
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Background")}</strong> TODO</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Appearance")}</strong> TODO</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Personality")}</strong> TODO</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.DistinctiveFeature")}</strong> TODO</p>`,
-    "    <hr>",
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Discovery")}</strong> TODO</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.InfluenceSkills")}</strong> TODO</p>`,
-    thresholds || `    <p><strong>${t("LGC.NpcWizard.Journal.InfluenceAt")} ?</strong> TODO</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Resistances")}</strong> TODO</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Weaknesses")}</strong> TODO</p>`,
-    "  </section>",
-    "</div>",
-  ].join("\n");
-}
-
-function sizeCodeToLabel(code: string): string {
-  const map: Record<string, string> = {
-    tiny: "Tiny", sm: "Small", med: "Medium", lg: "Large", huge: "Huge", grg: "Gargantuan",
-  };
-  return map[code] ?? code;
-}
-
-function formatSensesFromActor(actor: Actor): string {
-  const senses = foundry.utils.getProperty((actor as any).system, "perception.senses") as any;
-  const details = foundry.utils.getProperty((actor as any).system, "perception.details");
-  const parts: string[] = [];
-  if (Array.isArray(senses)) {
-    for (const s of senses) {
-      const label = (s && typeof s === "object") ? (s.label ?? s.type) : s;
-      if (typeof label === "string" && label.trim()) {
-        parts.push(game.i18n?.localize(label) ?? label);
-      }
-    }
-  }
-  if (typeof details === "string" && details.trim()) parts.push(details.trim());
-  return parts.join(", ") || "-";
-}
-
-function formatLanguagesFromActor(actor: Actor): string {
-  const sys = (actor as any).system;
-  if (!sys) return "-";
-  const langs = foundry.utils.getProperty(sys, "details.languages.value") as any;
-  const custom = foundry.utils.getProperty(sys, "details.languages.custom");
-  const parts: string[] = [];
-  if (Array.isArray(langs)) {
-    for (const slug of langs) {
-      if (typeof slug !== "string" || !slug.trim()) continue;
-      const cfg = (globalThis as any).CONFIG?.PF2E?.languages?.[slug];
-      const label = typeof cfg === "string" ? cfg : slug;
-      parts.push(game.i18n?.localize(label) ?? label);
-    }
-  }
-  if (typeof custom === "string" && custom.trim()) parts.push(custom.trim());
-  return parts.join(", ") || "-";
-}
-
-function escapeHtml(str: string): string {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  return createJournalEntry(result.name, pages);
 }

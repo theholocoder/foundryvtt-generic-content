@@ -1,4 +1,4 @@
-import { normalizeBlank, slugifyTrait } from "./utils";
+import { normalizeBlank, slugifyTrait } from "../utils";
 
 export type IwrWithValue = { type: string; value: number; exceptions?: string };
 export type IwrNoValue = { type: string; exceptions?: string };

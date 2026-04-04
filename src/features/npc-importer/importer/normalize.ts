@@ -1,6 +1,6 @@
 import type { JSONObject, NormalizedNpc, NormalizedSpecial, NormalizedStrike } from "./types";
-import { asNonEmptyString, asNumber, normalizeBlank, splitCsv, toHtml } from "./utils";
-import { mapSizeToPf2e } from "./pf2e-actor";
+import { asNonEmptyString, asNumber, normalizeBlank, splitCsv, toHtml } from "../utils";
+import { mapSizeToPf2e } from "../actor/pf2e-actor";
 
 const SKILL_MAP: Record<string, string> = {
   acrobatics: "acr",

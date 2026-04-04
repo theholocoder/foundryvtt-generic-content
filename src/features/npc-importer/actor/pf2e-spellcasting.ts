@@ -1,6 +1,6 @@
-import type { ImportContext, NormalizedNpc } from "./types";
-import { deepClone } from "./utils";
-import { setFirstExisting } from "./pf2e-items";
+import type { ImportContext, NormalizedNpc } from "../importer/types";
+import { deepClone } from "../../../lib/foundry";
+import { setFirstExisting } from "../../../lib/pf2e/actor";
 
 export async function createSpellcasting(
   ctx: ImportContext,

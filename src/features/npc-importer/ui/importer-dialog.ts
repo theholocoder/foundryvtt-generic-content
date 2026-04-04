@@ -1,4 +1,4 @@
-import { toJQuery } from "../../lib/foundry";
+import { toJQuery } from "../../../lib/foundry";
 
 export function openNpcImportDialog(
   onSubmit: (rawJson: string, opts: { createJournal: boolean; createInfluence: boolean }) =>

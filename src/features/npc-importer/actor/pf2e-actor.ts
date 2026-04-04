@@ -1,5 +1,5 @@
-import type { ImportContext, NormalizedNpc } from "./types";
-import { normalizeBlank, slugifyTrait, toHtml } from "./utils";
+import type { ImportContext, NormalizedNpc } from "../importer/types";
+import { normalizeBlank, slugifyTrait, toHtml } from "../utils";
 import { buildEmbeddedItems } from "./pf2e-items";
 import { createSpellcasting } from "./pf2e-spellcasting";
 import { parseIwrNoValues, parseIwrWithValues } from "./pf2e-iwr";
@@ -7,6 +7,7 @@ import { applyLanguages } from "./pf2e-languages";
 import { applySenses } from "./pf2e-senses";
 import { applySpeed } from "./pf2e-speed";
 import { indexActorSkills, normalizeKey } from "./pf2e-skills";
+import { finalizeHp } from "../../../lib/pf2e/actor";
 
 const SKILL_UPDATE_PATHS = [
   "mod",
@@ -142,21 +143,6 @@ export async function createPf2eNpcActor(
   }
 
   return { actor };
-}
-
-export async function finalizeHp(actor: Actor, hp: number): Promise<void> {
-  try {
-    // Two separate updates: PF2e may clamp value = min(old_value, new_max) during
-    // preUpdateActor hooks, so setting both in one call can leave value at the old default.
-    await actor.update({ "system.attributes.hp.max": hp });
-    const valueUpdate: Record<string, unknown> = { "system.attributes.hp.value": hp };
-    if (foundry.utils.getProperty((actor as any).system, "attributes.hp.temp") !== undefined) {
-      valueUpdate["system.attributes.hp.temp"] = 0;
-    }
-    await actor.update(valueUpdate);
-  } catch (err) {
-    console.error("LGC | Failed to finalize HP", err, { actor: actor?.name, hp });
-  }
 }
 
 function setAbilityMod(

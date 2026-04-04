@@ -1,5 +1,5 @@
-import { importNpcFromJson } from "./importer";
-import { openNpcImportDialog } from "./ui";
+import { importNpcFromJson } from "./importer/index";
+import { openNpcImportDialog } from "./ui/importer-dialog";
 import { injectActorDirectoryFooterButton } from "../../lib/foundry";
 
 const BTN_ID = "lgc-import-npc-json";

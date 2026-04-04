@@ -24,7 +24,7 @@ export function getCreatureNumber(table: TableKey, level: number, rank: Rank): n
   if (idx === undefined) return null;
   const t = RAW.tables[table];
   if (!t) return null;
-  const vals = t.ranks[rank];
+  const vals = (t.ranks as Record<string, number[] | undefined>)[rank];
   if (!vals) return null;
   return vals[idx] ?? null;
 }
@@ -58,7 +58,7 @@ export function getDamageFormula(level: number, rank: Rank): string | null {
   if (idx === undefined) return null;
   const t = RAW.tables["damage"];
   if (!t) return null;
-  const vals = t.ranks[rank] as unknown as string[];
+  const vals = (t.ranks as Record<string, string[] | undefined>)[rank];
   if (!vals) return null;
   return vals[idx] ?? null;
 }

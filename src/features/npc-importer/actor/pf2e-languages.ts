@@ -1,4 +1,4 @@
-import { normalizeBlank, slugifyTrait } from "./utils";
+import { normalizeBlank, slugifyTrait } from "../utils";
 
 function mapLanguageSlug(slug: string): string | null {
   if (!slug) return null;
