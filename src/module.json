@@ -6,6 +6,16 @@
     "minimum": "13",
     "verified": "13"
   },
+  "relationships": {
+    "requires": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json",
+        "reason": "NPC importer and PF2e actor content"
+      }
+    ]
+  },
   "flags": {
     "canUpload": true,
     "hotReload": {
