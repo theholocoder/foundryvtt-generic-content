@@ -21,6 +21,7 @@ export interface WizardResult {
   conceptId: string;
   level: number;
   img: string;
+  traits: string[];
   skills: SkillRow[];
   thresholds: ThresholdRow[];
 }
@@ -58,12 +59,13 @@ export function openNpcWizard(onSubmit: (result: WizardResult) => Promise<void>)
   }
 
   function showWizardForm(tier: Tier): void {
+    const traits: string[] = ["humanoid"];
     const skillRows: SkillRow[] = [];
     const thresholdRows: ThresholdRow[] = [];
 
     const dlg = new Dialog({
       title: t("LGC.NpcWizard.WizardTitle"),
-      content: buildFormHtml(tier, skillRows, thresholdRows),
+      content: buildFormHtml(tier, traits, skillRows, thresholdRows),
       buttons: {
         back: {
           icon: '<i class="fa-solid fa-arrow-left"></i>',
@@ -79,7 +81,7 @@ export function openNpcWizard(onSubmit: (result: WizardResult) => Promise<void>)
           label: t("LGC.NpcWizard.Create"),
           callback: async (html: any) => {
             const $html = toJQuery(html);
-            const result = collectForm($html, tier, skillRows, thresholdRows);
+            const result = collectForm($html, tier, traits, skillRows, thresholdRows);
             if (result) {
               await onSubmit(result);
             }
@@ -90,7 +92,7 @@ export function openNpcWizard(onSubmit: (result: WizardResult) => Promise<void>)
       render: (html: any) => {
         const $html = toJQuery(html);
         $html.closest(".app").addClass("lgc-wizard-dialog");
-        bindFormEvents($html, skillRows, thresholdRows);
+        bindFormEvents($html, traits, skillRows, thresholdRows);
       },
     });
 
@@ -121,6 +123,7 @@ function buildTierSelectHtml(): string {
 
 function buildFormHtml(
   tier: Tier,
+  traits: string[],
   skillRows: SkillRow[],
   thresholdRows: ThresholdRow[],
 ): string {
@@ -157,7 +160,8 @@ function buildFormHtml(
     '<div class="form-group">',
     `<label>${t("LGC.NpcWizard.Level")}</label>`,
     '<div class="form-fields">',
-    '<input type="number" name="level" min="-1" max="24" value="1" />',
+    '<input type="number" name="level" value="1" />',
+    `<p class="lgc-level-warning" style="display:none;">${t("LGC.NpcWizard.LevelOutOfRange")}</p>`,
     "</div>",
     "</div>",
 
@@ -171,6 +175,7 @@ function buildFormHtml(
     "</div>",
     "</div>",
 
+    buildTraitsSection(traits),
     tier >= 2 ? buildSkillsSection(skills, ranks, skillRows) : "",
     tier >= 3 ? buildThresholdsSection(thresholdRows) : "",
 
@@ -222,6 +227,38 @@ function buildThresholdsSection(rows: ThresholdRow[]): string {
   ].join("\n");
 }
 
+function buildTraitsSection(traits: string[]): string {
+  const allTraits = getAvailableTraits();
+  const options = allTraits
+    .map((entry) => `<option value="${entry.label}">`)
+    .join("");
+  return [
+    '<div class="lgc-traits-section">',
+    `<label><strong>${t("LGC.NpcWizard.Traits")}</strong></label>`,
+    '<div class="lgc-traits-add-row">',
+    `<input type="text" class="lgc-trait-input" list="lgc-trait-datalist" placeholder="${t("LGC.NpcWizard.TraitSearch")}" autocomplete="off" />`,
+    `<datalist id="lgc-trait-datalist">${options}</datalist>`,
+    `<button type="button" class="lgc-add-trait-btn">${t("LGC.NpcWizard.AddTrait")}</button>`,
+    "</div>",
+    '<div class="lgc-trait-tags">',
+    ...traits.map(traitTagHtml),
+    "</div>",
+    "</div>",
+  ].join("\n");
+}
+
+function traitTagHtml(slug: string): string {
+  const allTraits = getAvailableTraits();
+  const entry = allTraits.find((e) => e.slug === slug);
+  const label = entry?.label ?? slug;
+  return (
+    `<span class="lgc-trait-tag" data-slug="${slug}">` +
+    `${label}` +
+    `<button type="button" class="lgc-remove-trait-btn" data-slug="${slug}" title="${t("LGC.NpcWizard.RemoveTrait")}">×</button>` +
+    `</span>`
+  );
+}
+
 function thresholdRowHtml(row: ThresholdRow): string {
   return (
     '<div class="lgc-threshold-row" data-row-id="' + row.id + '">' +
@@ -240,9 +277,16 @@ function buildConceptOptions(): string {
 
 function bindFormEvents(
   $html: JQuery,
+  traits: string[],
   skillRows: SkillRow[],
   thresholdRows: ThresholdRow[],
 ): void {
+  $html.find('input[name="level"]').on("input change", function () {
+    const val = Number($(this).val());
+    const outOfRange = val < -1 || val > 24;
+    $html.find(".lgc-level-warning").toggle(outOfRange);
+  });
+
   $html.find(".lgc-random-name-btn").on("click", async () => {
     const name = await rollRandomName();
     if (name) {
@@ -259,6 +303,27 @@ function bindFormEvents(
       },
     });
     fp.render(true);
+  });
+
+  $html.find(".lgc-add-trait-btn").on("click", () => {
+    const $input = $html.find(".lgc-trait-input");
+    const inputVal = String($input.val() ?? "").trim();
+    if (!inputVal) return;
+    const allTraits = getAvailableTraits();
+    const match = allTraits.find((e) => e.label.toLowerCase() === inputVal.toLowerCase());
+    const slug = match?.slug ?? inputVal.toLowerCase().replace(/\s+/g, "-");
+    if (!traits.includes(slug)) {
+      traits.push(slug);
+      refreshTraitsSection($html, traits);
+    }
+    $input.val("").trigger("focus");
+  });
+
+  $html.on("click", ".lgc-remove-trait-btn", function () {
+    const slug = String($(this).data("slug"));
+    const idx = traits.indexOf(slug);
+    if (idx >= 0) traits.splice(idx, 1);
+    refreshTraitsSection($html, traits);
   });
 
   $html.find(".lgc-add-skill-btn").on("click", () => {
@@ -304,6 +369,10 @@ function syncThresholdRowsFromDom($html: JQuery, thresholdRows: ThresholdRow[]):
   }
 }
 
+function refreshTraitsSection($html: JQuery, traits: string[]): void {
+  $html.find(".lgc-traits-section .lgc-trait-tags").html(traits.map(traitTagHtml).join("\n"));
+}
+
 function refreshSkillsSection($html: JQuery, skillRows: SkillRow[]): void {
   const skills = getAvailableSkills();
   const ranks = [
@@ -326,6 +395,7 @@ function refreshThresholdsSection($html: JQuery, thresholdRows: ThresholdRow[]):
 function collectForm(
   $html: JQuery,
   tier: Tier,
+  traits: string[],
   skillRows: SkillRow[],
   thresholdRows: ThresholdRow[],
 ): WizardResult | null {
@@ -357,7 +427,7 @@ function collectForm(
     thresholds.push({ id: row.id, number, description });
   }
 
-  return { tier, name, conceptId, level, img, skills, thresholds };
+  return { tier, name, conceptId, level, img, traits: [...traits], skills, thresholds };
 }
 
 async function rollRandomName(): Promise<string | null> {
@@ -387,6 +457,22 @@ function getAvailableSkills(): string[] {
     .filter((k) => k !== "additional")
     .map((k) => k.charAt(0).toUpperCase() + k.slice(1));
 }
+
+function getAvailableTraits(): { slug: string; label: string }[] {
+  const cfg = (globalThis as any).CONFIG?.PF2E?.creatureTraits as Record<string, string> | undefined;
+  if (cfg && typeof cfg === "object") {
+    return Object.entries(cfg)
+      .map(([slug, label]) => ({ slug, label: game.i18n?.localize(label) ?? label }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }
+  return DEFAULT_TRAITS.map((slug) => ({ slug, label: slug.charAt(0).toUpperCase() + slug.slice(1) }));
+}
+
+const DEFAULT_TRAITS = [
+  "aberration", "beast", "celestial", "construct", "dragon",
+  "elemental", "fey", "fiend", "humanoid", "monitor", "ooze",
+  "plant", "spirit", "undead",
+];
 
 const DEFAULT_SKILLS = [
   "Acrobatics", "Arcana", "Athletics", "Crafting", "Deception",

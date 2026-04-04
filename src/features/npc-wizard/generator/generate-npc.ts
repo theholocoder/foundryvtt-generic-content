@@ -70,6 +70,7 @@ export async function generateNpc(result: WizardResult): Promise<void> {
   }
 
   const level = result.level;
+  const tblLevel = Math.max(-1, Math.min(24, level));
   const img = result.img || "icons/svg/mystery-man.svg";
 
   const actor = await createActor(result.name, level, img);
@@ -80,7 +81,7 @@ export async function generateNpc(result: WizardResult): Promise<void> {
 
   // Finalize HP last — PF2e may clamp hp.value when max and value are updated
   // together in the same call, so two sequential updates ensure value is set correctly.
-  await finalizeHp(actor, getHp(level, hpRank) ?? 0);
+  await finalizeHp(actor, getHp(tblLevel, hpRank) ?? 0);
 
   if (result.tier >= 2) {
     const journal = await createJournal(result, actor, concept);
@@ -140,24 +141,34 @@ async function applyStats(
   };
 
   const rank = (r: string | null) => (r ? rankFromUi(r) : null);
+  // Clamp to the range covered by the creature-building tables (-1..24).
+  // The actor keeps its real level; stats are derived from the nearest valid level.
+  const tblLevel = Math.max(-1, Math.min(24, level));
 
   setIf("details.level.value", level);
 
-  const ac = getAc(level, rank(concept.stats.ac) ?? "moderate");
+  if (result.traits.length > 0) {
+    const existing = foundry.utils.getProperty(sys, "traits.value") as string[] | undefined;
+    if (Array.isArray(existing)) {
+      updates["system.traits.value"] = Array.from(new Set([...existing, ...result.traits]));
+    }
+  }
+
+  const ac = getAc(tblLevel, rank(concept.stats.ac) ?? "moderate");
   setIf("attributes.ac.value", ac);
 
   // HP is applied last via finalizeHp() to avoid PF2e clamping hp.value prematurely.
 
-  const perc = getPerception(level, rank(concept.stats.perception) ?? "moderate");
+  const perc = getPerception(tblLevel, rank(concept.stats.perception) ?? "moderate");
   setIf("perception.mod", perc);
 
-  setIf("saves.fortitude.value", getSave("fortitude", level, rank(concept.stats.fortitude) ?? "moderate"));
-  setIf("saves.reflex.value", getSave("reflex", level, rank(concept.stats.reflex) ?? "moderate"));
-  setIf("saves.will.value", getSave("will", level, rank(concept.stats.will) ?? "moderate"));
+  setIf("saves.fortitude.value", getSave("fortitude", tblLevel, rank(concept.stats.fortitude) ?? "moderate"));
+  setIf("saves.reflex.value", getSave("reflex", tblLevel, rank(concept.stats.reflex) ?? "moderate"));
+  setIf("saves.will.value", getSave("will", tblLevel, rank(concept.stats.will) ?? "moderate"));
 
   // Per-ability modifiers from the concept's abilities definition
   for (const [abil, abilRank] of Object.entries(concept.abilities) as [string, string][]) {
-    const mod = getAbilityMod(level, rank(abilRank) ?? "moderate");
+    const mod = getAbilityMod(tblLevel, rank(abilRank) ?? "moderate");
     if (mod === null) continue;
     const base = foundry.utils.getProperty(sys, `abilities.${abil}`) as any;
     if (!base || typeof base !== "object") continue;
@@ -168,7 +179,7 @@ async function applyStats(
     }
   }
 
-  applySkills(updates, sys, level, concept, result);
+  applySkills(updates, sys, tblLevel, concept, result);
 
   if (Object.keys(updates).length) {
     try {
@@ -178,10 +189,10 @@ async function applyStats(
     }
   }
 
-  await createStrikes(actor, level, concept);
+  await createStrikes(actor, tblLevel, concept);
 
   if (concept.spellcasting) {
-    await createSpellcastingEntry(actor, level, concept);
+    await createSpellcastingEntry(actor, tblLevel, concept);
   }
 }
 
@@ -377,7 +388,7 @@ async function createJournal(
 
   const pages: any[] = [];
 
-  const npcBlock = buildNpcBlock(result.name, conceptLabel, actor);
+  const npcBlock = buildNpcBlock(result.name, conceptLabel, result.traits, actor);
   const influenceBlock = result.tier === 3 ? buildInfluenceBlock(result, actor) : "";
   const actorLink = actor?.uuid
     ? `<p>@UUID[${escapeHtml(actor.uuid)}]{${escapeHtml(actor.name)}}</p>`
@@ -414,26 +425,25 @@ async function createJournal(
   }
 }
 
-function buildNpcBlock(name: string, concept: string, actor: Actor): string {
+function buildNpcBlock(name: string, concept: string, traits: string[], actor: Actor): string {
   const t = (k: string) => game.i18n?.localize(k) ?? k;
-  const level = (actor as any).system?.details?.level?.value ?? "?";
-  const senses = formatSensesFromActor(actor);
-  const languages = formatLanguagesFromActor(actor);
+  const ancestryLabel = traits.map((slug) => slug.charAt(0).toUpperCase() + slug.slice(1)).join(", ") || "-";
 
   return [
     '<div class="lgc-box-text simple-npc">',
     '  <div class="simple-npc__description">',
-    `    <h2>${escapeHtml(name)}</h2>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Concept")}</strong> ${escapeHtml(concept)}</p>`,
-    `    <p><strong>${t("LGC.NpcWizard.Journal.Level")}</strong> ${level}</p>`,
+    `    <h2>${t("LGC.NpcWizard.Journal.Appearance")}</h2>`,
+    "    <p>TODO</p>",
+    `    <h2>${t("LGC.NpcWizard.Journal.Information")}</h2>`,
+    "    <p>TODO</p>",
     "  </div>",
     '  <div class="simple-npc__attributes">',
     "    <section>",
     "      <div>",
-    `        <p><strong>${t("LGC.NpcWizard.Journal.Languages")}</strong> <span>${escapeHtml(languages)}</span></p>`,
+    `        <p><strong>${t("LGC.NpcWizard.Journal.Ancestry")}</strong> <span>${escapeHtml(ancestryLabel)}</span></p>`,
     "      </div>",
     "      <div>",
-    `        <p><strong>${t("LGC.NpcWizard.Journal.Senses")}</strong> <span>${escapeHtml(senses)}</span></p>`,
+    `        <p><strong>${t("LGC.NpcWizard.Journal.Status")}</strong> <span>TODO</span></p>`,
     "      </div>",
     "    </section>",
     "  </div>",
@@ -443,17 +453,25 @@ function buildNpcBlock(name: string, concept: string, actor: Actor): string {
 
 function buildInfluenceBlock(result: WizardResult, actor: Actor): string {
   const t = (k: string) => game.i18n?.localize(k) ?? k;
-  const traits: string[] = [];
+
+  // Creature traits: from result + size + rarity
+  const traitLabels: string[] = [];
+  const creatureTraits = foundry.utils.getProperty((actor as any).system, "traits.value") as string[] | undefined;
+  if (Array.isArray(creatureTraits)) {
+    for (const slug of creatureTraits) {
+      traitLabels.push(slug.charAt(0).toUpperCase() + slug.slice(1));
+    }
+  }
   const size = (actor as any).system?.traits?.size?.value;
-  if (size) traits.push(sizeCodeToLabel(size));
+  if (size) traitLabels.push(sizeCodeToLabel(size));
   const rarity = (actor as any).system?.traits?.rarity?.value;
-  if (rarity && rarity !== "common") traits.push(rarity);
+  if (rarity && rarity !== "common") traitLabels.push(rarity);
 
   const perception = (actor as any).system?.perception?.mod;
   const will = (actor as any).system?.saves?.will?.value;
 
   const thresholds = result.thresholds
-    .map((th) => `<p><strong>${t("LGC.NpcWizard.Journal.InfluenceAt")} ${th.number}</strong> ${escapeHtml(th.description)}</p>`)
+    .map((th) => `    <p><strong>${t("LGC.NpcWizard.Journal.InfluenceAt")} ${th.number}</strong> ${escapeHtml(th.description)}</p>`)
     .join("\n");
 
   return [
@@ -461,12 +479,21 @@ function buildInfluenceBlock(result: WizardResult, actor: Actor): string {
     `  <h4 class="statblock-influence__name">${escapeHtml(result.name)}</h4>`,
     '  <section class="statblock-influence__content">',
     '    <section class="traits">',
-    ...traits.map((t) => `      <p>${escapeHtml(t)}</p>`),
+    ...traitLabels.map((label) => `      <p>${escapeHtml(label)}</p>`),
     "    </section>",
     `    <p><strong>${t("LGC.NpcWizard.Journal.Perception")}</strong> ${perception !== undefined ? `+${perception}` : "TODO"}</p>`,
     `    <p><strong>${t("LGC.NpcWizard.Journal.Will")}</strong> ${will !== undefined ? `+${will}` : "TODO"}</p>`,
     "    <hr>",
-    thresholds || "    <p><strong>Influence thresholds</strong> TODO</p>",
+    `    <p><strong>${t("LGC.NpcWizard.Journal.Background")}</strong> TODO</p>`,
+    `    <p><strong>${t("LGC.NpcWizard.Journal.Appearance")}</strong> TODO</p>`,
+    `    <p><strong>${t("LGC.NpcWizard.Journal.Personality")}</strong> TODO</p>`,
+    `    <p><strong>${t("LGC.NpcWizard.Journal.DistinctiveFeature")}</strong> TODO</p>`,
+    "    <hr>",
+    `    <p><strong>${t("LGC.NpcWizard.Journal.Discovery")}</strong> TODO</p>`,
+    `    <p><strong>${t("LGC.NpcWizard.Journal.InfluenceSkills")}</strong> TODO</p>`,
+    thresholds || `    <p><strong>${t("LGC.NpcWizard.Journal.InfluenceAt")} ?</strong> TODO</p>`,
+    `    <p><strong>${t("LGC.NpcWizard.Journal.Resistances")}</strong> TODO</p>`,
+    `    <p><strong>${t("LGC.NpcWizard.Journal.Weaknesses")}</strong> TODO</p>`,
     "  </section>",
     "</div>",
   ].join("\n");
