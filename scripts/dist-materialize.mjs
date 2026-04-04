@@ -24,3 +24,4 @@ function materializeDir(name) {
 }
 
 materializeDir("artwork");
+materializeDir("lang");

@@ -146,14 +146,14 @@ export async function createPf2eNpcActor(
 
 export async function finalizeHp(actor: Actor, hp: number): Promise<void> {
   try {
-    const hpUpdate: Record<string, unknown> = {
-      "system.attributes.hp.max": hp,
-      "system.attributes.hp.value": hp,
-    };
+    // Two separate updates: PF2e may clamp value = min(old_value, new_max) during
+    // preUpdateActor hooks, so setting both in one call can leave value at the old default.
+    await actor.update({ "system.attributes.hp.max": hp });
+    const valueUpdate: Record<string, unknown> = { "system.attributes.hp.value": hp };
     if (foundry.utils.getProperty((actor as any).system, "attributes.hp.temp") !== undefined) {
-      hpUpdate["system.attributes.hp.temp"] = 0;
+      valueUpdate["system.attributes.hp.temp"] = 0;
     }
-    await actor.update(hpUpdate);
+    await actor.update(valueUpdate);
   } catch (err) {
     console.error("LGC | Failed to finalize HP", err, { actor: actor?.name, hp });
   }

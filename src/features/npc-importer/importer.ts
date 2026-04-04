@@ -4,18 +4,19 @@ import { createPf2eNpcActor, finalizeHp } from "./pf2e-actor";
 import { createNpcJournal } from "./journal";
 
 const MODULE_ID = "lazybobcat-generic-content";
+const t = (k: string) => game.i18n?.localize(k) ?? k;
 
 export async function importNpcFromJson(
   rawJson: string,
   options: { createJournal: boolean; createInfluence: boolean },
 ): Promise<void> {
   if (!rawJson) {
-    ui.notifications?.error("LGC | Paste JSON first");
+    ui.notifications?.error(t("LGC.NpcImporter.PasteJson"));
     return;
   }
 
   if ((game as any)?.system?.id !== "pf2e") {
-    ui.notifications?.error("LGC | PF2e system required to import NPCs");
+    ui.notifications?.error(t("LGC.NpcImporter.Pf2eRequired"));
     return;
   }
 
@@ -24,7 +25,7 @@ export async function importNpcFromJson(
     parsed = JSON.parse(rawJson);
   } catch (err) {
     console.error("LGC | Invalid JSON", err);
-    ui.notifications?.error("LGC | Invalid JSON");
+    ui.notifications?.error(t("LGC.NpcImporter.InvalidJson"));
     return;
   }
 
@@ -33,12 +34,12 @@ export async function importNpcFromJson(
     npc = normalizePf2ToolsNpc(parsed);
   } catch (err) {
     console.error("LGC | JSON normalization failed", err, { parsed });
-    ui.notifications?.error("LGC | Unsupported JSON shape (see console)");
+    ui.notifications?.error(t("LGC.NpcImporter.UnsupportedJson"));
     return;
   }
 
   if (!npc.name) {
-    ui.notifications?.error("LGC | JSON missing required field: name");
+    ui.notifications?.error(t("LGC.NpcImporter.MissingName"));
     return;
   }
 
@@ -58,12 +59,10 @@ export async function importNpcFromJson(
     }
   }
 
-  // PF2e can reset current HP after later actor updates (e.g. setFlag) due to
-  // derived-data prep timing. Re-apply max/value at the very end of import.
   if (npc.hp !== null) {
     await finalizeHp(actor, npc.hp);
   }
 
   actor.sheet?.render(true);
-  ui.notifications?.info(`LGC | Created NPC: ${actor.name}`);
+  ui.notifications?.info(t("LGC.NpcImporter.ActorCreated").replace("{name}", actor.name));
 }

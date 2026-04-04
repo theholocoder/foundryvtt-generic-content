@@ -1,0 +1,224 @@
+[
+  {
+    "id": "soldier",
+    "localizationKey": "LGC.Concept.Soldier",
+    "group": "pf2e",
+    "stats": {
+      "ac": "high",
+      "hp": "moderate",
+      "attack": "high",
+      "damage": "high",
+      "perception": "moderate",
+      "fortitude": "high",
+      "reflex": "moderate",
+      "will": "moderate",
+      "skill": "moderate",
+      "spellAttack": null,
+      "spellDc": null
+    },
+    "abilities": {
+      "str": "high",
+      "dex": "moderate",
+      "con": "high",
+      "int": "low",
+      "wis": "low",
+      "cha": "low"
+    },
+    "strikes": [
+      { "name": "Sword", "type": "melee", "bonusRank": "high", "damageRank": "high", "damageType": "slashing" },
+      { "name": "Shield Bash", "type": "melee", "bonusRank": "high", "damageRank": "moderate", "damageType": "bludgeoning" }
+    ],
+    "spellcasting": null
+  },
+  {
+    "id": "skirmisher",
+    "localizationKey": "LGC.Concept.Skirmisher",
+    "group": "pf2e",
+    "stats": {
+      "ac": "moderate",
+      "hp": "moderate",
+      "attack": "moderate",
+      "damage": "moderate",
+      "perception": "moderate",
+      "fortitude": "low",
+      "reflex": "high",
+      "will": "moderate",
+      "skill": "moderate",
+      "spellAttack": null,
+      "spellDc": null
+    },
+    "abilities": {
+      "str": "moderate",
+      "dex": "high",
+      "con": "moderate",
+      "int": "moderate",
+      "wis": "moderate",
+      "cha": "moderate"
+    },
+    "strikes": [
+      { "name": "Scimitar", "type": "melee", "bonusRank": "moderate", "damageRank": "moderate", "damageType": "slashing" },
+      { "name": "Dagger", "type": "ranged", "bonusRank": "moderate", "damageRank": "low", "damageType": "piercing" }
+    ],
+    "spellcasting": null
+  },
+  {
+    "id": "brute",
+    "localizationKey": "LGC.Concept.Brute",
+    "group": "pf2e",
+    "stats": {
+      "ac": "low",
+      "hp": "high",
+      "attack": "moderate",
+      "damage": "high",
+      "perception": "low",
+      "fortitude": "high",
+      "reflex": "low",
+      "will": "low",
+      "skill": "low",
+      "spellAttack": null,
+      "spellDc": null
+    },
+    "abilities": {
+      "str": "extreme",
+      "dex": "low",
+      "con": "high",
+      "int": "low",
+      "wis": "low",
+      "cha": "low"
+    },
+    "strikes": [
+      { "name": "Fist", "type": "melee", "bonusRank": "moderate", "damageRank": "high", "damageType": "bludgeoning" },
+      { "name": "Rock", "type": "ranged", "bonusRank": "moderate", "damageRank": "moderate", "damageType": "bludgeoning" }
+    ],
+    "spellcasting": null
+  },
+  {
+    "id": "sniper",
+    "localizationKey": "LGC.Concept.Sniper",
+    "group": "pf2e",
+    "stats": {
+      "ac": "moderate",
+      "hp": "low",
+      "attack": "high",
+      "damage": "high",
+      "perception": "high",
+      "fortitude": "low",
+      "reflex": "high",
+      "will": "moderate",
+      "skill": "moderate",
+      "spellAttack": null,
+      "spellDc": null
+    },
+    "abilities": {
+      "str": "moderate",
+      "dex": "high",
+      "con": "low",
+      "int": "moderate",
+      "wis": "high",
+      "cha": "moderate"
+    },
+    "strikes": [
+      { "name": "Shortbow", "type": "ranged", "bonusRank": "high", "damageRank": "high", "damageType": "piercing" },
+      { "name": "Dagger", "type": "melee", "bonusRank": "moderate", "damageRank": "moderate", "damageType": "piercing" }
+    ],
+    "spellcasting": null
+  },
+  {
+    "id": "magical-striker",
+    "localizationKey": "LGC.Concept.MagicalStriker",
+    "group": "pf2e",
+    "stats": {
+      "ac": "moderate",
+      "hp": "moderate",
+      "attack": "high",
+      "damage": "high",
+      "perception": "moderate",
+      "fortitude": "moderate",
+      "reflex": "moderate",
+      "will": "moderate",
+      "skill": "moderate",
+      "spellAttack": "moderate",
+      "spellDc": "high"
+    },
+    "abilities": {
+      "str": "moderate",
+      "dex": "moderate",
+      "con": "moderate",
+      "int": "moderate",
+      "wis": "moderate",
+      "cha": "moderate"
+    },
+    "strikes": [
+      { "name": "Weapon", "type": "melee", "bonusRank": "high", "damageRank": "high", "damageType": "slashing" }
+    ],
+    "spellcasting": {
+      "tradition": "arcane",
+      "preparation": "innate",
+      "maxSpellLevel": "dynamic"
+    }
+  },
+  {
+    "id": "spellcaster",
+    "localizationKey": "LGC.Concept.Spellcaster",
+    "group": "pf2e",
+    "stats": {
+      "ac": "low",
+      "hp": "low",
+      "attack": "low",
+      "damage": "low",
+      "perception": "moderate",
+      "fortitude": "low",
+      "reflex": "moderate",
+      "will": "high",
+      "skill": "moderate",
+      "spellAttack": "high",
+      "spellDc": "high"
+    },
+    "abilities": {
+      "str": "low",
+      "dex": "moderate",
+      "con": "low",
+      "int": "extreme",
+      "wis": "moderate",
+      "cha": "moderate"
+    },
+    "strikes": [
+      { "name": "Staff", "type": "melee", "bonusRank": "low", "damageRank": "low", "damageType": "bludgeoning" }
+    ],
+    "spellcasting": {
+      "tradition": "arcane",
+      "preparation": "prepared",
+      "maxSpellLevel": 5
+    }
+  },
+  {
+    "id": "skill-paragon",
+    "localizationKey": "LGC.Concept.SkillParagon",
+    "group": "pf2e",
+    "stats": {
+      "ac": "moderate",
+      "hp": "moderate",
+      "attack": "moderate",
+      "damage": "moderate",
+      "perception": "moderate",
+      "fortitude": "low",
+      "reflex": "high",
+      "will": "moderate",
+      "skill": "extreme",
+      "spellAttack": null,
+      "spellDc": null
+    },
+    "abilities": {
+      "str": "moderate",
+      "dex": "moderate",
+      "con": "moderate",
+      "int": "moderate",
+      "wis": "moderate",
+      "cha": "moderate"
+    },
+    "strikes": [
+      { "name": "Strike", "type": "melee", "bonusRank": "moderate", "damageRank": "moderate", "damageType": "bludgeoning" }
+    ],
+    "spellcasting": null
+  }
+]

@@ -1,0 +1,137 @@
+.lgc-btn-footer {
+  margin-top: 4px;
+  padding: 4px 8px;
+  font-size: 0.85em;
+  width: 100%;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.lgc-wizard-dialog {
+  min-width: 560px;
+  max-width: 680px;
+
+  .form-footer {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  // Standalone inputs (concept select, level) fill available width
+  .form-fields {
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+
+  // Input+button rows — must come after .form-fields rules to win the cascade
+  .lgc-name-row,
+  .lgc-file-picker-row {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+    width: 100%;
+
+    // Override the width: 100% applied above; let flex do the sizing
+    input[type="text"] {
+      flex: 1 1 0;
+      min-width: 0;
+      width: auto;
+    }
+
+    button {
+      flex: 0 0 auto;
+      width: auto;
+      align-self: stretch;
+      padding: 0 8px;
+      white-space: nowrap;
+    }
+  }
+
+  .lgc-skills-section,
+  .lgc-thresholds-section {
+    margin-top: 4px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .lgc-skill-row,
+  .lgc-threshold-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 4px;
+    align-items: stretch;
+
+    select, input {
+      flex: 1 1 0;
+      min-width: 0;
+      width: auto;
+    }
+
+    button {
+      flex: 0 0 auto;
+      width: auto;
+      align-self: stretch;
+      padding: 0 8px;
+      white-space: nowrap;
+    }
+  }
+
+  .lgc-add-skill-btn,
+  .lgc-add-threshold-btn {
+    display: block;
+    margin-top: 4px;
+    padding: 4px 10px;
+    font-size: 0.85em;
+    cursor: pointer;
+  }
+}
+
+.lgc-wizard-tier-select {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lgc-tier-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  i {
+    font-size: 2em;
+  }
+  .lgc-tier-label {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .lgc-tier-desc {
+    font-size: 0.85em;
+    opacity: 0.7;
+  }
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.lgc-wizard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
