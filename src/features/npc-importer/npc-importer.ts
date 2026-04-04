@@ -795,15 +795,9 @@ function applySpeed(
 
 function mapLanguageSlug(slug: string): string | null {
   if (!slug) return null;
-  // Common PF2e language slugs
-  if (slug === "common") return "common";
+  // Only aliases: other slugs passthrough.
   if (slug === "elvish" || slug === "elven") return "elven";
   if (slug === "dwarvish" || slug === "dwarven") return "dwarven";
-  if (slug === "gnomish") return "gnomish";
-  if (slug === "goblin") return "goblin";
-  if (slug === "halfling") return "halfling";
-  if (slug === "orc") return "orc";
-  if (slug === "draconic") return "draconic";
   return slug;
 }
 
