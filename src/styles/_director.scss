@@ -1,0 +1,552 @@
+// Director Sidebar
+#lgc-director-sidebar {
+  .window-content {
+    padding: 0;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+.lgc-director-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+// Views — fill the window-content, keep footer at bottom
+.lgc-director-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 8px;
+  padding: 10px 10px 0;
+  color: #ddd;
+}
+
+// Scrollable card list fills remaining space
+.lgc-director-card-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 4px;
+}
+
+// "Add" button pinned to the bottom of the window
+.lgc-director-view-footer {
+  padding: 8px 10px;
+  border-top: 1px solid #333;
+  background: #1a1a1a;
+  flex-shrink: 0;
+}
+
+.lgc-director-add-session,
+.lgc-director-add-beat {
+  background: #2a4a2a;
+  border: 1px solid #3a6a3a;
+  color: #8f8;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  width: 100%;
+
+  &:hover {
+    background: #3a5a3a;
+    color: #afa;
+  }
+}
+
+// View header
+.lgc-director-view-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+
+  h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #eee;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.lgc-director-header-titles {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+
+  .lgc-director-header-sub {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  h3 {
+    font-size: 13px;
+  }
+}
+
+.lgc-director-back {
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  flex-shrink: 0;
+
+  &:hover {
+    background: #333;
+    color: #eee;
+  }
+}
+
+.lgc-director-empty {
+  color: #666;
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.lgc-director-session-desc,
+.lgc-director-beat-desc {
+  color: #aaa;
+  font-size: 12px;
+  margin: 0;
+  font-style: italic;
+  flex-shrink: 0;
+}
+
+// Cards
+.lgc-director-card {
+  min-height: 72px;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  // Gradient overlay so text is always readable
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.15) 60%);
+    pointer-events: none;
+  }
+
+  &:hover .lgc-director-card-remove {
+    opacity: 1;
+  }
+}
+
+.lgc-director-card-name {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 36px; // leave room for the delete button
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.lgc-director-card-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(160, 30, 30, 0.85);
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 2;
+
+  &:hover {
+    background: rgba(200, 50, 50, 0.95);
+  }
+}
+
+// Scene section
+.lgc-director-scene-section {
+  flex-shrink: 0;
+
+  h4 {
+    margin: 0 0 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+  }
+}
+
+.lgc-director-scene {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lgc-director-scene--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 60px;
+  border: 2px dashed #444;
+  border-radius: 4px;
+  color: #666;
+  font-size: 12px;
+
+  i {
+    font-size: 18px;
+  }
+
+  &.lgc-drag-over {
+    border-color: #6af;
+    color: #6af;
+    background: rgba(100, 170, 255, 0.05);
+  }
+}
+
+.lgc-director-scene--filled {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+.lgc-director-scene-thumb {
+  width: 48px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.lgc-director-scene-icon {
+  font-size: 20px;
+  color: #666;
+  width: 48px;
+  text-align: center;
+}
+
+.lgc-director-scene-name {
+  flex: 1;
+  font-size: 13px;
+  color: #ddd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lgc-director-scene-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+
+  button {
+    background: transparent;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+
+    &:hover {
+      background: #333;
+      color: #eee;
+    }
+  }
+}
+
+// Entity lists
+.lgc-director-entity-section {
+  flex-shrink: 0;
+
+  h4 {
+    margin: 0 0 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+  }
+}
+
+.lgc-director-entity-list {
+  min-height: 40px;
+  border: 1px dashed #444;
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  &.lgc-drag-over {
+    border-color: #6af;
+    background: rgba(100, 170, 255, 0.05);
+  }
+}
+
+.lgc-director-drop-hint {
+  font-size: 11px;
+  color: #555;
+  text-align: center;
+  padding: 4px;
+  font-style: italic;
+}
+
+.lgc-director-entity-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 6px;
+  background: #2a2a2a;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #ccc;
+  cursor: pointer;
+
+  &:hover {
+    background: #333;
+    color: #eee;
+  }
+}
+
+.lgc-director-entity-img {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.lgc-director-entity-img-placeholder {
+  width: 24px;
+  text-align: center;
+  color: #555;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.lgc-director-entity-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lgc-director-entity-actions {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+
+  button {
+    background: transparent;
+    border: 1px solid #555;
+    color: #aaa;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 10px;
+
+    &:hover {
+      background: #333;
+      color: #eee;
+    }
+
+    &.lgc-director-entity-remove:hover {
+      border-color: #a33;
+      color: #e55;
+    }
+  }
+}
+
+// Notes
+.lgc-director-notes-section {
+  flex-shrink: 0;
+
+  .lgc-director-notes-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+
+    h4 {
+      margin: 0;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+      flex: 1;
+    }
+  }
+}
+
+.lgc-director-add-note {
+  background: #2a3a4a;
+  border: 1px solid #3a5a6a;
+  color: #8af;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  white-space: nowrap;
+
+  &:hover {
+    background: #2a4a5a;
+    color: #adf;
+  }
+}
+
+.lgc-director-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 10px;
+}
+
+.lgc-director-note {
+  border-left: 3px solid #4a6a8a;
+  padding: 6px 8px;
+  background: #222;
+  border-radius: 0 4px 4px 0;
+
+  &:hover .lgc-director-note-remove {
+    opacity: 1;
+  }
+}
+
+.lgc-director-note-text {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: #ddd;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.lgc-director-note-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: #666;
+
+  .lgc-director-note-world-time {
+    font-family: monospace;
+  }
+
+  .lgc-director-note-remove {
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    margin-left: auto;
+
+    &:hover {
+      color: #e55;
+    }
+  }
+}
+
+// Beat detail — scrollable body
+.lgc-director-beat-detail-view {
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+
+// Dialogs
+.lgc-director-dialog {
+  .lgc-director-dialog-form {
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+
+      label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #aaa;
+      }
+
+      input,
+      textarea {
+        background: #1a1a1a;
+        border: 1px solid #444;
+        color: #ddd;
+        border-radius: 4px;
+        padding: 5px 8px;
+        font-size: 13px;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+  }
+
+  .lgc-director-image-picker {
+    display: flex;
+    gap: 6px;
+
+    input {
+      flex: 1;
+    }
+
+    .lgc-director-browse-btn {
+      background: #2a2a2a;
+      border: 1px solid #555;
+      color: #aaa;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background: #333;
+        color: #eee;
+      }
+    }
+  }
+}

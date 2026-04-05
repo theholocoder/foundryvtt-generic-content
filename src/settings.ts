@@ -5,6 +5,7 @@ export const SETTINGS = {
   NPC_PERSONALITY_ROLL_TABLE_UUID: "npcPersonalityRollTableUuid",
   NPC_SPEECH_ROLL_TABLE_UUID: "npcSpeechRollTableUuid",
   NPC_FOOD_ROLL_TABLE_UUID: "npcFoodRollTableUuid",
+  DIRECTOR_DATA: "directorData",
 } as const;
 
 export const DEFAULTS = {
@@ -49,5 +50,12 @@ export function registerSettings(): void {
     config: true,
     type: String,
     default: DEFAULTS.NPC_FOOD_ROLL_TABLE_UUID,
+  });
+
+  (game.settings as any).register(MODULE_ID, SETTINGS.DIRECTOR_DATA, {
+    scope: "world",
+    config: false,
+    type: Object,
+    default: { sessions: [] },
   });
 }
