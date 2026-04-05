@@ -1,0 +1,549 @@
+{
+  "folder": "lgcCarFolderXXXX",
+  "name": "Élocution",
+  "_id": "lgcElocutionTbl1",
+  "img": "icons/svg/d20-black.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem001",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Évite le regard de son interlocuteur",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem001"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem002",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Parle très vite quand il/elle est nerveux(se)",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem002"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem003",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Coupe ses phrases par « hm... » fréquemment",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem003"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem004",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Rit nerveusement avant de répondre",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem004"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem005",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Utilise beaucoup de métaphores",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem005"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem006",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Répète la question avant d'y répondre",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem006"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem007",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Chuchote souvent sans s'en rendre compte",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem007"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem008",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Ponctue ses phrases d'un « Vous comprenez ? »",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem008"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem009",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Parle de lui/elle à la troisième personne",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem009"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem010",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "S'exprime avec un fort accent régional",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem010"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem011",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Jure à chaque phrase",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem011"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem012",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Ne finit jamais vraiment ses phrases…",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem012"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem013",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Parle très lentement, en choisissant soigneusement ses mots",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem013"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem014",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Fait de grands gestes en parlant",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem014"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem015",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Imite les expressions de son interlocuteur",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem015"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem016",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Chante plutôt que de parler quand il/elle est heureux(se)",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem016"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem017",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Utilise des mots compliqués à tort et à travers",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem017"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem018",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Répète constamment le prénom de son interlocuteur",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem018"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem019",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Sourit sans cesse, même pour les mauvaises nouvelles",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem019"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_id": "lgcSpeechItem020",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "S'interrompt souvent pour corriger ce qu'il/elle vient de dire",
+      "name": "",
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem020"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": null
+  },
+  "formula": "1d20",
+  "_key": "!tables!lgcElocutionTbl1"
+}

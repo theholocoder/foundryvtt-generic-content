@@ -1,0 +1,549 @@
+{
+  "folder": "lgcCarFolderXXXX",
+  "name": "Nourriture préférée",
+  "_id": "lgcFoodTableXXX1",
+  "img": "icons/svg/d20-black.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR001",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Ragoût de gibier avec du pain noir",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR001"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR002",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Tarte aux pommes de sa mère",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR002"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR003",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Fromage affiné et vin de pays",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR003"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR004",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Gâteau au miel des halflings",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR004"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR005",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Brochettes de viande épicées",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR005"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR006",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Soupe épaisse aux légumes d'hiver",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR006"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR007",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Rôti de sanglier aux herbes",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR007"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR008",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Noisettes et baies sauvages",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR008"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR009",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Pain d'épices et cidre chaud",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR009"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR010",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Poisson séché et biscuits de voyage",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR010"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR011",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Champignons farcis au fromage",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR011"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR012",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Confiture de prunes sur galette de seigle",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR012"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR013",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Bouillon de poulet bien relevé",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR013"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR014",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Crabe et fruits de mer grillés",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR014"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR015",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Pâtisseries orientales au sésame",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR015"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR016",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Viande fumée et légumes marinés",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR016"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR017",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Fruits exotiques du sud",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR017"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR018",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Bière brune et saucisses fumées",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR018"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR019",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Gruau d'avoine au miel du matin",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR019"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_id": "lgcFoodTableR020",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Champignons noirs et riz parfumé",
+      "name": "",
+      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR020"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": null
+  },
+  "formula": "1d20",
+  "_key": "!tables!lgcFoodTableXXX1"
+}

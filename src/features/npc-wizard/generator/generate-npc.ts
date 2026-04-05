@@ -20,6 +20,7 @@ import { sizeCodeToLabel } from "../../../lib/pf2e/traits";
 import {
   buildNpcBlockHtml,
   buildInfluenceBlockHtml,
+  buildNotesPage,
   createJournalEntry,
 } from "../../../lib/pf2e/journal";
 import type { JournalPageSpec } from "../../../lib/pf2e/journal";
@@ -404,6 +405,9 @@ async function createJournal(
   if (result.img && result.img !== "icons/svg/mystery-man.svg") {
     pages.push({ name: "Image", type: "image", src: result.img });
   }
+
+  const notesPage = await buildNotesPage();
+  if (notesPage) pages.push(notesPage);
 
   return createJournalEntry(result.name, pages);
 }

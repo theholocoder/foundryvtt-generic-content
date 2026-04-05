@@ -3,10 +3,12 @@ import { toHtml } from "../utils";
 import {
   buildNpcBlockHtml,
   buildInfluenceBlockHtml,
+  buildNotesPage,
   formatSensesFromActor,
   formatLanguagesFromActor,
   createJournalEntry,
 } from "../../../lib/pf2e/journal";
+import type { JournalPageSpec } from "../../../lib/pf2e/journal";
 import { escapeHtml } from "../../../lib/html";
 import { sizeCodeToLabel } from "../../../lib/pf2e/traits";
 
@@ -38,7 +40,11 @@ export async function createNpcJournal(
 
   const pageContent = [npcBlock, influenceBlock, actorLink].filter(Boolean).join("\n<hr />\n");
 
-  return createJournalEntry(npc.name, [{ name: npc.name, type: "text", content: pageContent }]);
+  const pages: JournalPageSpec[] = [{ name: npc.name, type: "text", content: pageContent }];
+  const notesPage = await buildNotesPage();
+  if (notesPage) pages.push(notesPage);
+
+  return createJournalEntry(npc.name, pages);
 }
 
 function buildInfluenceStatblock(npc: NormalizedNpc): string {

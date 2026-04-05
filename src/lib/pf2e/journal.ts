@@ -1,4 +1,6 @@
 import { escapeHtml } from "../html";
+import { MODULE_ID, SETTINGS } from "../../settings";
+import { rollOnTable } from "../foundry/rolltable";
 
 const t = (k: string): string => game.i18n?.localize(k) ?? k;
 
@@ -186,4 +188,54 @@ export async function createJournalEntry(
     );
     return null;
   }
+}
+
+// ─── Notes page (random tables) ──────────────────────────────────────────────
+
+export async function buildNotesPage(): Promise<JournalPageSpec | null> {
+  const personalityUuid =
+    ((game.settings as any)?.get(MODULE_ID, SETTINGS.NPC_PERSONALITY_ROLL_TABLE_UUID) as string) ?? "";
+  const speechUuid =
+    ((game.settings as any)?.get(MODULE_ID, SETTINGS.NPC_SPEECH_ROLL_TABLE_UUID) as string) ?? "";
+  const foodUuid =
+    ((game.settings as any)?.get(MODULE_ID, SETTINGS.NPC_FOOD_ROLL_TABLE_UUID) as string) ?? "";
+
+  const sections: string[] = [];
+
+  if (personalityUuid) {
+    const rolls = await Promise.all([
+      rollOnTable(personalityUuid),
+      rollOnTable(personalityUuid),
+      rollOnTable(personalityUuid),
+    ]);
+    const traits = [...new Set(rolls.filter((r): r is string => r !== null))];
+    if (traits.length) {
+      sections.push(
+        `<h2>${t("LGC.NpcWizard.Journal.Personality")}</h2>`,
+        `<ul>${traits.map((tr) => `<li>${escapeHtml(tr)}</li>`).join("")}</ul>`,
+      );
+    }
+  }
+
+  if (speechUuid) {
+    const speech = await rollOnTable(speechUuid);
+    if (speech) {
+      sections.push(`<h2>${t("LGC.NpcWizard.Journal.Speech")}</h2><p>${escapeHtml(speech)}</p>`);
+    }
+  }
+
+  if (foodUuid) {
+    const food = await rollOnTable(foodUuid);
+    if (food) {
+      sections.push(`<h2>${t("LGC.NpcWizard.Journal.FavoriteFood")}</h2><p>${escapeHtml(food)}</p>`);
+    }
+  }
+
+  if (!sections.length) return null;
+
+  return {
+    name: t("LGC.NpcWizard.Journal.Notes"),
+    type: "text",
+    content: sections.join("\n"),
+  };
 }
