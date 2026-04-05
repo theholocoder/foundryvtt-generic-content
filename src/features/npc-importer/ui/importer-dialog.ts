@@ -1,70 +1,40 @@
-export function toJQuery(html: unknown): JQuery {
-  // Foundry hook callbacks vary between Application (jQuery) and ApplicationV2 (HTMLElement).
-  if ((globalThis as any).jQuery && html instanceof (globalThis as any).jQuery) {
-    return html as JQuery;
-  }
-  return $(html as any);
-}
-
-export function injectImportButton(
-  html: unknown,
-  opts: {
-    buttonId: string;
-    label: string;
-    onClick: () => void;
-  },
-): void {
-  const $html = toJQuery(html);
-  if (!$html?.length) return;
-  if ($html.find(`#${opts.buttonId}`).length) return;
-
-  const footer = $html.find(".directory-footer");
-  if (!footer.length) return;
-
-  const btn = $(
-    `<button type="button" id="${opts.buttonId}" class="lgc-btn-import-npc">
-      <i class="fa-solid fa-file-import"></i>
-      ${opts.label}
-    </button>`,
-  );
-
-  btn.on("click", opts.onClick);
-  footer.append(btn);
-}
+import { toJQuery } from "../../../lib/foundry";
 
 export function openNpcImportDialog(
   onSubmit: (rawJson: string, opts: { createJournal: boolean; createInfluence: boolean }) =>
     Promise<void>,
 ): void {
+  const t = (k: string) => game.i18n?.localize(k) ?? k;
+
   const content = [
     '<form class="lgc-npc-import">',
-    "  <div class=\"form-group\">",
-    "    <label>pf2.tools JSON</label>",
-    "    <textarea name=\"npcJson\" rows=\"18\" style=\"font-family: monospace;\" placeholder=\"Paste JSON here\"></textarea>",
+    '  <div class="form-group">',
+    `    <label>${t("LGC.NpcImporter.PasteJson")}</label>`,
+    '    <textarea name="npcJson" rows="18" style="font-family: monospace;" placeholder="Paste JSON here"></textarea>',
     "  </div>",
     "  <hr>",
-    "  <div class=\"form-group\">",
+    '  <div class="form-group">',
     "    <label>",
-    "      <input type=\"checkbox\" name=\"createJournal\" checked>",
-    "      Create journal entry",
+    '      <input type="checkbox" name="createJournal" checked>',
+    `      ${t("LGC.NpcImporter.CreateJournal")}`,
     "    </label>",
     "  </div>",
-    "  <div class=\"form-group\">",
+    '  <div class="form-group">',
     "    <label>",
-    "      <input type=\"checkbox\" name=\"createInfluence\">",
-    "      Add influence statblock",
+    '      <input type="checkbox" name="createInfluence">',
+    `      ${t("LGC.NpcImporter.CreateInfluence")}`,
     "    </label>",
     "  </div>",
     "</form>",
   ].join("\n");
 
   const dlg = new Dialog({
-    title: "Import NPC (pf2.tools JSON)",
+    title: t("LGC.NpcImporter.DialogTitle"),
     content,
     buttons: {
       create: {
         icon: '<i class="fa-solid fa-wand-magic-sparkles"></i>',
-        label: "Create",
+        label: t("LGC.NpcImporter.Create"),
         callback: async (html: any) => {
           const $html = toJQuery(html);
           const raw = String($html.find("textarea[name=npcJson]").val() ?? "").trim();
@@ -79,7 +49,7 @@ export function openNpcImportDialog(
       },
       cancel: {
         icon: '<i class="fa-solid fa-xmark"></i>',
-        label: "Cancel",
+        label: t("LGC.NpcImporter.Cancel"),
       },
     },
     default: "create",

@@ -47,15 +47,11 @@ export function toHtml(text: string): string {
   return `<p>${strong.replace(/\n/g, "<br />")}</p>`;
 }
 
-export function escapeHtml(s: string): string {
+function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
+    .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
-}
-
-export function deepClone<T>(v: T): T {
-  return foundry.utils.deepClone(v);
 }

@@ -7,6 +7,7 @@ import {
   unlinkSync,
   copyFileSync,
   statSync,
+  readdirSync,
 } from "node:fs";
 import path from "node:path";
 
@@ -61,7 +62,9 @@ try {
   const srcManifest = path.join(root, "src", "module.json");
   const distManifest = path.join(root, "dist", "module.json");
   const srcMtime = statSync(srcManifest).mtimeMs;
-  const distMtime = existsSync(distManifest) ? statSync(distManifest).mtimeMs : 0;
+  const distMtime = existsSync(distManifest)
+    ? statSync(distManifest).mtimeMs
+    : 0;
   if (srcMtime > distMtime) copyFileSync(srcManifest, distManifest);
 } catch {
   // ignore
@@ -71,3 +74,18 @@ const publicModuleDir = path.join(root, "public", "modules", MODULE_ID);
 ensureDir(publicModuleDir);
 ensureSymlink(path.join(publicModuleDir, "packs"), "../../../dist/packs");
 ensureSymlink(path.join(publicModuleDir, "artwork"), "../../../artwork");
+
+// Copy language files to dist/ so Foundry can find them.
+const srcLangDir = path.join(root, "src", "lang");
+const distLangDir = path.join(root, "dist", "lang");
+if (existsSync(srcLangDir)) {
+  ensureDir(distLangDir);
+  for (const file of readdirSync(srcLangDir)) {
+    if (file.endsWith(".json")) {
+      copyFileSync(path.join(srcLangDir, file), path.join(distLangDir, file));
+    }
+  }
+}
+
+// Symlink lang in public/ to dist/lang so Vite dev server serves it.
+ensureSymlink(path.join(publicModuleDir, "lang"), "../../../lang");

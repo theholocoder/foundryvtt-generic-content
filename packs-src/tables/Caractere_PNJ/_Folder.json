@@ -1,0 +1,23 @@
+{
+  "name": "Caractère PNJ",
+  "sorting": "a",
+  "folder": null,
+  "type": "RollTable",
+  "_id": "lgcCarFolderXXXX",
+  "sort": 200000,
+  "color": "#7c4fa0",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": null
+  },
+  "description": "",
+  "_key": "!folders!lgcCarFolderXXXX"
+}

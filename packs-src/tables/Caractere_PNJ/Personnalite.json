@@ -1,0 +1,549 @@
+{
+  "folder": "lgcCarFolderXXXX",
+  "name": "Personnalité",
+  "_id": "lgcPersonality01",
+  "img": "icons/svg/d20-black.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0001",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Méfiant",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0001"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0002",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Bavard",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0002"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0003",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Généreux",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0003"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0004",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Avare",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0004"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0005",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Courageux",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0005"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0006",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Peureux",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0006"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0007",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Curieux",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0007"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0008",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Indifférent",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0008"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0009",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Arrogant",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0009"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0010",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Humble",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0010"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0011",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Loyal",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0011"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0012",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Opportuniste",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0012"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0013",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Optimiste",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0013"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0014",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Pessimiste",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0014"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0015",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Impulsif",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0015"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0016",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Prudent",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0016"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0017",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Mystérieux",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0017"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0018",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Jovial",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0018"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0019",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Colérique",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0019"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "_id": "lgcPersTrait0020",
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "pf2e",
+        "systemVersion": "7.3.0",
+        "createdTime": 1757325751415,
+        "modifiedTime": 1757325751415,
+        "lastModifiedBy": null
+      },
+      "description": "Mélancolique",
+      "name": "",
+      "_key": "!tables.results!lgcPersonality01.lgcPersTrait0020"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "pf2e",
+    "systemVersion": "7.3.0",
+    "createdTime": 1757325751415,
+    "modifiedTime": 1757325751415,
+    "lastModifiedBy": null
+  },
+  "formula": "1d20",
+  "_key": "!tables!lgcPersonality01"
+}

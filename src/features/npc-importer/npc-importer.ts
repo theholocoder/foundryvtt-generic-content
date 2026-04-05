@@ -1,14 +1,17 @@
-import { importNpcFromJson } from "./importer";
-import { injectImportButton, openNpcImportDialog } from "./ui";
+import { importNpcFromJson } from "./importer/index";
+import { openNpcImportDialog } from "./ui/importer-dialog";
+import { injectActorDirectoryFooterButton } from "../../lib/foundry";
 
 const BTN_ID = "lgc-import-npc-json";
 
 export function registerNpcImporter(): void {
   Hooks.on("renderActorDirectory" as any, (_app: any, html: any) => {
     try {
-      injectImportButton(html, {
+      if (!(game as any).user?.isGM) return;
+      injectActorDirectoryFooterButton(html, {
         buttonId: BTN_ID,
-        label: "Import NPC JSON",
+        label: game.i18n?.localize("LGC.NpcImporter.ButtonLabel") ?? "Import NPC JSON",
+        iconClass: "fa-solid fa-file-import",
         onClick: () =>
           openNpcImportDialog((raw, opts) => importNpcFromJson(raw, opts)),
       });

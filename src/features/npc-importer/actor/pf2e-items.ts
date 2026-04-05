@@ -1,5 +1,7 @@
-import type { NormalizedNpc } from "./types";
-import { deepClone, escapeHtml } from "./utils";
+import type { NormalizedNpc } from "../importer/types";
+import { deepClone } from "../../../lib/foundry";
+import { escapeHtml } from "../../../lib/html";
+import { setFirstExisting } from "../../../lib/pf2e/actor";
 
 export function buildEmbeddedItems(npc: NormalizedNpc): any[] {
   const items: any[] = [];
@@ -163,33 +165,4 @@ function applyActionCost(systemData: any, raw: string | null): void {
       debugLabel: "action.actionType",
     });
   }
-}
-
-export function setFirstExisting(
-  target: any,
-  paths: string[],
-  value: unknown,
-  options?: { allowCreate?: boolean; debugLabel?: string },
-): boolean {
-  for (const p of paths) {
-    const cur = foundry.utils.getProperty(target, p);
-    if (cur !== undefined) {
-      foundry.utils.setProperty(target, p, value);
-      return true;
-    }
-  }
-
-  if (options?.allowCreate && paths.length) {
-    foundry.utils.setProperty(target, paths[0], value);
-    return true;
-  }
-
-  if (paths.length) {
-    console.debug(
-      "LGC | Missing target paths for setFirstExisting",
-      options?.debugLabel ?? "",
-      paths,
-    );
-  }
-  return false;
 }

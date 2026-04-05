@@ -1,4 +1,4 @@
-import { normalizeBlank } from "./utils";
+import { normalizeBlank } from "../utils";
 
 type ParsedSenses = {
   slugs: string[];
