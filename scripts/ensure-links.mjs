@@ -76,7 +76,7 @@ ensureSymlink(path.join(publicModuleDir, "packs"), "../../../dist/packs");
 ensureSymlink(path.join(publicModuleDir, "artwork"), "../../../artwork");
 
 // Copy language files to dist/ so Foundry can find them.
-const srcLangDir = path.join(root, "src", "lang");
+const srcLangDir = path.join(root, "lang");
 const distLangDir = path.join(root, "dist", "lang");
 if (existsSync(srcLangDir)) {
   ensureDir(distLangDir);
