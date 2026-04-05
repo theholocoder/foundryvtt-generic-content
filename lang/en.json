@@ -101,6 +101,7 @@
   "LGC.Director.ViewScene": "View scene (GM only)",
   "LGC.Director.PlayScene": "Activate scene + open journals",
   "LGC.Director.RemoveScene": "Remove scene",
+  "LGC.Director.ActiveScene": "Currently active scene",
   "LGC.Director.Journals": "Journals",
   "LGC.Director.Actors": "Actors",
   "LGC.Director.Items": "Items",

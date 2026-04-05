@@ -17,13 +17,20 @@ export async function buildBeatsView(session: DirectorSession): Promise<string> 
     session.beats.map((b) => (b.sceneUuid ? resolveSceneThumbnail(b.sceneUuid) : Promise.resolve(null))),
   );
 
+  const activeSceneUuid = (game.scenes as any)?.active?.uuid as string | undefined;
+
   const cards = session.beats.length
     ? session.beats
         .map((b, i) => {
           const thumb = thumbs[i];
           const bg = thumb ? `style="background-image: url('${escapeHtml(thumb)}')"` : "";
+          const isActive = b.sceneUuid && b.sceneUuid === activeSceneUuid;
+          const activeIcon = isActive
+            ? `<span class="lgc-director-card-active" title="${t("LGC.Director.ActiveScene")}"><i class="fa-solid fa-location-dot"></i></span>`
+            : "";
           return `
-          <div class="lgc-director-card lgc-director-beat-card" data-beat-id="${escapeHtml(b.id)}" ${bg}>
+          <div class="lgc-director-card lgc-director-beat-card${isActive ? " lgc-director-beat-card--active" : ""}" data-beat-id="${escapeHtml(b.id)}" ${bg}>
+            ${activeIcon}
             <span class="lgc-director-card-name">${escapeHtml(b.name)}</span>
             <button class="lgc-director-card-remove" data-beat-id="${escapeHtml(b.id)}" title="${t("LGC.Director.RemoveBeat")}">
               <i class="fa-solid fa-trash"></i>

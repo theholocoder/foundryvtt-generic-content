@@ -101,6 +101,7 @@
   "LGC.Director.ViewScene": "Voir la scène (MJ uniquement)",
   "LGC.Director.PlayScene": "Activer la scène + ouvrir les journaux",
   "LGC.Director.RemoveScene": "Retirer la scène",
+  "LGC.Director.ActiveScene": "Scène actuellement active",
   "LGC.Director.Journals": "Journaux",
   "LGC.Director.Actors": "Acteurs",
   "LGC.Director.Items": "Objets",

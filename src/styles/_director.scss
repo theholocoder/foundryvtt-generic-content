@@ -158,6 +158,21 @@
   }
 }
 
+.lgc-director-beat-card--active {
+  outline: 2px solid #f90;
+  outline-offset: -2px;
+}
+
+.lgc-director-card-active {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  color: #f90;
+  font-size: 14px;
+  z-index: 2;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
 .lgc-director-card-name {
   position: absolute;
   bottom: 8px;
@@ -498,27 +513,65 @@
 
 // Dialogs
 .lgc-director-dialog {
+  // Dark window background
+  .window-content {
+    background: #1c1c1c;
+    color: #ddd;
+  }
+
+  // Dialog action buttons (Confirm / Cancel)
+  .dialog-buttons {
+    button {
+      color: #eee;
+      background: #2a2a2a;
+      border: 1px solid #555;
+
+      &:hover {
+        background: #3a3a3a;
+        color: #fff;
+      }
+
+      i {
+        color: inherit;
+      }
+    }
+  }
+
   .lgc-director-dialog-form {
     .form-group {
       display: flex;
       flex-direction: column;
+      // No align-items override — default "stretch" keeps children full-width
       gap: 4px;
       margin-bottom: 10px;
 
       label {
         font-size: 12px;
         font-weight: 600;
-        color: #aaa;
+        color: #bbb;
+        text-align: left;
+        width: 100%;
       }
 
       input,
       textarea {
-        background: #1a1a1a;
+        width: 100%;
+        box-sizing: border-box;
+        background: #111;
         border: 1px solid #444;
-        color: #ddd;
+        color: #eee;
         border-radius: 4px;
         padding: 5px 8px;
         font-size: 13px;
+
+        &::placeholder {
+          color: #777;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #666;
+        }
       }
 
       textarea {
@@ -530,18 +583,27 @@
   .lgc-director-image-picker {
     display: flex;
     gap: 6px;
+    width: 100%;
 
     input {
       flex: 1;
+      min-width: 0;
     }
 
     .lgc-director-browse-btn {
+      flex-shrink: 0;
+      width: 32px;
+      height: 28px;
       background: #2a2a2a;
       border: 1px solid #555;
       color: #aaa;
-      padding: 4px 8px;
       border-radius: 4px;
       cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
 
       &:hover {
         background: #333;
