@@ -20,9 +20,34 @@ import { buildSessionsView } from "./views/sessions-view";
 
 const t = (k: string) => game.i18n?.localize(k) ?? k;
 
-export class DirectorSidebar extends Application {
+// ApplicationV2 / DialogV2 — available since Foundry v12, required from v13 onward
+const AppV2 = (foundry as any).applications.api.ApplicationV2 as new (options?: object) => {
+  rendered: boolean;
+  element: HTMLElement;
+  render(options?: object): Promise<unknown>;
+  close(options?: object): Promise<unknown>;
+};
+const DialogV2 = (foundry as any).applications.api.DialogV2 as {
+  confirm(config: object): Promise<boolean>;
+};
+
+export class DirectorSidebar extends AppV2 {
   private static _instance: DirectorSidebar | null = null;
   private _view: DirectorView = { name: "sessions" };
+
+  static DEFAULT_OPTIONS = {
+    id: "lgc-director-sidebar",
+    classes: ["lgc-director-sidebar"],
+    window: {
+      title: "LGC.Director.Title",
+      resizable: true,
+      minimizable: true,
+    },
+    position: {
+      width: 320,
+      height: 600,
+    },
+  };
 
   static getInstance(): DirectorSidebar {
     if (!DirectorSidebar._instance) {
@@ -36,30 +61,14 @@ export class DirectorSidebar extends Application {
     if (inst.rendered) {
       inst.close();
     } else {
-      inst.render(true);
+      inst.render({ force: true });
     }
   }
 
-  static override get defaultOptions(): Application.Options {
-    return (foundry.utils as any).mergeObject(super.defaultOptions, {
-      id: "lgc-director-sidebar",
-      classes: ["lgc-director-sidebar"],
-      title: "Director",
-      width: 320,
-      height: 600,
-      resizable: true,
-      minimizable: true,
-    }) as Application.Options;
-  }
-
-  override get title(): string {
-    return t("LGC.Director.Title");
-  }
-
-  // Suppress the v13 jQuery deprecation warning — we have no context menus
-  protected override _contextMenu(_html: JQuery): void {}
-
-  override async _renderInner(_data: object): Promise<JQuery> {
+  protected async _renderHTML(
+    _context: object,
+    _options: object,
+  ): Promise<Record<string, HTMLElement>> {
     const data = loadDirectorData();
     let html: string;
 
@@ -86,11 +95,27 @@ export class DirectorSidebar extends Application {
       }
     }
 
-    return $(`<div class="lgc-director-content">${html}</div>`);
+    const el = document.createElement("div");
+    el.className = "lgc-director-content";
+    el.innerHTML = html;
+    return { root: el };
   }
 
-  override activateListeners(html: JQuery): void {
-    super.activateListeners(html);
+  protected _replaceHTML(
+    result: Record<string, HTMLElement>,
+    content: HTMLElement,
+    _options: object,
+  ): void {
+    content.replaceChildren(result.root);
+    this._bindListeners($(content));
+  }
+
+  private _navigateTo(view: DirectorView): void {
+    this._view = view;
+    this.render();
+  }
+
+  private _bindListeners(html: JQuery): void {
     if (this._view.name === "sessions") {
       this._bindSessionsListeners(html);
     } else if (this._view.name === "beats") {
@@ -98,11 +123,6 @@ export class DirectorSidebar extends Application {
     } else {
       this._bindBeatDetailListeners(html);
     }
-  }
-
-  private _navigateTo(view: DirectorView): void {
-    this._view = view;
-    this.render();
   }
 
   // --- Sessions listeners ---
@@ -124,7 +144,7 @@ export class DirectorSidebar extends Application {
     html.find(".lgc-director-card-remove[data-session-id]").on("click", async (ev) => {
       ev.stopPropagation();
       const sessionId = $(ev.currentTarget).data("session-id") as string;
-      const confirmed = await Dialog.confirm({
+      const confirmed = await DialogV2.confirm({
         title: t("LGC.Director.RemoveSession"),
         content: `<p>${t("LGC.Director.ConfirmRemoveSession")}</p>`,
       });
@@ -159,7 +179,7 @@ export class DirectorSidebar extends Application {
     html.find(".lgc-director-card-remove[data-beat-id]").on("click", async (ev) => {
       ev.stopPropagation();
       const beatId = $(ev.currentTarget).data("beat-id") as string;
-      const confirmed = await Dialog.confirm({
+      const confirmed = await DialogV2.confirm({
         title: t("LGC.Director.RemoveBeat"),
         content: `<p>${t("LGC.Director.ConfirmRemoveBeat")}</p>`,
       });
@@ -295,10 +315,5 @@ export class DirectorSidebar extends Application {
         console.error("LGC | Director drop error", err);
       }
     });
-  }
-
-  // Keep the singleton alive on close so the view state is preserved on reopen
-  override async close(options?: Application.CloseOptions): Promise<void> {
-    await super.close(options);
   }
 }

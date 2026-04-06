@@ -1,5 +1,6 @@
-import { toJQuery } from "../../../lib/foundry";
 import CONCEPTS from "../data/concepts.json";
+
+const DialogV2 = (foundry as any).applications.api.DialogV2;
 
 type Tier = 1 | 2 | 3;
 
@@ -29,33 +30,30 @@ export interface WizardResult {
 const t = (k: string) => game.i18n?.localize(k) ?? k;
 
 export function openNpcWizard(onSubmit: (result: WizardResult) => Promise<void>): void {
-  let selectedTier: Tier | null = null;
-
   showTierSelect();
 
   function showTierSelect(): void {
-    const content = buildTierSelectHtml();
-    const dlg = new Dialog({
-      title: t("LGC.NpcWizard.ChooseTier"),
-      content,
-      buttons: {
-        cancel: {
-          icon: '<i class="fa-solid fa-xmark"></i>',
-          label: t("LGC.NpcWizard.Cancel"),
-        },
-      },
-      default: "cancel",
-      render: (html: any) => {
-        const $html = toJQuery(html);
-        $html.closest(".app").addClass("lgc-wizard-dialog");
-        $html.find(".lgc-tier-btn").on("click", function () {
-          selectedTier = Number($(this).data("tier")) as Tier;
-          dlg.close();
-          showWizardForm(selectedTier!);
+    DialogV2.wait({
+      window: { title: t("LGC.NpcWizard.ChooseTier") },
+      content: buildTierSelectHtml(),
+      classes: ["lgc-dialog", "lgc-wizard-dialog"],
+      rejectClose: false,
+      render: (_event: Event, dialog: any) => {
+        $(dialog.element).find(".lgc-tier-btn").on("click", function () {
+          const tier = Number($(this).data("tier")) as Tier;
+          dialog.close();
+          showWizardForm(tier);
         });
       },
+      buttons: [
+        {
+          action: "cancel",
+          icon: "fa-solid fa-xmark",
+          label: t("LGC.NpcWizard.Cancel"),
+          type: "button",
+        },
+      ],
     });
-    dlg.render(true);
   }
 
   function showWizardForm(tier: Tier): void {
@@ -63,40 +61,47 @@ export function openNpcWizard(onSubmit: (result: WizardResult) => Promise<void>)
     const skillRows: SkillRow[] = [];
     const thresholdRows: ThresholdRow[] = [];
 
-    const dlg = new Dialog({
-      title: t("LGC.NpcWizard.WizardTitle"),
+    DialogV2.wait({
+      window: { title: t("LGC.NpcWizard.WizardTitle") },
       content: buildFormHtml(tier, traits, skillRows, thresholdRows),
-      buttons: {
-        back: {
-          icon: '<i class="fa-solid fa-arrow-left"></i>',
+      classes: ["lgc-dialog", "lgc-wizard-dialog"],
+      rejectClose: false,
+      render: (_event: Event, dialog: any) => {
+        const $html = $(dialog.element);
+        bindFormEvents($html, traits, skillRows, thresholdRows);
+      },
+      buttons: [
+        {
+          action: "back",
+          icon: "fa-solid fa-arrow-left",
           label: t("LGC.NpcWizard.Back"),
-          callback: () => { showTierSelect(); },
+          type: "button",
+          callback: (_event: Event, _button: HTMLButtonElement, dialog: any) => {
+            dialog.close();
+            showTierSelect();
+          },
         },
-        cancel: {
-          icon: '<i class="fa-solid fa-xmark"></i>',
+        {
+          action: "cancel",
+          icon: "fa-solid fa-xmark",
           label: t("LGC.NpcWizard.Cancel"),
+          type: "button",
         },
-        create: {
-          icon: '<i class="fa-solid fa-wand-magic-sparkles"></i>',
+        {
+          action: "create",
+          icon: "fa-solid fa-wand-magic-sparkles",
           label: t("LGC.NpcWizard.Create"),
-          callback: async (html: any) => {
-            const $html = toJQuery(html);
+          default: true,
+          callback: async (_event: Event, _button: HTMLButtonElement, dialog: any) => {
+            const $html = $(dialog.element);
             const result = collectForm($html, tier, traits, skillRows, thresholdRows);
             if (result) {
               await onSubmit(result);
             }
           },
         },
-      },
-      default: "create",
-      render: (html: any) => {
-        const $html = toJQuery(html);
-        $html.closest(".app").addClass("lgc-wizard-dialog");
-        bindFormEvents($html, traits, skillRows, thresholdRows);
-      },
+      ],
     });
-
-    dlg.render(true);
   }
 }
 

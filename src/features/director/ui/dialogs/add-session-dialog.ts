@@ -1,6 +1,5 @@
-import { toJQuery } from "../../../../lib/foundry";
-
 const t = (k: string) => game.i18n?.localize(k) ?? k;
+const DialogV2 = (foundry as any).applications.api.DialogV2;
 
 export interface SessionDialogResult {
   name: string;
@@ -15,7 +14,7 @@ export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => 
     <form class="lgc-director-dialog-form">
       <div class="form-group">
         <label>${t("LGC.Director.Dialog.Session.Name")}</label>
-        <input type="text" name="name" placeholder="${t("LGC.Director.Dialog.Session.NamePlaceholder")}" autofocus />
+        <input type="text" name="name" placeholder="${t("LGC.Director.Dialog.Session.NamePlaceholder")}" required autofocus />
       </div>
       <div class="form-group">
         <label>${t("LGC.Director.Dialog.Session.Description")}</label>
@@ -33,47 +32,48 @@ export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => 
     </form>
   `;
 
-  const dlg = new Dialog({
-    title: t("LGC.Director.Dialog.Session.Title"),
+  DialogV2.wait({
+    window: { title: t("LGC.Director.Dialog.Session.Title") },
     content,
-    buttons: {
-      cancel: {
-        icon: '<i class="fa-solid fa-xmark"></i>',
+    classes: ["lgc-dialog", "lgc-director-dialog"],
+    rejectClose: false,
+    render: (_event: Event, dialog: any) => {
+      $(dialog.element).find(".lgc-director-browse-btn").on("click", () => {
+        const fp = new FilePicker({
+          type: "image",
+          current: imagePath,
+          callback: (path: string) => {
+            imagePath = path;
+            $(dialog.element).find('input[name="image"]').val(path);
+          },
+        });
+        fp.browse();
+      });
+    },
+    buttons: [
+      {
+        action: "cancel",
+        icon: "fa-solid fa-xmark",
         label: t("LGC.Director.Cancel"),
+        type: "button",
       },
-      confirm: {
-        icon: '<i class="fa-solid fa-check"></i>',
+      {
+        action: "confirm",
+        icon: "fa-solid fa-check",
         label: t("LGC.Director.Dialog.Session.Create"),
-        callback: async (html: unknown) => {
-          const $html = toJQuery(html);
+        default: true,
+        callback: async (_event: Event, _button: HTMLButtonElement, dialog: any) => {
+          const $html = $(dialog.element);
           const name = ($html.find('input[name="name"]').val() as string)?.trim();
           if (!name) {
             ui?.notifications?.warn(t("LGC.Director.Dialog.Session.NameRequired"));
-            return false;
+            return;
           }
           const description = ($html.find('textarea[name="description"]').val() as string)?.trim() ?? "";
           const image = ($html.find('input[name="image"]').val() as string)?.trim() ?? imagePath;
           await onSubmit({ name, description, image });
         },
       },
-    },
-    default: "confirm",
-    render: (html: unknown) => {
-      const $html = toJQuery(html);
-      $html.closest(".app").addClass("lgc-director-dialog");
-
-      $html.find(".lgc-director-browse-btn").on("click", () => {
-        const fp = new FilePicker({
-          type: "image",
-          current: imagePath,
-          callback: (path: string) => {
-            imagePath = path;
-            $html.find('input[name="image"]').val(path);
-          },
-        });
-        fp.browse();
-      });
-    },
+    ],
   });
-  dlg.render(true);
 }

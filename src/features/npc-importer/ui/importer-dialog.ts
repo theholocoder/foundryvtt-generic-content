@@ -1,4 +1,4 @@
-import { toJQuery } from "../../../lib/foundry";
+const DialogV2 = (foundry as any).applications.api.DialogV2;
 
 export function openNpcImportDialog(
   onSubmit: (rawJson: string, opts: { createJournal: boolean; createInfluence: boolean }) =>
@@ -10,7 +10,7 @@ export function openNpcImportDialog(
     '<form class="lgc-npc-import">',
     '  <div class="form-group">',
     `    <label>${t("LGC.NpcImporter.PasteJson")}</label>`,
-    '    <textarea name="npcJson" rows="18" style="font-family: monospace;" placeholder="Paste JSON here"></textarea>',
+    '    <textarea name="npcJson" rows="18" style="font-family: monospace;" placeholder="Paste JSON here" required></textarea>',
     "  </div>",
     "  <hr>",
     '  <div class="form-group">',
@@ -28,33 +28,13 @@ export function openNpcImportDialog(
     "</form>",
   ].join("\n");
 
-  const dlg = new Dialog({
-    title: t("LGC.NpcImporter.DialogTitle"),
+  DialogV2.wait({
+    window: { title: t("LGC.NpcImporter.DialogTitle") },
     content,
-    buttons: {
-      create: {
-        icon: '<i class="fa-solid fa-wand-magic-sparkles"></i>',
-        label: t("LGC.NpcImporter.Create"),
-        callback: async (html: any) => {
-          const $html = toJQuery(html);
-          const raw = String($html.find("textarea[name=npcJson]").val() ?? "").trim();
-          const createJournal = Boolean(
-            $html.find("input[name=createJournal]").prop("checked"),
-          );
-          const createInfluence =
-            createJournal &&
-            Boolean($html.find("input[name=createInfluence]").prop("checked"));
-          await onSubmit(raw, { createJournal, createInfluence });
-        },
-      },
-      cancel: {
-        icon: '<i class="fa-solid fa-xmark"></i>',
-        label: t("LGC.NpcImporter.Cancel"),
-      },
-    },
-    default: "create",
-    render: (html: any) => {
-      const $html = toJQuery(html);
+    classes: ["lgc-dialog"],
+    rejectClose: false,
+    render: (_event: Event, dialog: any) => {
+      const $html = $(dialog.element);
       const $createJournal = $html.find("input[name=createJournal]");
       const $createInfluence = $html.find("input[name=createInfluence]");
 
@@ -67,7 +47,27 @@ export function openNpcImportDialog(
       $createJournal.on("change", sync);
       sync();
     },
+    buttons: [
+      {
+        action: "cancel",
+        icon: "fa-solid fa-xmark",
+        label: t("LGC.NpcImporter.Cancel"),
+        type: "button",
+      },
+      {
+        action: "create",
+        icon: "fa-solid fa-wand-magic-sparkles",
+        label: t("LGC.NpcImporter.Create"),
+        default: true,
+        callback: async (_event: Event, _button: HTMLButtonElement, dialog: any) => {
+          const $html = $(dialog.element);
+          const raw = String($html.find("textarea[name=npcJson]").val() ?? "").trim();
+          const createJournal = Boolean($html.find("input[name=createJournal]").prop("checked"));
+          const createInfluence =
+            createJournal && Boolean($html.find("input[name=createInfluence]").prop("checked"));
+          await onSubmit(raw, { createJournal, createInfluence });
+        },
+      },
+    ],
   });
-
-  dlg.render(true);
 }

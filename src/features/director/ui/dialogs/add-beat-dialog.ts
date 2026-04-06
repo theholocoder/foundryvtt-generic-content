@@ -1,6 +1,5 @@
-import { toJQuery } from "../../../../lib/foundry";
-
 const t = (k: string) => game.i18n?.localize(k) ?? k;
+const DialogV2 = (foundry as any).applications.api.DialogV2;
 
 export interface BeatDialogResult {
   name: string;
@@ -12,7 +11,7 @@ export function openAddBeatDialog(onSubmit: (result: BeatDialogResult) => Promis
     <form class="lgc-director-dialog-form">
       <div class="form-group">
         <label>${t("LGC.Director.Dialog.Beat.Name")}</label>
-        <input type="text" name="name" placeholder="${t("LGC.Director.Dialog.Beat.NamePlaceholder")}" autofocus />
+        <input type="text" name="name" placeholder="${t("LGC.Director.Dialog.Beat.NamePlaceholder")}" required autofocus />
       </div>
       <div class="form-group">
         <label>${t("LGC.Director.Dialog.Beat.Description")}</label>
@@ -21,34 +20,34 @@ export function openAddBeatDialog(onSubmit: (result: BeatDialogResult) => Promis
     </form>
   `;
 
-  const dlg = new Dialog({
-    title: t("LGC.Director.Dialog.Beat.Title"),
+  DialogV2.wait({
+    window: { title: t("LGC.Director.Dialog.Beat.Title") },
     content,
-    buttons: {
-      cancel: {
-        icon: '<i class="fa-solid fa-xmark"></i>',
+    classes: ["lgc-dialog", "lgc-director-dialog"],
+    rejectClose: false,
+    buttons: [
+      {
+        action: "cancel",
+        icon: "fa-solid fa-xmark",
         label: t("LGC.Director.Cancel"),
+        type: "button",
       },
-      confirm: {
-        icon: '<i class="fa-solid fa-check"></i>',
+      {
+        action: "confirm",
+        icon: "fa-solid fa-check",
         label: t("LGC.Director.Dialog.Beat.Create"),
-        callback: async (html: unknown) => {
-          const $html = toJQuery(html);
+        default: true,
+        callback: async (_event: Event, _button: HTMLButtonElement, dialog: any) => {
+          const $html = $(dialog.element);
           const name = ($html.find('input[name="name"]').val() as string)?.trim();
           if (!name) {
             ui?.notifications?.warn(t("LGC.Director.Dialog.Beat.NameRequired"));
-            return false;
+            return;
           }
           const description = ($html.find('textarea[name="description"]').val() as string)?.trim() ?? "";
           await onSubmit({ name, description });
         },
       },
-    },
-    default: "confirm",
-    render: (html: unknown) => {
-      const $html = toJQuery(html);
-      $html.closest(".app").addClass("lgc-director-dialog");
-    },
+    ],
   });
-  dlg.render(true);
 }
