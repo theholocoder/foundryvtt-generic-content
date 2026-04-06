@@ -1,16 +1,8 @@
 import { escapeHtml } from "../../../../lib/html";
 import type { DirectorSession } from "../../types";
+import { resolveSceneThumbnail } from "../utils";
 
 const t = (k: string) => game.i18n?.localize(k) ?? k;
-
-async function resolveSceneThumbnail(uuid: string): Promise<string | null> {
-  try {
-    const doc = await fromUuid(uuid);
-    return (doc as any)?.thumb ?? (doc as any)?.background?.src ?? null;
-  } catch {
-    return null;
-  }
-}
 
 export async function buildBeatsView(session: DirectorSession): Promise<string> {
   const thumbs = await Promise.all(

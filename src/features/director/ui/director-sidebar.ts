@@ -298,6 +298,7 @@ export class DirectorSidebar extends AppV2 {
     });
 
     $zones.on("dragleave", (ev) => {
+      if ($(ev.currentTarget).has(ev.relatedTarget as Element).length) return;
       $(ev.currentTarget).removeClass("lgc-drag-over");
     });
 

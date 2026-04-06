@@ -8,8 +8,6 @@ export interface SessionDialogResult {
 }
 
 export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => Promise<void>): void {
-  let imagePath = "";
-
   const content = `
     <form class="lgc-director-dialog-form">
       <div class="form-group">
@@ -39,12 +37,12 @@ export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => 
     rejectClose: false,
     render: (_event: Event, dialog: any) => {
       $(dialog.element).find(".lgc-director-browse-btn").on("click", () => {
+        const $input = $(dialog.element).find('input[name="image"]');
         const fp = new FilePicker({
           type: "image",
-          current: imagePath,
+          current: ($input.val() as string) || "",
           callback: (path: string) => {
-            imagePath = path;
-            $(dialog.element).find('input[name="image"]').val(path);
+            $input.val(path);
           },
         });
         fp.browse();
@@ -70,7 +68,7 @@ export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => 
             return;
           }
           const description = ($html.find('textarea[name="description"]').val() as string)?.trim() ?? "";
-          const image = ($html.find('input[name="image"]').val() as string)?.trim() ?? imagePath;
+          const image = ($html.find('input[name="image"]').val() as string)?.trim() ?? "";
           await onSubmit({ name, description, image });
         },
       },

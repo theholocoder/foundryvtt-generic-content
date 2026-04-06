@@ -1,5 +1,6 @@
 import { escapeHtml } from "../../../../lib/html";
 import type { DirectorBeat } from "../../types";
+import { resolveSceneThumbnail } from "../utils";
 
 const t = (k: string) => game.i18n?.localize(k) ?? k;
 
@@ -10,7 +11,7 @@ function formatRealTime(ms: number): string {
 function formatWorldTime(seconds: number): string {
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
-  const s = seconds % 60;
+  const s = Math.floor(seconds % 60);
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
@@ -28,15 +29,6 @@ async function resolveEntity(uuid: string): Promise<EntityInfo> {
     };
   } catch {
     return { name: uuid, img: null };
-  }
-}
-
-async function resolveSceneThumbnail(uuid: string): Promise<string | null> {
-  try {
-    const doc = await fromUuid(uuid);
-    return (doc as any)?.thumb ?? (doc as any)?.background?.src ?? null;
-  } catch {
-    return null;
   }
 }
 
