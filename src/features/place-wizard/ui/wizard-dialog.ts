@@ -119,6 +119,12 @@ function buildBiomeOptions(): string {
 }
 
 function bindFormEvents($html: JQuery, state: { regionUuid: string; sceneUuid: string }): void {
+  const $createBtn = $html.find('[data-action="create"]');
+  $createBtn.prop("disabled", true);
+  $html.find('input[name="name"]').on("input", function () {
+    $createBtn.prop("disabled", String($(this).val() ?? "").trim().length === 0);
+  });
+
   bindDropZone(
     $html,
     ".lgc-place-region-zone",
