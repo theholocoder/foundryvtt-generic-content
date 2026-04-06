@@ -1,7 +1,7 @@
 {
   "folder": "lgcCarFolderXXXX",
-  "name": "Nourriture préférée",
-  "_id": "lgcFoodTableXXX1",
+  "name": "Élocution",
+  "_id": "lgcElocutionTbl1",
   "img": "icons/svg/d20-black.svg",
   "description": "",
   "results": [
@@ -13,7 +13,7 @@
         1
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR001",
+      "_id": "lgcSpeechItem001",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -27,9 +27,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Ragoût de gibier avec du pain noir",
+      "description": "Évite le regard de son interlocuteur",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR001"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem001"
     },
     {
       "type": "text",
@@ -39,7 +39,7 @@
         2
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR002",
+      "_id": "lgcSpeechItem002",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -53,9 +53,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Tarte aux pommes de sa mère",
+      "description": "Parle très vite quand il/elle est nerveux(se)",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR002"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem002"
     },
     {
       "type": "text",
@@ -65,7 +65,7 @@
         3
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR003",
+      "_id": "lgcSpeechItem003",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -79,9 +79,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Fromage affiné et vin de pays",
+      "description": "Coupe ses phrases par « hm... » fréquemment",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR003"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem003"
     },
     {
       "type": "text",
@@ -91,7 +91,7 @@
         4
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR004",
+      "_id": "lgcSpeechItem004",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -105,9 +105,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Gâteau au miel des halflings",
+      "description": "Rit nerveusement avant de répondre",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR004"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem004"
     },
     {
       "type": "text",
@@ -117,7 +117,7 @@
         5
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR005",
+      "_id": "lgcSpeechItem005",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -131,9 +131,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Brochettes de viande épicées",
+      "description": "Utilise beaucoup de métaphores",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR005"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem005"
     },
     {
       "type": "text",
@@ -143,7 +143,7 @@
         6
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR006",
+      "_id": "lgcSpeechItem006",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -157,9 +157,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Soupe épaisse aux légumes d'hiver",
+      "description": "Répète la question avant d'y répondre",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR006"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem006"
     },
     {
       "type": "text",
@@ -169,7 +169,7 @@
         7
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR007",
+      "_id": "lgcSpeechItem007",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -183,9 +183,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Rôti de sanglier aux herbes",
+      "description": "Chuchote souvent sans s'en rendre compte",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR007"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem007"
     },
     {
       "type": "text",
@@ -195,7 +195,7 @@
         8
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR008",
+      "_id": "lgcSpeechItem008",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -209,9 +209,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Noisettes et baies sauvages",
+      "description": "Ponctue ses phrases d'un « Vous comprenez ? »",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR008"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem008"
     },
     {
       "type": "text",
@@ -221,7 +221,7 @@
         9
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR009",
+      "_id": "lgcSpeechItem009",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -235,9 +235,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Pain d'épices et cidre chaud",
+      "description": "Parle de lui/elle à la troisième personne",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR009"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem009"
     },
     {
       "type": "text",
@@ -247,7 +247,7 @@
         10
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR010",
+      "_id": "lgcSpeechItem010",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -261,9 +261,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Poisson séché et biscuits de voyage",
+      "description": "S'exprime avec un fort accent régional",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR010"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem010"
     },
     {
       "type": "text",
@@ -273,7 +273,7 @@
         11
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR011",
+      "_id": "lgcSpeechItem011",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -287,9 +287,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Champignons farcis au fromage",
+      "description": "Jure à chaque phrase",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR011"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem011"
     },
     {
       "type": "text",
@@ -299,7 +299,7 @@
         12
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR012",
+      "_id": "lgcSpeechItem012",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -313,9 +313,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Confiture de prunes sur galette de seigle",
+      "description": "Ne finit jamais vraiment ses phrases…",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR012"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem012"
     },
     {
       "type": "text",
@@ -325,7 +325,7 @@
         13
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR013",
+      "_id": "lgcSpeechItem013",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -339,9 +339,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Bouillon de poulet bien relevé",
+      "description": "Parle très lentement, en choisissant soigneusement ses mots",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR013"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem013"
     },
     {
       "type": "text",
@@ -351,7 +351,7 @@
         14
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR014",
+      "_id": "lgcSpeechItem014",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -365,9 +365,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Crabe et fruits de mer grillés",
+      "description": "Fait de grands gestes en parlant",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR014"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem014"
     },
     {
       "type": "text",
@@ -377,7 +377,7 @@
         15
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR015",
+      "_id": "lgcSpeechItem015",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -391,9 +391,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Pâtisseries orientales au sésame",
+      "description": "Imite les expressions de son interlocuteur",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR015"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem015"
     },
     {
       "type": "text",
@@ -403,7 +403,7 @@
         16
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR016",
+      "_id": "lgcSpeechItem016",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -417,9 +417,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Viande fumée et légumes marinés",
+      "description": "Chante plutôt que de parler quand il/elle est heureux(se)",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR016"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem016"
     },
     {
       "type": "text",
@@ -429,7 +429,7 @@
         17
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR017",
+      "_id": "lgcSpeechItem017",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -443,9 +443,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Fruits exotiques du sud",
+      "description": "Utilise des mots compliqués à tort et à travers",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR017"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem017"
     },
     {
       "type": "text",
@@ -455,7 +455,7 @@
         18
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR018",
+      "_id": "lgcSpeechItem018",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -469,9 +469,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Bière brune et saucisses fumées",
+      "description": "Répète constamment le prénom de son interlocuteur",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR018"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem018"
     },
     {
       "type": "text",
@@ -481,7 +481,7 @@
         19
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR019",
+      "_id": "lgcSpeechItem019",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -495,9 +495,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Gruau d'avoine au miel du matin",
+      "description": "Sourit sans cesse, même pour les mauvaises nouvelles",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR019"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem019"
     },
     {
       "type": "text",
@@ -507,7 +507,7 @@
         20
       ],
       "drawn": false,
-      "_id": "lgcFoodTableR020",
+      "_id": "lgcSpeechItem020",
       "flags": {},
       "img": "icons/svg/d20-black.svg",
       "_stats": {
@@ -521,9 +521,9 @@
         "modifiedTime": 1757325751415,
         "lastModifiedBy": null
       },
-      "description": "Champignons noirs et riz parfumé",
+      "description": "S'interrompt souvent pour corriger ce qu'il/elle vient de dire",
       "name": "",
-      "_key": "!tables.results!lgcFoodTableXXX1.lgcFoodTableR020"
+      "_key": "!tables.results!lgcElocutionTbl1.lgcSpeechItem020"
     }
   ],
   "replacement": true,
@@ -545,5 +545,5 @@
     "lastModifiedBy": null
   },
   "formula": "1d20",
-  "_key": "!tables!lgcFoodTableXXX1"
+  "_key": "!tables!lgcElocutionTbl1"
 }

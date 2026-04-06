@@ -134,6 +134,18 @@
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
       }
+    },
+    {
+      "name": "macros",
+      "label": "Macros",
+      "path": "packs/macros",
+      "type": "Macro",
+      "banner": "modules/lazybobcat-generic-content/artwork/module-cover.webp",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "pf2e"
     }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "name": "Director Tool",
+  "type": "script",
+  "_id": "SsRlekUaVZi7Vk4n",
+  "author": "tZbN4KcBYp8FFjDi",
+  "img": "icons/commodities/tech/console-steel.webp",
+  "scope": "global",
+  "command": "// Opens the Director Tool window\nDirectorSidebar.toggle()",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "tZbN4KcBYp8FFjDi": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.10.1",
+    "createdTime": 1775435115836,
+    "modifiedTime": 1775435255332,
+    "lastModifiedBy": "tZbN4KcBYp8FFjDi"
+  },
+  "_key": "!macros!SsRlekUaVZi7Vk4n"
+}
