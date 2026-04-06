@@ -8,6 +8,7 @@ import { applySenses } from "./pf2e-senses";
 import { applySpeed } from "./pf2e-speed";
 import { indexActorSkills, normalizeKey } from "./pf2e-skills";
 import { finalizeHp } from "../../../lib/pf2e/actor";
+import { pickRandomNpcImage } from "../../../lib/random-npc-image";
 
 const SKILL_UPDATE_PATHS = [
   "mod",
@@ -23,7 +24,7 @@ export async function createPf2eNpcActor(
 ): Promise<{ actor: Actor } | null> {
   let actor: Actor;
   try {
-    const img = npc.img ?? "icons/svg/mystery-man.svg";
+    const img = npc.img ?? await pickRandomNpcImage(npc.customTraits ?? []);
     actor = (await Actor.create({
       name: npc.name,
       type: "npc",

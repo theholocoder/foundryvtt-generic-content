@@ -407,7 +407,7 @@ function collectForm(
   const name = String($html.find('input[name="name"]').val() ?? "").trim();
   const conceptId = String($html.find('select[name="concept"]').val() ?? "");
   const level = Number($html.find('input[name="level"]').val() ?? 1);
-  const img = String($html.find('input[name="img"]').val() ?? "").trim() || "icons/svg/mystery-man.svg";
+  const img = String($html.find('input[name="img"]').val() ?? "").trim();
 
   if (!name) {
     ui.notifications?.error(t("LGC.NpcWizard.NameRequired"));
