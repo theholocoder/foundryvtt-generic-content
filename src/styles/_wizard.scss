@@ -195,3 +195,50 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.lgc-wizard-drop-zone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: default;
+  font-size: 0.9em;
+  opacity: 0.8;
+  transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+
+  i { opacity: 0.5; }
+
+  .lgc-drop-label {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .lgc-drop-clear {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.1em;
+    line-height: 1;
+    opacity: 0.5;
+    &:hover { opacity: 1; }
+  }
+
+  &.lgc-drag-over {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+  }
+
+  &.lgc-drop-zone--set {
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.35);
+    opacity: 1;
+    i { opacity: 1; }
+  }
+}

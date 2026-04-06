@@ -58,6 +58,53 @@ export function buildNpcBlockHtml(opts: NpcBlockOptions): string {
   ].join("\n");
 }
 
+// ─── Place block (simple-place template) ─────────────────────────────────────
+
+export interface PlaceBlockOptions {
+  regionUuid: string;   // UUID of a linked JournalEntry, or empty string
+  biomeLabel: string;   // Localised biome label
+  sceneUuid: string;    // UUID of a linked Scene, or empty string
+}
+
+export function buildPlaceBlockHtml(opts: PlaceBlockOptions): string {
+  const attributes: string[] = [
+    "      <div>",
+    `        <p><strong>${t("LGC.PlaceWizard.Journal.Region")}</strong> <span>${opts.regionUuid ? `@UUID[${escapeHtml(opts.regionUuid)}]` : "—"}</span></p>`,
+    "      </div>",
+    "      <div>",
+    `        <p><strong>${t("LGC.PlaceWizard.Journal.Type")}</strong> <span>${escapeHtml(opts.biomeLabel || "—")}</span></p>`,
+    "      </div>",
+  ];
+
+  if (opts.sceneUuid) {
+    attributes.push(
+      "      <div>",
+      `        <p><strong>${t("LGC.PlaceWizard.Journal.Scene")}</strong> <span>@UUID[${escapeHtml(opts.sceneUuid)}]</span></p>`,
+      "      </div>",
+    );
+  }
+
+  return [
+    '<div class="lgc-box-text simple-place">',
+    '  <div class="simple-place__description">',
+    `    <h2>${t("LGC.PlaceWizard.Journal.Overview")}</h2>`,
+    "    <p>TODO</p>",
+    `    <h2>${t("LGC.PlaceWizard.Journal.Atmosphere")}</h2>`,
+    "    <p>TODO</p>",
+    `    <h2>${t("LGC.PlaceWizard.Journal.NotableFeatures")}</h2>`,
+    "    <p>TODO</p>",
+    `    <h2>${t("LGC.PlaceWizard.Journal.SecretsDangers")}</h2>`,
+    "    <p>TODO</p>",
+    "  </div>",
+    '  <div class="simple-place__attributes">',
+    "    <section>",
+    ...attributes,
+    "    </section>",
+    "  </div>",
+    "</div>",
+  ].join("\n");
+}
+
 // ─── Influence statblock ──────────────────────────────────────────────────────
 
 export interface InfluenceBlockOptions {

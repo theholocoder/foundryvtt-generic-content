@@ -45,6 +45,10 @@
   --simple-npc-attributes-background-color: rgba(0, 0, 0, 0.7);
   --simple-npc-attributes-color: #eeeeee;
   --simple-npc-border-color: rgba(0, 0, 0, 0.7);
+  /* Simple Place */
+  --simple-place-attributes-background-color: rgba(0, 0, 0, 0.7);
+  --simple-place-attributes-color: #eeeeee;
+  --simple-place-border-color: rgba(0, 0, 0, 0.7);
   /* Statblock : influence */
   --statblock-influence-background-color: rgba(0, 0, 0, 0.7);
   --statblock-influence-name-background-color: rgb(98, 125, 98);
@@ -185,6 +189,58 @@
     header {
       color: var(--block-investigation-color);
       background: var(--block-investigation-background);
+    }
+  }
+}
+
+
+/******************************************************************************
+ * Simple Place
+ *****************************************************************************/
+.lgc-box-text {
+  &.simple-place {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-left: none;
+    border-right: none;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px ridge var(--simple-place-border-color);
+    border-bottom: 1px ridge var(--simple-place-border-color);
+
+    .simple-place__description {
+      flex: 2;
+      min-width: 250px;
+    }
+
+    .simple-place__attributes {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--simple-place-attributes-color);
+
+      section {
+        background: var(--simple-place-attributes-background-color);
+        padding: 1rem;
+        border-radius: 5px;
+        border: 1px solid var(--simple-place-border-color);
+
+        div {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+
+          strong {
+            font-family: var(--default-font);
+            text-transform: uppercase;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+          }
+        }
+      }
     }
   }
 }
