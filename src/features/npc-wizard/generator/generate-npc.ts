@@ -1,5 +1,6 @@
 import type { WizardResult } from "../ui/wizard-dialog";
 import CONCEPTS from "../data/concepts.json";
+import { pickRandomNpcImage } from "../../../lib/random-npc-image";
 import {
   getAc,
   getHp,
@@ -81,7 +82,7 @@ export async function generateNpc(result: WizardResult): Promise<void> {
 
   const level = result.level;
   const tblLevel = Math.max(-1, Math.min(24, level));
-  const img = result.img || "icons/svg/mystery-man.svg";
+  const img = result.img || await pickRandomNpcImage(result.traits);
 
   const actor = await createActor(result.name, level, img);
   if (!actor) return;
@@ -94,7 +95,7 @@ export async function generateNpc(result: WizardResult): Promise<void> {
   await finalizeHp(actor, getHp(tblLevel, hpRank) ?? 0);
 
   if (result.tier >= 2) {
-    const journal = await createJournal(result, actor);
+    const journal = await createJournal(result, actor, img);
     if (journal) {
       await (actor as any).setFlag(MODULE_ID, "journalUuid", journal.uuid);
       await (journal as any).setFlag(MODULE_ID, "actorUuid", actor.uuid);
@@ -358,6 +359,7 @@ async function createSpellcastingEntry(
 async function createJournal(
   result: WizardResult,
   actor: Actor,
+  img: string,
 ): Promise<JournalEntry | null> {
   const npcBlock = buildNpcBlockHtml({
     appearance: "<p>TODO</p>",
@@ -402,8 +404,8 @@ async function createJournal(
   const page1Content = [npcBlock, influenceBlock, actorLink].filter(Boolean).join("\n<hr />\n");
 
   const pages: JournalPageSpec[] = [{ name: result.name, type: "text", content: page1Content }];
-  if (result.img && result.img !== "icons/svg/mystery-man.svg") {
-    pages.push({ name: "Image", type: "image", src: result.img });
+  if (img && img !== "icons/svg/mystery-man.svg") {
+    pages.push({ name: "Image", type: "image", src: img });
   }
 
   const notesPage = await buildNotesPage();
