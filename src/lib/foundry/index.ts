@@ -1,5 +1,6 @@
 export { toJQuery } from "./jquery";
 export { injectActorDirectoryFooterButton } from "./actor-directory-footer";
+export { injectJournalDirectoryFooterButton } from "./journal-directory-footer";
 export { rollOnTable } from "./rolltable";
 
 export function deepClone<T>(v: T): T {
