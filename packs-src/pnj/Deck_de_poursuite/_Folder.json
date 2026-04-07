@@ -1,0 +1,23 @@
+{
+  "type": "Actor",
+  "folder": null,
+  "name": "Deck de poursuite",
+  "color": "#b5c026",
+  "sorting": "a",
+  "_id": "qKFkdwNnuuBH7MYn",
+  "description": "",
+  "sort": 100000,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.10.1",
+    "createdTime": 1775570790957,
+    "modifiedTime": 1775570791219,
+    "lastModifiedBy": "tZbN4KcBYp8FFjDi"
+  },
+  "_key": "!folders!qKFkdwNnuuBH7MYn"
+}
