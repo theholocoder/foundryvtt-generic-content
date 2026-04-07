@@ -1,0 +1,23 @@
+{
+  "type": "Actor",
+  "folder": "qKFkdwNnuuBH7MYn",
+  "name": "Plaines",
+  "color": null,
+  "sorting": "a",
+  "_id": "Lq1WaNf30g6j1hUS",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.10.1",
+    "createdTime": 1775570790957,
+    "modifiedTime": 1775570790957,
+    "lastModifiedBy": "tZbN4KcBYp8FFjDi"
+  },
+  "_key": "!folders!Lq1WaNf30g6j1hUS"
+}
