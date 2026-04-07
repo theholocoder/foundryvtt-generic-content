@@ -5,7 +5,7 @@
   "author": "tZbN4KcBYp8FFjDi",
   "img": "icons/commodities/tech/console-steel.webp",
   "scope": "global",
-  "command": "// Opens the Director Tool window\nDirectorSidebar.toggle()",
+  "command": "// Opens the Director Tool window (GM only)\nif (!game.user.isGM) return;\nDirectorSidebar.toggle()",
   "folder": null,
   "sort": 0,
   "ownership": {
