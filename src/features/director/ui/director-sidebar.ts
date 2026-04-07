@@ -57,6 +57,7 @@ export class DirectorSidebar extends AppV2 {
   }
 
   static toggle(): void {
+    if (!(game as any).user?.isGM) return;
     const inst = DirectorSidebar.getInstance();
     if (inst.rendered) {
       inst.close();
