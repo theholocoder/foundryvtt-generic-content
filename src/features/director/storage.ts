@@ -108,6 +108,15 @@ export async function addNote(sessionId: string, beatId: string, text: string): 
   return note;
 }
 
+export async function reorderBeats(sessionId: string, orderedBeatIds: string[]): Promise<void> {
+  const data = loadDirectorData();
+  const session = data.sessions.find((s) => s.id === sessionId);
+  if (!session) return;
+  const beatMap = new Map(session.beats.map((b) => [b.id, b]));
+  session.beats = orderedBeatIds.map((id) => beatMap.get(id)).filter(Boolean) as DirectorBeat[];
+  await saveDirectorData(data);
+}
+
 export async function deleteNote(sessionId: string, beatId: string, noteId: string): Promise<void> {
   const data = loadDirectorData();
   const beat = findBeat(data, sessionId, beatId);

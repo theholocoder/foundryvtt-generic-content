@@ -8,6 +8,7 @@ import {
   deleteSession,
   loadDirectorData,
   removeUuidFromBeat,
+  reorderBeats,
   setBeatScene,
 } from "../storage";
 import type { DirectorView } from "../types";
@@ -34,6 +35,7 @@ const DialogV2 = (foundry as any).applications.api.DialogV2 as {
 export class DirectorSidebar extends AppV2 {
   private static _instance: DirectorSidebar | null = null;
   private _view: DirectorView = { name: "sessions" };
+  private _draggedBeatId: string | null = null;
 
   static DEFAULT_OPTIONS = {
     id: "lgc-director-sidebar",
@@ -186,6 +188,61 @@ export class DirectorSidebar extends AppV2 {
       });
       if (!confirmed) return;
       await deleteBeat(view.sessionId, beatId);
+      this.render();
+    });
+
+    html.find(".lgc-director-beat-card").on("dragstart", (ev) => {
+      this._draggedBeatId = $(ev.currentTarget).data("beat-id") as string;
+      (ev.originalEvent as DragEvent).dataTransfer?.setData("text/plain", this._draggedBeatId);
+      $(ev.currentTarget).addClass("lgc-director-card--dragging");
+    });
+
+    html.find(".lgc-director-beat-card").on("dragend", () => {
+      this._draggedBeatId = null;
+      html.find(".lgc-director-beat-card").removeClass("lgc-director-card--dragging lgc-drag-above lgc-drag-below");
+    });
+
+    html.find(".lgc-director-beat-card").on("dragover", (ev) => {
+      ev.preventDefault();
+      if (!this._draggedBeatId) return;
+      const $target = $(ev.currentTarget);
+      if ($target.data("beat-id") === this._draggedBeatId) return;
+      const rect = (ev.currentTarget as HTMLElement).getBoundingClientRect();
+      const above = (ev.originalEvent as DragEvent).clientY < rect.top + rect.height / 2;
+      html.find(".lgc-director-beat-card").removeClass("lgc-drag-above lgc-drag-below");
+      $target.addClass(above ? "lgc-drag-above" : "lgc-drag-below");
+    });
+
+    html.find(".lgc-director-beat-card").on("dragleave", (ev) => {
+      const $card = $(ev.currentTarget);
+      const rel = (ev.originalEvent as DragEvent).relatedTarget as Element | null;
+      if (rel && $card.has(rel).length) return;
+      $card.removeClass("lgc-drag-above lgc-drag-below");
+    });
+
+    html.find(".lgc-director-beat-card").on("drop", async (ev) => {
+      ev.preventDefault();
+      const draggedId = this._draggedBeatId;
+      if (!draggedId) return;
+      const $target = $(ev.currentTarget);
+      const targetId = $target.data("beat-id") as string;
+      if (targetId === draggedId) return;
+
+      const ids: string[] = html
+        .find(".lgc-director-beat-card")
+        .map((_: number, el: HTMLElement) => $(el).data("beat-id") as string)
+        .get();
+
+      const rect = (ev.currentTarget as HTMLElement).getBoundingClientRect();
+      const insertBefore = (ev.originalEvent as DragEvent).clientY < rect.top + rect.height / 2;
+      const newIds = ids.filter((id) => id !== draggedId);
+      const targetIdx = newIds.indexOf(targetId);
+      newIds.splice(insertBefore ? targetIdx : targetIdx + 1, 0, draggedId);
+
+      $target.removeClass("lgc-drag-above lgc-drag-below");
+      this._draggedBeatId = null;
+
+      await reorderBeats(view.sessionId, newIds);
       this.render();
     });
   }
