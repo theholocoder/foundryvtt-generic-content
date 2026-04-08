@@ -206,7 +206,7 @@ function applySkills(
   const skillsObj = foundry.utils.getProperty(sys, "skills") as Record<string, any> | undefined;
   if (!skillsObj || typeof skillsObj !== "object") return;
 
-  const skillPaths = ["mod", "mod.value", "value", "modifier", "totalModifier"];
+  const skillPaths = ["base", "mod", "mod.value", "value", "modifier", "totalModifier"];
 
   for (const row of result.skills) {
     const skillKey = normalizeSkillKey(row.skill);
