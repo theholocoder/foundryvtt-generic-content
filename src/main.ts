@@ -3,6 +3,7 @@ import { registerNpcImporter } from "./features/npc-importer/npc-importer";
 import { registerNpcWizard } from "./features/npc-wizard/npc-wizard";
 import { registerPlaceWizard } from "./features/place-wizard/place-wizard";
 import { registerDirector } from "./features/director/director";
+import { registerDowntime } from "./features/downtime/downtime";
 import { DirectorSidebar } from "./features/director/ui/director-sidebar";
 import { registerSettings } from "./settings";
 
@@ -16,6 +17,7 @@ Hooks.once("init", async function () {
   registerNpcWizard();
   registerPlaceWizard();
   registerDirector();
+  registerDowntime();
 });
 
 Hooks.once("ready", async function () {

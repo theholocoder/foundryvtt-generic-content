@@ -196,5 +196,12 @@
   "LGC.Concept.Sniper": "Sniper",
   "LGC.Concept.MagicalStriker": "Magical Striker",
   "LGC.Concept.Spellcaster": "Spellcaster",
-  "LGC.Concept.SkillParagon": "Skill Paragon"
+  "LGC.Concept.SkillParagon": "Skill Paragon",
+  "LGC.Downtime.Title": "Downtime",
+  "LGC.Downtime.LastActive": "Last Active",
+  "LGC.Downtime.AvailableDays": "Available Days",
+  "LGC.Downtime.NotSet": "Not set",
+  "LGC.Downtime.SetActiveNow": "Set as Active Now",
+  "LGC.Downtime.Recalculate": "Recalculate",
+  "LGC.Downtime.Day": "Day"
 }

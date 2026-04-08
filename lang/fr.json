@@ -196,5 +196,12 @@
   "LGC.Concept.Sniper": "Tireur d'élite",
   "LGC.Concept.MagicalStriker": "Combattant magique",
   "LGC.Concept.Spellcaster": "Lanceur de sorts",
-  "LGC.Concept.SkillParagon": "Parangon de compétences"
+  "LGC.Concept.SkillParagon": "Parangon de compétences",
+  "LGC.Downtime.Title": "Temps libre",
+  "LGC.Downtime.LastActive": "Dernière activité",
+  "LGC.Downtime.AvailableDays": "Jours disponibles",
+  "LGC.Downtime.NotSet": "Non défini",
+  "LGC.Downtime.SetActiveNow": "Marquer comme actif maintenant",
+  "LGC.Downtime.Recalculate": "Recalculer",
+  "LGC.Downtime.Day": "Jour"
 }

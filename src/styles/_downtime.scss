@@ -1,0 +1,34 @@
+.lgc-downtime-tab {
+  .lgc-downtime-content {
+    padding: 0.75rem;
+    max-width: 480px;
+  }
+
+  .lgc-downtime-stats {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 1rem;
+    margin: 0 0 1rem;
+
+    dt {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  .lgc-downtime-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    button {
+      flex: 1 1 auto;
+      padding: 0.3rem 0.75rem;
+      cursor: pointer;
+    }
+  }
+}
