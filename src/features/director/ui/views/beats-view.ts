@@ -1,10 +1,14 @@
 import { escapeHtml } from "../../../../lib/html";
 import type { DirectorSession } from "../../types";
-import { resolveSceneThumbnail } from "../utils";
+import { buildEntityList, resolveEntity, resolveSceneThumbnail } from "../utils";
 
 const t = (k: string) => game.i18n?.localize(k) ?? k;
 
 export async function buildBeatsView(session: DirectorSession): Promise<string> {
+  const journalUuids = session.journalUuids ?? [];
+  const journalEntities = await Promise.all(journalUuids.map(resolveEntity));
+  const journalsSection = buildEntityList(t("LGC.Director.Journals"), journalUuids, journalEntities, "JournalEntry", "journalUuids");
+
   const thumbs = await Promise.all(
     session.beats.map((b) => (b.sceneUuid ? resolveSceneThumbnail(b.sceneUuid) : Promise.resolve(null))),
   );
@@ -46,6 +50,7 @@ export async function buildBeatsView(session: DirectorSession): Promise<string> 
         <h3>${escapeHtml(session.name)}</h3>
       </div>
       ${desc}
+      ${journalsSection}
       <div class="lgc-director-card-list">
         ${cards}
       </div>

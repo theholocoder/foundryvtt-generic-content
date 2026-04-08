@@ -22,6 +22,7 @@ export interface DirectorSession {
   description?: string;
   image?: string;
   createdAt: number; // ms since epoch
+  journalUuids: string[];
   beats: DirectorBeat[];
 }
 

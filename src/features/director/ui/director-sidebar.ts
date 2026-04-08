@@ -1,6 +1,7 @@
 import {
   addNote,
   addUuidToBeat,
+  addUuidToSession,
   createBeat,
   createSession,
   deleteBeat,
@@ -8,6 +9,7 @@ import {
   deleteSession,
   loadDirectorData,
   removeUuidFromBeat,
+  removeUuidFromSession,
   reorderBeats,
   setBeatScene,
 } from "../storage";
@@ -190,6 +192,43 @@ export class DirectorSidebar extends AppV2 {
       await deleteBeat(view.sessionId, beatId);
       this.render();
     });
+
+    // Session journals
+    html.find(".lgc-director-entity-remove").on("click", async (ev) => {
+      ev.stopPropagation();
+      const uuid = $(ev.currentTarget).closest(".lgc-director-entity-item").data("uuid") as string;
+      await removeUuidFromSession(view.sessionId, uuid);
+      this.render();
+    });
+
+    const openSessionJournal = async (uuid: string) => {
+      try {
+        const doc = await fromUuid(uuid);
+        (doc as any)?.sheet?.render(true);
+      } catch (err) {
+        console.error("LGC | Failed to open journal", err);
+      }
+    };
+
+    html.find(".lgc-director-entity-item").on("click", async (ev) => {
+      if ($(ev.target).closest(".lgc-director-entity-actions").length) return;
+      await openSessionJournal($(ev.currentTarget).data("uuid") as string);
+    });
+
+    html.find(".lgc-director-entity-open").on("click", async (ev) => {
+      ev.stopPropagation();
+      await openSessionJournal($(ev.currentTarget).closest(".lgc-director-entity-item").data("uuid") as string);
+    });
+
+    this._activateDropZone(
+      html,
+      '.lgc-director-entity-list[data-drop-type="JournalEntry"]',
+      ["JournalEntry"],
+      async (uuid) => {
+        await addUuidToSession(view.sessionId, uuid);
+        this.render();
+      },
+    );
 
     html.find(".lgc-director-beat-card").on("dragstart", (ev) => {
       this._draggedBeatId = $(ev.currentTarget).data("beat-id") as string;
