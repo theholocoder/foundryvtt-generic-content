@@ -51,6 +51,9 @@ export async function buildBeatsView(session: DirectorSession): Promise<string> 
           <i class="fa-solid fa-arrow-left"></i>
         </button>
         <h3>${escapeHtml(session.name)}</h3>
+        <button class="lgc-director-export-session" title="${t("LGC.Director.ExportSession")}">
+          <i class="fa-solid fa-file-export"></i>
+        </button>
       </div>
       ${desc}
       ${journalsSection}

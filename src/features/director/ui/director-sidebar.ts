@@ -15,6 +15,7 @@ import {
   updateBeat,
   updateSession,
 } from "../storage";
+import { exportSessionToMarkdown, showExportDialog } from "../export";
 import type { DirectorView } from "../types";
 import { openAddBeatDialog } from "./dialogs/add-beat-dialog";
 import { openAddNoteDialog } from "./dialogs/add-note-dialog";
@@ -187,6 +188,13 @@ export class DirectorSidebar extends AppV2 {
 
     html.find(".lgc-director-back").on("click", () => {
       this._navigateTo({ name: "sessions" });
+    });
+
+    html.find(".lgc-director-export-session").on("click", async () => {
+      const session = loadDirectorData().sessions.find((s) => s.id === view.sessionId);
+      if (!session) return;
+      const markdown = await exportSessionToMarkdown(session);
+      showExportDialog(session.name, markdown);
     });
 
     html.find(".lgc-director-add-beat").on("click", () => {
