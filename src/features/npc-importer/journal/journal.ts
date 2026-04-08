@@ -45,7 +45,7 @@ export async function createNpcJournal(
   const notesPage = await buildNotesPage();
   if (notesPage) pages.push(notesPage);
 
-  const flags = getCampaignCodexFlags("npc", pageContent) ?? undefined;
+  const flags = getCampaignCodexFlags("npc", pageContent, notesPage?.content) ?? undefined;
   return createJournalEntry(npc.name, pages, flags);
 }
 

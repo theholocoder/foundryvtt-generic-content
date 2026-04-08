@@ -412,6 +412,6 @@ async function createJournal(
   const notesPage = await buildNotesPage();
   if (notesPage) pages.push(notesPage);
 
-  const flags = getCampaignCodexFlags("npc", page1Content) ?? undefined;
+  const flags = getCampaignCodexFlags("npc", page1Content, notesPage?.content) ?? undefined;
   return createJournalEntry(result.name, pages, flags);
 }
