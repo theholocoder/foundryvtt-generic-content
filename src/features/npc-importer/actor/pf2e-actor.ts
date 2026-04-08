@@ -11,6 +11,7 @@ import { finalizeHp } from "../../../lib/pf2e/actor";
 import { pickRandomNpcImage } from "../../../lib/random-npc-image";
 
 const SKILL_UPDATE_PATHS = [
+  "base",
   "mod",
   "mod.value",
   "value",
@@ -188,31 +189,18 @@ function applyActorTraits(
   if (!traitsObj || typeof traitsObj !== "object") return;
 
   const existing = foundry.utils.getProperty(sys, "traits.value");
-  if (npc.creatureType && Array.isArray(existing)) {
-    updates["system.traits.value"] = Array.from(
-      new Set([...(existing as string[]), slugifyTrait(npc.creatureType)]),
-    );
-  }
-
-  const addCustom = (label: string) => {
-    const other = foundry.utils.getProperty(sys, "traits.otherTags");
-    if (Array.isArray(other)) {
-      updates["system.traits.otherTags"] = Array.from(new Set([...(other as string[]), label]));
-      return;
+  if (Array.isArray(existing)) {
+    const toAdd: string[] = [];
+    if (npc.creatureType) toAdd.push(slugifyTrait(npc.creatureType));
+    for (const t of npc.customTraits ?? []) {
+      const v = normalizeBlank(t);
+      if (v) toAdd.push(slugifyTrait(v));
     }
-    const custom = foundry.utils.getProperty(sys, "traits.custom");
-    if (typeof custom === "string") {
-      const parts = custom
-        .split(/[,;]+/)
-        .map((s) => s.trim())
-        .filter(Boolean);
-      updates["system.traits.custom"] = Array.from(new Set([...parts, label])).join(", ");
+    if (toAdd.length) {
+      updates["system.traits.value"] = Array.from(
+        new Set([...(existing as string[]), ...toAdd]),
+      );
     }
-  };
-
-  for (const t of npc.customTraits ?? []) {
-    const v = normalizeBlank(t);
-    if (v) addCustom(v);
   }
 }
 
