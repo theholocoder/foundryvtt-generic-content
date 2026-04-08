@@ -1,3 +1,5 @@
+import { escapeHtml } from "../../../../lib/html";
+
 const t = (k: string) => game.i18n?.localize(k) ?? k;
 const DialogV2 = (foundry as any).applications.api.DialogV2;
 
@@ -7,21 +9,28 @@ export interface SessionDialogResult {
   image: string;
 }
 
-export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => Promise<void>): void {
+export function openAddSessionDialog(
+  onSubmit: (result: SessionDialogResult) => Promise<void>,
+  initialValues?: Partial<SessionDialogResult>,
+): void {
+  const isEdit = initialValues !== undefined;
+  const title = isEdit ? t("LGC.Director.Dialog.Session.EditTitle") : t("LGC.Director.Dialog.Session.Title");
+  const confirmLabel = isEdit ? t("LGC.Director.Dialog.Session.Update") : t("LGC.Director.Dialog.Session.Create");
+
   const content = `
     <form class="lgc-director-dialog-form">
       <div class="form-group">
         <label>${t("LGC.Director.Dialog.Session.Name")}</label>
-        <input type="text" name="name" placeholder="${t("LGC.Director.Dialog.Session.NamePlaceholder")}" required autofocus />
+        <input type="text" name="name" value="${escapeHtml(initialValues?.name ?? "")}" placeholder="${t("LGC.Director.Dialog.Session.NamePlaceholder")}" required autofocus />
       </div>
       <div class="form-group">
         <label>${t("LGC.Director.Dialog.Session.Description")}</label>
-        <textarea name="description" rows="3" placeholder="${t("LGC.Director.Dialog.Session.DescPlaceholder")}"></textarea>
+        <textarea name="description" rows="3" placeholder="${t("LGC.Director.Dialog.Session.DescPlaceholder")}">${escapeHtml(initialValues?.description ?? "")}</textarea>
       </div>
       <div class="form-group">
         <label>${t("LGC.Director.Dialog.Session.Image")}</label>
         <div class="lgc-director-image-picker">
-          <input type="text" name="image" placeholder="${t("LGC.Director.Dialog.Session.ImagePlaceholder")}" />
+          <input type="text" name="image" value="${escapeHtml(initialValues?.image ?? "")}" placeholder="${t("LGC.Director.Dialog.Session.ImagePlaceholder")}" />
           <button type="button" class="lgc-director-browse-btn">
             <i class="fa-solid fa-folder-open"></i>
           </button>
@@ -31,7 +40,7 @@ export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => 
   `;
 
   DialogV2.wait({
-    window: { title: t("LGC.Director.Dialog.Session.Title") },
+    window: { title },
     content,
     classes: ["lgc-dialog", "lgc-director-dialog"],
     rejectClose: false,
@@ -58,7 +67,7 @@ export function openAddSessionDialog(onSubmit: (result: SessionDialogResult) => 
       {
         action: "confirm",
         icon: "fa-solid fa-check",
-        label: t("LGC.Director.Dialog.Session.Create"),
+        label: confirmLabel,
         default: true,
         callback: async (_event: Event, _button: HTMLButtonElement, dialog: any) => {
           const $html = $(dialog.element);

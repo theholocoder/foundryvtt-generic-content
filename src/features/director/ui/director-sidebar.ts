@@ -12,6 +12,8 @@ import {
   removeUuidFromSession,
   reorderBeats,
   setBeatScene,
+  updateBeat,
+  updateSession,
 } from "../storage";
 import type { DirectorView } from "../types";
 import { openAddBeatDialog } from "./dialogs/add-beat-dialog";
@@ -142,8 +144,27 @@ export class DirectorSidebar extends AppV2 {
 
     html.find(".lgc-director-session-card").on("click", (ev) => {
       if ($(ev.target).closest(".lgc-director-card-remove").length) return;
+      if ($(ev.target).closest(".lgc-director-card-edit").length) return;
       const sessionId = $(ev.currentTarget).data("session-id") as string;
       this._navigateTo({ name: "beats", sessionId });
+    });
+
+    html.find(".lgc-director-card-edit[data-session-id]").on("click", (ev) => {
+      ev.stopPropagation();
+      const sessionId = $(ev.currentTarget).data("session-id") as string;
+      const session = loadDirectorData().sessions.find((s) => s.id === sessionId);
+      if (!session) return;
+      openAddSessionDialog(
+        async ({ name, description, image }) => {
+          await updateSession(sessionId, {
+            name,
+            description: description || undefined,
+            image: image || undefined,
+          });
+          this.render();
+        },
+        { name: session.name, description: session.description ?? "", image: session.image ?? "" },
+      );
     });
 
     html.find(".lgc-director-card-remove[data-session-id]").on("click", async (ev) => {
@@ -177,8 +198,28 @@ export class DirectorSidebar extends AppV2 {
 
     html.find(".lgc-director-beat-card").on("click", (ev) => {
       if ($(ev.target).closest(".lgc-director-card-remove").length) return;
+      if ($(ev.target).closest(".lgc-director-card-edit").length) return;
       const beatId = $(ev.currentTarget).data("beat-id") as string;
       this._navigateTo({ name: "beat-detail", sessionId: view.sessionId, beatId });
+    });
+
+    html.find(".lgc-director-card-edit[data-beat-id]").on("click", (ev) => {
+      ev.stopPropagation();
+      const beatId = $(ev.currentTarget).data("beat-id") as string;
+      const beat = loadDirectorData().sessions
+        .find((s) => s.id === view.sessionId)
+        ?.beats.find((b) => b.id === beatId);
+      if (!beat) return;
+      openAddBeatDialog(
+        async ({ name, description }) => {
+          await updateBeat(view.sessionId, beatId, {
+            name,
+            description: description || undefined,
+          });
+          this.render();
+        },
+        { name: beat.name, description: beat.description ?? "" },
+      );
     });
 
     html.find(".lgc-director-card-remove[data-beat-id]").on("click", async (ev) => {

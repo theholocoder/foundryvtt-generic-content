@@ -13,6 +13,9 @@ export function buildSessionsView(data: DirectorData): string {
           return `
           <div class="lgc-director-card lgc-director-session-card" data-session-id="${escapeHtml(s.id)}" ${bg}>
             <span class="lgc-director-card-name">${escapeHtml(s.name)}</span>
+            <button class="lgc-director-card-edit" data-session-id="${escapeHtml(s.id)}" title="${t("LGC.Director.Edit")}">
+              <i class="fa-solid fa-pencil"></i>
+            </button>
             <button class="lgc-director-card-remove" data-session-id="${escapeHtml(s.id)}" title="${t("LGC.Director.RemoveSession")}">
               <i class="fa-solid fa-trash"></i>
             </button>

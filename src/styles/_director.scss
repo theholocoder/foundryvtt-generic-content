@@ -156,6 +156,10 @@
   &:hover .lgc-director-card-remove {
     opacity: 1;
   }
+
+  &:hover .lgc-director-card-edit {
+    opacity: 1;
+  }
 }
 
 .lgc-director-beat-card {
@@ -209,7 +213,7 @@
   position: absolute;
   bottom: 8px;
   left: 8px;
-  right: 36px; // leave room for the delete button
+  right: 60px; // leave room for edit + delete buttons
   font-size: 13px;
   font-weight: 600;
   color: #fff;
@@ -218,6 +222,30 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   z-index: 1;
+}
+
+.lgc-director-card-edit {
+  position: absolute;
+  top: 6px;
+  right: 32px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 80, 160, 0.85);
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 2;
+
+  &:hover {
+    background: rgba(50, 110, 200, 0.95);
+  }
 }
 
 .lgc-director-card-remove {

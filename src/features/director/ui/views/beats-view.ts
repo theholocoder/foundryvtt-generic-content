@@ -29,6 +29,9 @@ export async function buildBeatsView(session: DirectorSession): Promise<string> 
             ${activeIcon}
             <span class="lgc-director-card-drag-handle" title="${t("LGC.Director.DragToReorder")}"><i class="fa-solid fa-grip-vertical"></i></span>
             <span class="lgc-director-card-name">${escapeHtml(b.name)}</span>
+            <button class="lgc-director-card-edit" data-beat-id="${escapeHtml(b.id)}" title="${t("LGC.Director.Edit")}">
+              <i class="fa-solid fa-pencil"></i>
+            </button>
             <button class="lgc-director-card-remove" data-beat-id="${escapeHtml(b.id)}" title="${t("LGC.Director.RemoveBeat")}">
               <i class="fa-solid fa-trash"></i>
             </button>
