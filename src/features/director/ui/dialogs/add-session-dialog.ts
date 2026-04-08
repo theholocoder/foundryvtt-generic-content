@@ -1,4 +1,5 @@
 import { escapeHtml } from "../../../../lib/html";
+import { getFilePicker } from "../../../../lib/foundry";
 
 const t = (k: string) => game.i18n?.localize(k) ?? k;
 const DialogV2 = (foundry as any).applications.api.DialogV2;
@@ -47,8 +48,7 @@ export function openAddSessionDialog(
     render: (_event: Event, dialog: any) => {
       $(dialog.element).find(".lgc-director-browse-btn").on("click", () => {
         const $input = $(dialog.element).find('input[name="image"]');
-        const FP = (foundry as any).applications?.apps?.FilePicker?.implementation ?? FilePicker;
-        const fp = new FP({
+        const fp = new (getFilePicker())({
           type: "image",
           current: ($input.val() as string) || "",
           callback: (path: string) => {

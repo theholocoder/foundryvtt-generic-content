@@ -1,10 +1,11 @@
+import { getFilePicker } from "./foundry";
+
 const MODULE_ID = "lazybobcat-generic-content";
 const NPC_ART_DIR = `modules/${MODULE_ID}/artwork/npc`;
 
 export async function pickRandomNpcImage(traits: string[] = []): Promise<string> {
   try {
-    const FP = (foundry as any).applications?.apps?.FilePicker?.implementation ?? FilePicker;
-    const result = await FP.browse("data", NPC_ART_DIR);
+    const result = await getFilePicker().browse("data", NPC_ART_DIR);
     const files: string[] = result.files ?? [];
     if (!files.length) return "icons/svg/mystery-man.svg";
 

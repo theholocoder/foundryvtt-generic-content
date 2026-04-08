@@ -1,4 +1,5 @@
 import { pickRandomPlaceImage } from "../../../lib/random-place-image";
+import { getFilePicker } from "../../../lib/foundry";
 
 const DialogV2 = (foundry as any).applications.api.DialogV2;
 
@@ -142,7 +143,7 @@ function bindFormEvents($html: JQuery, state: { regionUuid: string; sceneUuid: s
   );
 
   $html.find(".lgc-browse-btn").on("click", () => {
-    const fp = new FilePicker({
+    const fp = new (getFilePicker())({
       type: "image",
       current: $html.find('input[name="img"]').val() as string,
       callback: (path: string) => {
