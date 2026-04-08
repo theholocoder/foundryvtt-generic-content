@@ -1,6 +1,7 @@
 import type { PlaceWizardResult } from "../ui/wizard-dialog";
 import { pickRandomPlaceImage } from "../../../lib/random-place-image";
 import { buildPlaceBlockHtml, createJournalEntry } from "../../../lib/pf2e/journal";
+import { getCampaignCodexFlags } from "../../../lib/campaign-codex";
 import type { JournalPageSpec } from "../../../lib/pf2e/journal";
 
 const FALLBACK_IMG = "icons/svg/mystery-man.svg";
@@ -22,7 +23,8 @@ export async function generatePlace(result: PlaceWizardResult): Promise<void> {
     pages.push({ name: "Image", type: "image", src: img });
   }
 
-  const journal = await createJournalEntry(result.name, pages);
+  const flags = getCampaignCodexFlags("location", placeBlock) ?? undefined;
+  const journal = await createJournalEntry(result.name, pages, flags);
   if (!journal) return;
 
   journal.sheet?.render(true);

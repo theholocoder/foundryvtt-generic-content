@@ -25,6 +25,7 @@ import {
   createJournalEntry,
 } from "../../../lib/pf2e/journal";
 import type { JournalPageSpec } from "../../../lib/pf2e/journal";
+import { getCampaignCodexFlags } from "../../../lib/campaign-codex";
 
 const MODULE_ID = "lazybobcat-generic-content";
 
@@ -411,5 +412,6 @@ async function createJournal(
   const notesPage = await buildNotesPage();
   if (notesPage) pages.push(notesPage);
 
-  return createJournalEntry(result.name, pages);
+  const flags = getCampaignCodexFlags("npc", page1Content, notesPage?.content) ?? undefined;
+  return createJournalEntry(result.name, pages, flags);
 }
