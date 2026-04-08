@@ -45,7 +45,22 @@ export function applySpeed(
   const parsed = parseSpeed(raw);
   if (parsed.land === null && !parsed.other.length) return;
 
-  const speedObj = foundry.utils.getProperty(sys, "attributes.speed") as any;
+  // PF2e v8+ path: system.movement.speeds.<type>.value
+  const movementSpeeds = sys?.movement?.speeds;
+  if (movementSpeeds !== undefined) {
+    if (parsed.land !== null) {
+      const cur = typeof movementSpeeds.land === "object" && movementSpeeds.land !== null ? movementSpeeds.land : {};
+      updates["system.movement.speeds.land"] = { ...cur, value: parsed.land };
+    }
+    for (const s of parsed.other) {
+      const cur = typeof movementSpeeds[s.type] === "object" && movementSpeeds[s.type] !== null ? movementSpeeds[s.type] : {};
+      updates[`system.movement.speeds.${s.type}`] = { ...cur, value: s.value };
+    }
+    return;
+  }
+
+  // Fallback for PF2e < 7.5
+  const speedObj = sys?.attributes?.speed;
   if (speedObj && typeof speedObj === "object") {
     const next: any = { ...speedObj };
     if (parsed.land !== null && speedObj.value !== undefined) next.value = parsed.land;

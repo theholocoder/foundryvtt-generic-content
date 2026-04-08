@@ -47,7 +47,8 @@ export function openAddSessionDialog(
     render: (_event: Event, dialog: any) => {
       $(dialog.element).find(".lgc-director-browse-btn").on("click", () => {
         const $input = $(dialog.element).find('input[name="image"]');
-        const fp = new FilePicker({
+        const FP = (foundry as any).applications?.apps?.FilePicker?.implementation ?? FilePicker;
+        const fp = new FP({
           type: "image",
           current: ($input.val() as string) || "",
           callback: (path: string) => {
