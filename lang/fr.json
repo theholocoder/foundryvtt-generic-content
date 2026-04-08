@@ -129,6 +129,7 @@
   "LGC.Director.NoBeats": "Aucun beat.",
   "LGC.Director.AddBeat": "Ajouter un beat",
   "LGC.Director.RemoveBeat": "Supprimer le beat",
+  "LGC.Director.DragToReorder": "Glisser pour réorganiser",
   "LGC.Director.ConfirmRemoveBeat": "Voulez-vous vraiment supprimer ce beat ?",
   "LGC.Director.Back": "Retour",
   "LGC.Director.Cancel": "Annuler",

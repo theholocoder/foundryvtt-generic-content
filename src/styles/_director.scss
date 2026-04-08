@@ -158,9 +158,41 @@
   }
 }
 
+.lgc-director-beat-card {
+  cursor: grab;
+
+  &.lgc-director-card--dragging {
+    opacity: 0.4;
+  }
+
+  &.lgc-drag-above {
+    border-top: 2px solid #6af;
+  }
+
+  &.lgc-drag-below {
+    border-bottom: 2px solid #6af;
+  }
+}
+
 .lgc-director-beat-card--active {
   outline: 2px solid #f90;
   outline-offset: -2px;
+}
+
+.lgc-director-card-drag-handle {
+  position: absolute;
+  top: 6px;
+  right: 36px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+.lgc-director-beat-card:hover .lgc-director-card-drag-handle {
+  opacity: 1;
 }
 
 .lgc-director-card-active {
