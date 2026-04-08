@@ -17,6 +17,7 @@ export async function createSession(name: string, description?: string, image?: 
     description,
     image,
     createdAt: Date.now(),
+    journalUuids: [],
     beats: [],
   };
   data.sessions.unshift(session);
@@ -106,6 +107,23 @@ export async function addNote(sessionId: string, beatId: string, text: string): 
   beat.notes.push(note);
   await saveDirectorData(data);
   return note;
+}
+
+export async function addUuidToSession(sessionId: string, uuid: string): Promise<void> {
+  const data = loadDirectorData();
+  const session = data.sessions.find((s) => s.id === sessionId);
+  if (!session) return;
+  if (!Array.isArray(session.journalUuids)) session.journalUuids = [];
+  if (!session.journalUuids.includes(uuid)) session.journalUuids.push(uuid);
+  await saveDirectorData(data);
+}
+
+export async function removeUuidFromSession(sessionId: string, uuid: string): Promise<void> {
+  const data = loadDirectorData();
+  const session = data.sessions.find((s) => s.id === sessionId);
+  if (!session) return;
+  session.journalUuids = (session.journalUuids ?? []).filter((u) => u !== uuid);
+  await saveDirectorData(data);
 }
 
 export async function reorderBeats(sessionId: string, orderedBeatIds: string[]): Promise<void> {
