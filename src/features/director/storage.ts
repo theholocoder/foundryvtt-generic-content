@@ -25,6 +25,32 @@ export async function createSession(name: string, description?: string, image?: 
   return session;
 }
 
+export async function updateSession(
+  sessionId: string,
+  updates: Partial<Pick<DirectorSession, "name" | "description" | "image">>,
+): Promise<void> {
+  const data = loadDirectorData();
+  const session = data.sessions.find((s) => s.id === sessionId);
+  if (!session) return;
+  if (updates.name !== undefined) session.name = updates.name;
+  if (updates.description !== undefined) session.description = updates.description;
+  if (updates.image !== undefined) session.image = updates.image;
+  await saveDirectorData(data);
+}
+
+export async function updateBeat(
+  sessionId: string,
+  beatId: string,
+  updates: Partial<Pick<DirectorBeat, "name" | "description">>,
+): Promise<void> {
+  const data = loadDirectorData();
+  const beat = findBeat(data, sessionId, beatId);
+  if (!beat) return;
+  if (updates.name !== undefined) beat.name = updates.name;
+  if (updates.description !== undefined) beat.description = updates.description;
+  await saveDirectorData(data);
+}
+
 export async function deleteSession(sessionId: string): Promise<void> {
   const data = loadDirectorData();
   data.sessions = data.sessions.filter((s) => s.id !== sessionId);
