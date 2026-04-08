@@ -1,4 +1,5 @@
 import type { NormalizedNpc } from "../importer/types";
+import { getCampaignCodexFlags } from "../../../lib/campaign-codex";
 import { toHtml } from "../utils";
 import {
   buildNpcBlockHtml,
@@ -44,7 +45,8 @@ export async function createNpcJournal(
   const notesPage = await buildNotesPage();
   if (notesPage) pages.push(notesPage);
 
-  return createJournalEntry(npc.name, pages);
+  const flags = getCampaignCodexFlags("npc", pageContent) ?? undefined;
+  return createJournalEntry(npc.name, pages, flags);
 }
 
 function buildInfluenceStatblock(npc: NormalizedNpc): string {

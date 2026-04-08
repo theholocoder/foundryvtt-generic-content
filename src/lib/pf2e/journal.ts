@@ -210,6 +210,7 @@ export interface JournalPageSpec {
 export async function createJournalEntry(
   name: string,
   pages: JournalPageSpec[],
+  flags?: Record<string, Record<string, unknown>>,
 ): Promise<JournalEntry | null> {
   const pageData = pages.map((p) => {
     if (p.type === "text") {
@@ -226,7 +227,9 @@ export async function createJournalEntry(
   });
 
   try {
-    return (await JournalEntry.create({ name, pages: pageData } as any)) as JournalEntry;
+    const data: Record<string, unknown> = { name, pages: pageData };
+    if (flags) data.flags = flags;
+    return (await JournalEntry.create(data as any)) as JournalEntry;
   } catch (err) {
     console.error("LGC | Journal creation failed", err);
     ui.notifications?.warn(
