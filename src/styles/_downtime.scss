@@ -349,4 +349,20 @@
 
     textarea { resize: vertical; }
   }
+
+  .lgc-days-row {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+
+    input { flex: 1; min-width: 0; }
+  }
+
+  .lgc-days-fill-btn {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
 }

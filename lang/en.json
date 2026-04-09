@@ -229,6 +229,7 @@
   "LGC.Downtime.DialogCancel": "Cancel",
   "LGC.Downtime.DaysRequired": "Days must be a positive number.",
   "LGC.Downtime.SelectType": "— select type —",
+  "LGC.Downtime.UseAllDays": "Use all remaining days",
   "LGC.Downtime.ActivityFormula": "Roll Formula",
   "LGC.Downtime.Roll": "Roll",
   "LGC.Downtime.NoFormula": "No roll formula defined. Edit the activity to add one.",

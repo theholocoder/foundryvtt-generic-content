@@ -10,12 +10,14 @@ const DialogV2 = (foundry as any).applications.api.DialogV2;
 export type ActivityDialogResult = Omit<Activity, "id">;
 
 /**
- * @param onSubmit   Called with the result when the user confirms.
+ * @param onSubmit       Called with the result when the user confirms.
  * @param initialValues  When provided, the dialog is in edit mode (pre-filled, GM fields shown).
+ * @param remainingDays  When provided, shows a quick-fill button next to the days input.
  */
 export function openActivityDialog(
   onSubmit: (result: ActivityDialogResult) => Promise<void>,
   initialValues?: Partial<Activity>,
+  remainingDays?: number,
 ): void {
   const isEdit = initialValues !== undefined;
   const isGM: boolean = !!(game as any).user?.isGM;
@@ -116,7 +118,12 @@ export function openActivityDialog(
       </div>
       <div class="form-group">
         <label>${t("LGC.Downtime.ActivityDays")}</label>
-        <input type="number" name="days" value="${initialValues?.days ?? 1}" min="0" step="1" required />
+        <div class="lgc-days-row">
+          <input type="number" name="days" value="${initialValues?.days ?? 1}" min="0" step="1" required />
+          ${remainingDays != null && remainingDays > 0
+            ? `<button type="button" class="lgc-days-fill-btn" title="${t("LGC.Downtime.UseAllDays")} (${remainingDays})"><i class="fa-solid fa-angles-right"></i></button>`
+            : ""}
+        </div>
       </div>
       <div class="form-group">
         <label>${t("LGC.Downtime.ActivityNotes")}</label>
@@ -134,6 +141,10 @@ export function openActivityDialog(
     rejectClose: false,
     render: (_event: Event, dialog: any) => {
       const $d = $(dialog.element);
+
+      $d.find(".lgc-days-fill-btn").on("click", function () {
+        $d.find('input[name="days"]').val(remainingDays ?? 0);
+      });
 
       // Quick-fill helper: selecting an option copies the formula and resets the select
       $d.find('select[name="formula-helper"]').on("change", function () {

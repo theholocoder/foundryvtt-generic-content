@@ -229,6 +229,7 @@
   "LGC.Downtime.DialogCancel": "Annuler",
   "LGC.Downtime.DaysRequired": "Les jours doivent être un nombre positif.",
   "LGC.Downtime.SelectType": "— sélectionner un type —",
+  "LGC.Downtime.UseAllDays": "Utiliser tous les jours restants",
   "LGC.Downtime.ActivityFormula": "Formule de jet",
   "LGC.Downtime.Roll": "Lancer",
   "LGC.Downtime.NoFormula": "Aucune formule de jet définie. Modifiez l'activité pour en ajouter une.",

@@ -142,15 +142,16 @@ export function registerDowntime(): void {
     if (canEdit) {
       $html.find(".lgc-downtime-add-activity").on("click", (ev) => {
         ev.stopPropagation();
+        const remainingDays = getDerived(actor).remainingDays;
         openActivityDialog(async (result) => {
           const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
           const activities: Activity[] = [
             ...(data?.activities ?? []),
             { id: (foundry.utils as any).randomID() as string, ...result },
           ];
-  
+
           await actor.setFlag(MODULE_ID, "downtime.activities", activities);
-        });
+        }, undefined, remainingDays);
       });
     }
 
