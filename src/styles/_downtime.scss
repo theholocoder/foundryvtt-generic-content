@@ -73,9 +73,10 @@
   }
 
   .lgc-downtime-activities-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr) repeat(7, auto);
+    row-gap: 0.2rem;
+    column-gap: 0.4rem;
   }
 
   .lgc-downtime-empty {
@@ -83,13 +84,14 @@
     opacity: 0.6;
     margin: 0;
     font-size: 0.85rem;
+    grid-column: 1 / -1;
   }
 
   .lgc-downtime-activity {
     display: grid;
-    grid-template-columns: 1fr auto auto auto auto auto auto auto auto auto;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     align-items: center;
-    gap: 0.4rem;
     padding: 0.25rem 0.4rem;
     border-radius: 3px;
     background: rgba(0, 0, 0, 0.04);
@@ -97,7 +99,7 @@
     &:hover { background: rgba(0, 0, 0, 0.08); }
   }
 
-  .lgc-downtime-activity-type { font-weight: 500; }
+  .lgc-downtime-activity-type { font-weight: 500; white-space: nowrap; }
 
   .lgc-downtime-activity-days {
     font-variant-numeric: tabular-nums;
@@ -138,13 +140,20 @@
     &:hover, &.lgc-active { color: #a00; opacity: 1; }
   }
 
-  .lgc-downtime-activity-notes { opacity: 0.6; cursor: help; }
+  .lgc-downtime-activity-notes-text {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding-top: 0.15rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.65;
+  }
 
   .lgc-downtime-activity-roll {
+    grid-column: 1 / -1;
     font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
     opacity: 0.75;
-    white-space: nowrap;
   }
 
   .lgc-downtime-edit-btn,
@@ -176,7 +185,7 @@
     &:hover { opacity: 1; color: #805000; }
   }
 
-  .lgc-downtime-cell-placeholder { display: inline-block; min-width: 1.4rem; }
+  .lgc-downtime-cell-placeholder { display: inline-block; }
 
   .lgc-downtime-delete-btn:hover { color: #a00; }
 

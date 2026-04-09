@@ -75,6 +75,10 @@ export function openActivityDialog(
       <div class="form-group">
         <label>${t("LGC.Downtime.ActivityFormula")}</label>
         <input type="text" name="formula" value="${escapeHtml(initialValues?.formula ?? "")}" placeholder="1d20+12" />
+      </div>
+      <div class="form-group">
+        <label>${t("LGC.Downtime.RollCount")}</label>
+        <input type="number" name="rollCount" value="${initialValues?.rollCount ?? 1}" min="1" step="1" />
       </div>`
     : "";
 
@@ -168,6 +172,7 @@ export function openActivityDialog(
           }
           const notes = ($d.find('textarea[name="notes"]').val() as string)?.trim() ?? "";
           const formula = ($d.find('input[name="formula"]').val() as string)?.trim() ?? "";
+          const rollCount = Math.max(1, Number($d.find('input[name="rollCount"]').val()) || 1);
 
           let status: Activity["status"] = "planned";
           let outcome: Activity["outcome"] = null;
@@ -180,7 +185,7 @@ export function openActivityDialog(
                 : null;
           }
 
-          await onSubmit({ type, days, notes, formula, status, outcome });
+          await onSubmit({ type, days, notes, formula, rollCount, status, outcome });
         },
       },
     ],

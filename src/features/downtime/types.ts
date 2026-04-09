@@ -12,7 +12,8 @@ export interface Activity {
   status: "planned" | "completed";
   outcome: "success" | "failure" | null;
   formula?: string;
-  roll?: ActivityRoll;
+  rollCount?: number;
+  rolls?: ActivityRoll[];
 }
 
 export interface DowntimeData {

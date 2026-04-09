@@ -233,6 +233,8 @@
   "LGC.Downtime.Roll": "Lancer",
   "LGC.Downtime.NoFormula": "Aucune formule de jet définie. Modifiez l'activité pour en ajouter une.",
   "LGC.Downtime.RollFailed": "Échec du jet (voir la console).",
+  "LGC.Downtime.RollCount": "Nombre de jets",
+  "LGC.Downtime.RollsRemaining": "restants",
   "LGC.Downtime.Reset": "Réinitialiser l'activité (supprimer le jet, repasser en planifié)",
   "LGC.Downtime.FormulaHelper": "Remplissage rapide",
   "LGC.Downtime.FormulaHelperSelect": "— choisir pour remplir la formule —",

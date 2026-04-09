@@ -139,7 +139,7 @@ export function registerDowntime(): void {
         const id = $(ev.currentTarget).data("id") as string;
         const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
         const activities = (data?.activities ?? []).map((a: Activity) =>
-          a.id === id ? { ...a, status: "planned" as const, outcome: null, roll: undefined } : a,
+          a.id === id ? { ...a, status: "planned" as const, outcome: null, rolls: [] } : a,
         );
         await actor.setFlag(MODULE_ID, "downtime.activities", activities);
       });
@@ -178,8 +178,13 @@ export function registerDowntime(): void {
             result: roll.total as number,
             timestamp: currentWorldTime(),
           };
+          const newRolls = [...(activity.rolls ?? []), rollData];
+          const rollCount = activity.rollCount ?? 1;
+          const nowComplete = newRolls.length >= rollCount;
           const activities = (data?.activities ?? []).map((a: Activity) =>
-            a.id === id ? { ...a, roll: rollData, status: "completed" as const } : a,
+            a.id === id
+              ? { ...a, rolls: newRolls, ...(nowComplete ? { status: "completed" as const } : {}) }
+              : a,
           );
           await actor.setFlag(MODULE_ID, "downtime.activities", activities);
         } catch (err) {
@@ -295,13 +300,20 @@ function buildActivitiesList(activities: Activity[], isGM: boolean): string {
           </span>`
         : `<span class="lgc-downtime-cell-placeholder"></span>`;
       const notesHtml = a.notes
-        ? `<span class="lgc-downtime-activity-notes" title="${escapeHtml(a.notes)}"><i class="fa-solid fa-note-sticky"></i></span>`
-        : `<span class="lgc-downtime-activity-notes"></span>`;
-      const rollResult = a.roll
-        ? `<span class="lgc-downtime-activity-roll"><i class="fa-solid fa-dice-d20"></i> ${a.roll.result}</span>`
+        ? `<p class="lgc-downtime-activity-notes-text">${escapeHtml(a.notes)}</p>`
+        : "";
+      const rolls = a.rolls ?? [];
+      const rollCount = a.rollCount ?? 1;
+      const rollsRemaining = rollCount - rolls.length;
+      const rollResult = rolls.length
+        ? `<span class="lgc-downtime-activity-roll">
+            <i class="fa-solid fa-dice-d20"></i> ${rolls.map((r) => r.result).join(" · ")}
+            ${rollCount > 1 ? `<em>(${rolls.length}/${rollCount})</em>` : ""}
+          </span>`
         : `<span class="lgc-downtime-activity-roll"></span>`;
-      const rollBtn = a.formula && !a.roll
-        ? `<button type="button" class="lgc-downtime-roll-btn" data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.Roll")}">
+      const rollBtn = a.formula && a.status !== "completed" && rollsRemaining > 0
+        ? `<button type="button" class="lgc-downtime-roll-btn" data-id="${escapeHtml(a.id)}"
+            title="${t("LGC.Downtime.Roll")} (${rollsRemaining} ${t("LGC.Downtime.RollsRemaining")})">
             <i class="fa-solid fa-dice-d20"></i>
           </button>`
         : `<span class="lgc-downtime-cell-placeholder"></span>`;
@@ -313,8 +325,8 @@ function buildActivitiesList(activities: Activity[], isGM: boolean): string {
               ? "lgc-downtime-outcome-failure"
               : "lgc-downtime-outcome-pending"
           : "";
-      const canDelete = isGM || (a.status === "planned" && !a.roll);
-      const resetBtn = isGM && a.roll
+      const canDelete = isGM || (a.status === "planned" && !rolls.length);
+      const resetBtn = isGM && rolls.length > 0
         ? `<button type="button" class="lgc-downtime-reset-btn" data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.Reset")}">
             <i class="fa-solid fa-arrow-rotate-left"></i>
           </button>`
@@ -335,12 +347,12 @@ function buildActivitiesList(activities: Activity[], isGM: boolean): string {
           <span class="lgc-downtime-activity-days">${a.days}d</span>
           <span class="lgc-downtime-activity-status lgc-downtime-status-${a.status}">${escapeHtml(statusLabel)}</span>
           ${outcomeBtns}
-          ${rollResult}
-          ${notesHtml}
           ${rollBtn}
           ${resetBtn}
           ${editBtn}
           ${deleteBtn}
+          ${rollResult}
+          ${notesHtml}
         </div>`;
     })
     .join("");
