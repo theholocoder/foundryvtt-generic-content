@@ -2,7 +2,7 @@ import { toJQuery } from "../../lib/foundry/jquery";
 import { escapeHtml } from "../../lib/html";
 import { computeDowntimeDays, computeUsedDays } from "./compute";
 import { openActivityDialog } from "./activity-dialog";
-import type { Activity, DowntimeData } from "./types";
+import type { Activity, ActivityRoll, DowntimeData } from "./types";
 
 const MODULE_ID = "lazybobcat-generic-content";
 const TAB_NAME = "lgc-downtime";
@@ -109,9 +109,39 @@ export function registerDowntime(): void {
           const activities = (current?.activities ?? []).map((a: Activity) =>
             a.id === id ? { ...a, ...result } : a,
           );
-  
+
           await actor.setFlag(MODULE_ID, "downtime.activities", activities);
         }, activity);
+      });
+
+      $html.find(".lgc-downtime-activities-list").on("click", ".lgc-downtime-success-btn", async (ev) => {
+        ev.stopPropagation();
+        const id = $(ev.currentTarget).data("id") as string;
+        const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
+        const activities = (data?.activities ?? []).map((a: Activity) =>
+          a.id === id ? { ...a, outcome: "success" as const } : a,
+        );
+        await actor.setFlag(MODULE_ID, "downtime.activities", activities);
+      });
+
+      $html.find(".lgc-downtime-activities-list").on("click", ".lgc-downtime-failure-btn", async (ev) => {
+        ev.stopPropagation();
+        const id = $(ev.currentTarget).data("id") as string;
+        const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
+        const activities = (data?.activities ?? []).map((a: Activity) =>
+          a.id === id ? { ...a, outcome: "failure" as const } : a,
+        );
+        await actor.setFlag(MODULE_ID, "downtime.activities", activities);
+      });
+
+      $html.find(".lgc-downtime-activities-list").on("click", ".lgc-downtime-reset-btn", async (ev) => {
+        ev.stopPropagation();
+        const id = $(ev.currentTarget).data("id") as string;
+        const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
+        const activities = (data?.activities ?? []).map((a: Activity) =>
+          a.id === id ? { ...a, status: "planned" as const, outcome: null, roll: undefined } : a,
+        );
+        await actor.setFlag(MODULE_ID, "downtime.activities", activities);
       });
     }
 
@@ -127,6 +157,36 @@ export function registerDowntime(): void {
 
         await actor.setFlag(MODULE_ID, "downtime.activities", activities);
       });
+
+      $html.find(".lgc-downtime-activities-list").on("click", ".lgc-downtime-roll-btn", async (ev) => {
+        ev.stopPropagation();
+        const id = $(ev.currentTarget).data("id") as string;
+        const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
+        const activity = data?.activities?.find((a: Activity) => a.id === id);
+        if (!activity?.formula) {
+          ui?.notifications?.warn(t("LGC.Downtime.NoFormula"));
+          return;
+        }
+        try {
+          const roll = await new (Roll as any)(activity.formula, actor).roll({ async: true });
+          await roll.toMessage({
+            speaker: (ChatMessage as any).getSpeaker({ actor }),
+            flavor: `${activity.type} — ${t("LGC.Downtime.Title")}`,
+          });
+          const rollData: ActivityRoll = {
+            formula: activity.formula,
+            result: roll.total as number,
+            timestamp: currentWorldTime(),
+          };
+          const activities = (data?.activities ?? []).map((a: Activity) =>
+            a.id === id ? { ...a, roll: rollData, status: "completed" as const } : a,
+          );
+          await actor.setFlag(MODULE_ID, "downtime.activities", activities);
+        } catch (err) {
+          console.error("LGC | Downtime roll failed:", err);
+          ui?.notifications?.error(t("LGC.Downtime.RollFailed"));
+        }
+      });
     }
   });
 }
@@ -136,6 +196,7 @@ export function registerDowntime(): void {
 function currentWorldTime(): number {
   return (game as any).time?.worldTime ?? 0;
 }
+
 
 /** Activate the downtime tab in the current sheet DOM without a full re-render. */
 function activateDowntimeTab($html: JQuery): void {
@@ -220,28 +281,66 @@ function buildActivitiesList(activities: Activity[], isGM: boolean): string {
                 : ""
             }`
           : t("LGC.Downtime.StatusPlanned");
+      // Every cell is always rendered so the grid always has 10 children per row.
+      const outcomeBtns = isGM && a.status === "completed"
+        ? `<span class="lgc-downtime-outcome-btns">
+            <button type="button" class="lgc-downtime-success-btn ${a.outcome === "success" ? "lgc-active" : ""}"
+              data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.OutcomeSuccess")}">
+              <i class="fa-solid fa-check"></i>
+            </button>
+            <button type="button" class="lgc-downtime-failure-btn ${a.outcome === "failure" ? "lgc-active" : ""}"
+              data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.OutcomeFailure")}">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </span>`
+        : `<span class="lgc-downtime-cell-placeholder"></span>`;
       const notesHtml = a.notes
         ? `<span class="lgc-downtime-activity-notes" title="${escapeHtml(a.notes)}"><i class="fa-solid fa-note-sticky"></i></span>`
-        : "";
-      const canDelete = isGM || a.status === "planned";
+        : `<span class="lgc-downtime-activity-notes"></span>`;
+      const rollResult = a.roll
+        ? `<span class="lgc-downtime-activity-roll"><i class="fa-solid fa-dice-d20"></i> ${a.roll.result}</span>`
+        : `<span class="lgc-downtime-activity-roll"></span>`;
+      const rollBtn = a.formula && !a.roll
+        ? `<button type="button" class="lgc-downtime-roll-btn" data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.Roll")}">
+            <i class="fa-solid fa-dice-d20"></i>
+          </button>`
+        : `<span class="lgc-downtime-cell-placeholder"></span>`;
+      const outcomeClass =
+        a.status === "completed"
+          ? a.outcome === "success"
+            ? "lgc-downtime-outcome-success"
+            : a.outcome === "failure"
+              ? "lgc-downtime-outcome-failure"
+              : "lgc-downtime-outcome-pending"
+          : "";
+      const canDelete = isGM || (a.status === "planned" && !a.roll);
+      const resetBtn = isGM && a.roll
+        ? `<button type="button" class="lgc-downtime-reset-btn" data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.Reset")}">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+          </button>`
+        : `<span class="lgc-downtime-cell-placeholder"></span>`;
       const editBtn = isGM
         ? `<button type="button" class="lgc-downtime-edit-btn" data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.DialogEditTitle")}">
             <i class="fa-solid fa-pencil"></i>
           </button>`
-        : "";
+        : `<span class="lgc-downtime-cell-placeholder"></span>`;
       const deleteBtn = canDelete
         ? `<button type="button" class="lgc-downtime-delete-btn" data-id="${escapeHtml(a.id)}" title="${t("LGC.Downtime.Delete")}">
             <i class="fa-solid fa-trash"></i>
           </button>`
-        : "";
-      const gmButtons = editBtn + deleteBtn;
+        : `<span class="lgc-downtime-cell-placeholder"></span>`;
       return `
-        <div class="lgc-downtime-activity">
+        <div class="lgc-downtime-activity ${outcomeClass}">
           <span class="lgc-downtime-activity-type">${escapeHtml(a.type)}</span>
           <span class="lgc-downtime-activity-days">${a.days}d</span>
           <span class="lgc-downtime-activity-status lgc-downtime-status-${a.status}">${escapeHtml(statusLabel)}</span>
+          ${outcomeBtns}
+          ${rollResult}
           ${notesHtml}
-          ${gmButtons}
+          ${rollBtn}
+          ${resetBtn}
+          ${editBtn}
+          ${deleteBtn}
         </div>`;
     })
     .join("");

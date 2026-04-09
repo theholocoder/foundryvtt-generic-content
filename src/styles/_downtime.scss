@@ -87,7 +87,7 @@
 
   .lgc-downtime-activity {
     display: grid;
-    grid-template-columns: 1fr auto auto auto auto auto;
+    grid-template-columns: 1fr auto auto auto auto auto auto auto auto auto;
     align-items: center;
     gap: 0.4rem;
     padding: 0.25rem 0.4rem;
@@ -110,12 +110,45 @@
     opacity: 0.75;
   }
 
-  .lgc-downtime-status-completed { color: #2a7a2a; }
+  .lgc-downtime-status-completed { color: #1a5fa0; }
   .lgc-downtime-status-planned   { color: #555; }
+
+  .lgc-downtime-outcome-btns {
+    display: flex;
+    gap: 0.1rem;
+    align-items: center;
+  }
+
+  .lgc-downtime-success-btn,
+  .lgc-downtime-failure-btn {
+    padding: 0.1rem 0.25rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    opacity: 0.4;
+    &:hover { opacity: 1; }
+  }
+
+  .lgc-downtime-success-btn {
+    &:hover, &.lgc-active { color: #2a7a2a; opacity: 1; }
+  }
+
+  .lgc-downtime-failure-btn {
+    &:hover, &.lgc-active { color: #a00; opacity: 1; }
+  }
 
   .lgc-downtime-activity-notes { opacity: 0.6; cursor: help; }
 
+  .lgc-downtime-activity-roll {
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+    white-space: nowrap;
+  }
+
   .lgc-downtime-edit-btn,
+  .lgc-downtime-roll-btn,
   .lgc-downtime-delete-btn {
     padding: 0.1rem 0.3rem;
     font-size: 0.75rem;
@@ -127,7 +160,42 @@
     &:hover { opacity: 1; }
   }
 
+  .lgc-downtime-roll-btn {
+    min-width: 1.4rem;
+    &:hover:not(:disabled) { color: #2060a0; }
+    &:disabled { opacity: 0.3; cursor: not-allowed; }
+  }
+
+  .lgc-downtime-reset-btn {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    opacity: 0.6;
+    &:hover { opacity: 1; color: #805000; }
+  }
+
+  .lgc-downtime-cell-placeholder { display: inline-block; min-width: 1.4rem; }
+
   .lgc-downtime-delete-btn:hover { color: #a00; }
+
+  // ── Outcome / completion visual indicator ────────────────────────────────
+
+  .lgc-downtime-outcome-pending {
+    border-left: 3px solid #888;
+    padding-left: calc(0.4rem - 3px);
+  }
+
+  .lgc-downtime-outcome-success {
+    border-left: 3px solid #2a7a2a;
+    padding-left: calc(0.4rem - 3px);
+  }
+
+  .lgc-downtime-outcome-failure {
+    border-left: 3px solid #a00;
+    padding-left: calc(0.4rem - 3px);
+  }
 
   // ── Summary ──────────────────────────────────────────────────────────────
 

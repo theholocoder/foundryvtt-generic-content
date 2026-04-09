@@ -228,5 +228,15 @@
   "LGC.Downtime.DialogConfirmEdit": "Update",
   "LGC.Downtime.DialogCancel": "Cancel",
   "LGC.Downtime.DaysRequired": "Days must be a positive number.",
-  "LGC.Downtime.SelectType": "— select type —"
+  "LGC.Downtime.SelectType": "— select type —",
+  "LGC.Downtime.ActivityFormula": "Roll Formula",
+  "LGC.Downtime.Roll": "Roll",
+  "LGC.Downtime.NoFormula": "No roll formula defined. Edit the activity to add one.",
+  "LGC.Downtime.RollFailed": "Roll failed (see console).",
+  "LGC.Downtime.Reset": "Reset activity (remove roll, set back to planned)",
+  "LGC.Downtime.FormulaHelper": "Quick Fill",
+  "LGC.Downtime.FormulaHelperSelect": "— choose to fill formula —",
+  "LGC.Downtime.FormulaSkills": "Skills",
+  "LGC.Downtime.FormulaSaves": "Saving Throws",
+  "LGC.Downtime.FormulaAbilities": "Abilities"
 }

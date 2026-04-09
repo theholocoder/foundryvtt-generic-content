@@ -29,6 +29,55 @@ export function openActivityDialog(
       `<option value="${escapeHtml(at)}" ${initialValues?.type === at ? "selected" : ""}>${escapeHtml(at)}</option>`,
   ).join("");
 
+  // Formula helper and formula field are GM-only
+  const formulaRows = isGM
+    ? `
+      <div class="form-group">
+        <label>${t("LGC.Downtime.FormulaHelper")}</label>
+        <select name="formula-helper">
+          <option value="">${t("LGC.Downtime.FormulaHelperSelect")}</option>
+          <optgroup label="Perception">
+            <option value="1d20+@perception.mod">Perception</option>
+          </optgroup>
+          <optgroup label="${t("LGC.Downtime.FormulaSaves")}">
+            <option value="1d20+@saves.fortitude.mod">Fortitude</option>
+            <option value="1d20+@saves.reflex.mod">Reflex</option>
+            <option value="1d20+@saves.will.mod">Will</option>
+          </optgroup>
+          <optgroup label="${t("LGC.Downtime.FormulaSkills")}">
+            <option value="1d20+@skills.acrobatics.mod">Acrobatics</option>
+            <option value="1d20+@skills.arcana.mod">Arcana</option>
+            <option value="1d20+@skills.athletics.mod">Athletics</option>
+            <option value="1d20+@skills.crafting.mod">Crafting</option>
+            <option value="1d20+@skills.deception.mod">Deception</option>
+            <option value="1d20+@skills.diplomacy.mod">Diplomacy</option>
+            <option value="1d20+@skills.intimidation.mod">Intimidation</option>
+            <option value="1d20+@skills.medicine.mod">Medicine</option>
+            <option value="1d20+@skills.nature.mod">Nature</option>
+            <option value="1d20+@skills.occultism.mod">Occultism</option>
+            <option value="1d20+@skills.performance.mod">Performance</option>
+            <option value="1d20+@skills.religion.mod">Religion</option>
+            <option value="1d20+@skills.society.mod">Society</option>
+            <option value="1d20+@skills.stealth.mod">Stealth</option>
+            <option value="1d20+@skills.survival.mod">Survival</option>
+            <option value="1d20+@skills.thievery.mod">Thievery</option>
+          </optgroup>
+          <optgroup label="${t("LGC.Downtime.FormulaAbilities")}">
+            <option value="1d20+@system.abilities.str.mod">Strength</option>
+            <option value="1d20+@system.abilities.dex.mod">Dexterity</option>
+            <option value="1d20+@system.abilities.con.mod">Constitution</option>
+            <option value="1d20+@system.abilities.int.mod">Intelligence</option>
+            <option value="1d20+@system.abilities.wis.mod">Wisdom</option>
+            <option value="1d20+@system.abilities.cha.mod">Charisma</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>${t("LGC.Downtime.ActivityFormula")}</label>
+        <input type="text" name="formula" value="${escapeHtml(initialValues?.formula ?? "")}" placeholder="1d20+12" />
+      </div>`
+    : "";
+
   // Status and outcome rows are only shown to GM when editing
   const statusRows =
     isEdit && isGM
@@ -67,6 +116,7 @@ export function openActivityDialog(
         <label>${t("LGC.Downtime.ActivityNotes")}</label>
         <textarea name="notes" rows="2">${escapeHtml(initialValues?.notes ?? "")}</textarea>
       </div>
+      ${formulaRows}
       ${statusRows}
     </form>
   `;
@@ -77,8 +127,18 @@ export function openActivityDialog(
     classes: ["lgc-dialog", "lgc-downtime-dialog"],
     rejectClose: false,
     render: (_event: Event, dialog: any) => {
-      if (!isEdit || !isGM) return;
       const $d = $(dialog.element);
+
+      // Quick-fill helper: selecting an option copies the formula and resets the select
+      $d.find('select[name="formula-helper"]').on("change", function () {
+        const val = $(this).val() as string;
+        if (val) {
+          $d.find('input[name="formula"]').val(val);
+          $(this).val("");
+        }
+      });
+
+      if (!isEdit || !isGM) return;
       const $outcomeRow = $d.find(".lgc-downtime-outcome-row");
       const sync = () => {
         $outcomeRow.toggle($d.find('select[name="status"]').val() === "completed");
@@ -107,6 +167,7 @@ export function openActivityDialog(
             return;
           }
           const notes = ($d.find('textarea[name="notes"]').val() as string)?.trim() ?? "";
+          const formula = ($d.find('input[name="formula"]').val() as string)?.trim() ?? "";
 
           let status: Activity["status"] = "planned";
           let outcome: Activity["outcome"] = null;
@@ -119,7 +180,7 @@ export function openActivityDialog(
                 : null;
           }
 
-          await onSubmit({ type, days, notes, status, outcome });
+          await onSubmit({ type, days, notes, formula, status, outcome });
         },
       },
     ],

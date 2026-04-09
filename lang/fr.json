@@ -228,5 +228,15 @@
   "LGC.Downtime.DialogConfirmEdit": "Mettre à jour",
   "LGC.Downtime.DialogCancel": "Annuler",
   "LGC.Downtime.DaysRequired": "Les jours doivent être un nombre positif.",
-  "LGC.Downtime.SelectType": "— sélectionner un type —"
+  "LGC.Downtime.SelectType": "— sélectionner un type —",
+  "LGC.Downtime.ActivityFormula": "Formule de jet",
+  "LGC.Downtime.Roll": "Lancer",
+  "LGC.Downtime.NoFormula": "Aucune formule de jet définie. Modifiez l'activité pour en ajouter une.",
+  "LGC.Downtime.RollFailed": "Échec du jet (voir la console).",
+  "LGC.Downtime.Reset": "Réinitialiser l'activité (supprimer le jet, repasser en planifié)",
+  "LGC.Downtime.FormulaHelper": "Remplissage rapide",
+  "LGC.Downtime.FormulaHelperSelect": "— choisir pour remplir la formule —",
+  "LGC.Downtime.FormulaSkills": "Compétences",
+  "LGC.Downtime.FormulaSaves": "Jets de sauvegarde",
+  "LGC.Downtime.FormulaAbilities": "Caractéristiques"
 }

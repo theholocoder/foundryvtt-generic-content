@@ -1,3 +1,9 @@
+export interface ActivityRoll {
+  formula: string;
+  result: number;
+  timestamp: number;
+}
+
 export interface Activity {
   id: string;
   type: string;
@@ -5,6 +11,8 @@ export interface Activity {
   notes: string;
   status: "planned" | "completed";
   outcome: "success" | "failure" | null;
+  formula?: string;
+  roll?: ActivityRoll;
 }
 
 export interface DowntimeData {
