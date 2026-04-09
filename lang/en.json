@@ -240,5 +240,13 @@
   "LGC.Downtime.FormulaHelperSelect": "— choose to fill formula —",
   "LGC.Downtime.FormulaSkills": "Skills",
   "LGC.Downtime.FormulaSaves": "Saving Throws",
-  "LGC.Downtime.FormulaAbilities": "Abilities"
+  "LGC.Downtime.FormulaAbilities": "Abilities",
+  "LGC.Downtime.SetActiveDate": "Set Last Active…",
+  "LGC.Downtime.SetEndDate": "Set End Date…",
+  "LGC.Downtime.Year": "Year",
+  "LGC.Downtime.Month": "Month",
+  "LGC.Downtime.DayOfMonth": "Day",
+  "LGC.Downtime.DayNumber": "Day number",
+  "LGC.Downtime.UseCurrentTime": "Use current world time",
+  "LGC.Downtime.Confirm": "Confirm"
 }

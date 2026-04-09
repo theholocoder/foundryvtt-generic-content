@@ -2,6 +2,7 @@ import { toJQuery } from "../../lib/foundry/jquery";
 import { escapeHtml } from "../../lib/html";
 import { computeDowntimeDays, computeUsedDays } from "./compute";
 import { openActivityDialog } from "./activity-dialog";
+import { openDatePickerDialog } from "./date-dialog";
 import type { Activity, ActivityRoll, DowntimeData } from "./types";
 
 const MODULE_ID = "lazybobcat-generic-content";
@@ -63,21 +64,22 @@ export function registerDowntime(): void {
     // ── Event wiring ─────────────────────────────────────────────────────
 
     if (isGM) {
-      $html.find(".lgc-downtime-set-active").on("click", async (ev) => {
+      $html.find(".lgc-downtime-set-active").on("click", (ev) => {
         ev.stopPropagation();
-
-        await actor.setFlag(MODULE_ID, "downtime.lastActiveTime", currentWorldTime());
+        const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
+        const current = data?.lastActiveTime ?? currentWorldTime();
+        openDatePickerDialog(t("LGC.Downtime.SetActiveDate"), current, async (ts) => {
+          await actor.setFlag(MODULE_ID, "downtime.lastActiveTime", ts);
+        });
       });
 
-      $html.find(".lgc-downtime-set-end").on("click", async (ev) => {
+      $html.find(".lgc-downtime-set-end").on("click", (ev) => {
         ev.stopPropagation();
-
-        await actor.setFlag(MODULE_ID, "downtime.endTime", currentWorldTime());
-      });
-
-      $html.find(".lgc-downtime-recalculate").on("click", (ev) => {
-        ev.stopPropagation();
-        refreshTabInPlace($html, actor);
+        const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
+        const current = data?.endTime ?? currentWorldTime();
+        openDatePickerDialog(t("LGC.Downtime.SetEndDate"), current, async (ts) => {
+          await actor.setFlag(MODULE_ID, "downtime.endTime", ts);
+        });
       });
     }
 
@@ -211,17 +213,6 @@ function activateDowntimeTab($html: JQuery): void {
   $html.find(`section[data-tab="${TAB_NAME}"]`).addClass("active");
 }
 
-/** Recalculate derived values in-place (used by Recalculate button — no flag change). */
-function refreshTabInPlace($html: JQuery, actor: any): void {
-  const d = getDerived(actor);
-  $html.find(".lgc-downtime-val-last-active").text(d.lastActiveDisplay);
-  $html.find(".lgc-downtime-val-end").text(d.endTimeDisplay);
-  $html.find(".lgc-downtime-val-days").text(String(d.availableDays));
-  $html.find(".lgc-downtime-val-used").text(String(d.usedDays));
-  $html.find(".lgc-downtime-val-available").text(String(d.availableDays));
-  $html.find(".lgc-downtime-val-remaining").text(String(d.remainingDays));
-  $html.find(".lgc-downtime-warning").toggle(d.exceeded);
-}
 
 interface Derived {
   lastActive: number | null;
@@ -361,13 +352,10 @@ function buildActivitiesList(activities: Activity[], isGM: boolean): string {
 function buildTabSection(d: Derived, isGM: boolean, canEdit: boolean): string {
   const gmButtons = isGM
     ? `<button type="button" class="lgc-downtime-set-active">
-          <i class="fa-solid fa-clock"></i> ${t("LGC.Downtime.SetActiveNow")}
+          <i class="fa-solid fa-calendar-days"></i> ${t("LGC.Downtime.SetActiveDate")}
         </button>
         <button type="button" class="lgc-downtime-set-end">
-          <i class="fa-solid fa-flag-checkered"></i> ${t("LGC.Downtime.SetEndNow")}
-        </button>
-        <button type="button" class="lgc-downtime-recalculate">
-          <i class="fa-solid fa-rotate"></i> ${t("LGC.Downtime.Recalculate")}
+          <i class="fa-solid fa-calendar-check"></i> ${t("LGC.Downtime.SetEndDate")}
         </button>`
     : "";
 

@@ -240,5 +240,13 @@
   "LGC.Downtime.FormulaHelperSelect": "— choisir pour remplir la formule —",
   "LGC.Downtime.FormulaSkills": "Compétences",
   "LGC.Downtime.FormulaSaves": "Jets de sauvegarde",
-  "LGC.Downtime.FormulaAbilities": "Caractéristiques"
+  "LGC.Downtime.FormulaAbilities": "Caractéristiques",
+  "LGC.Downtime.SetActiveDate": "Définir la date d'activité…",
+  "LGC.Downtime.SetEndDate": "Définir la date de fin…",
+  "LGC.Downtime.Year": "Année",
+  "LGC.Downtime.Month": "Mois",
+  "LGC.Downtime.DayOfMonth": "Jour",
+  "LGC.Downtime.DayNumber": "Numéro de jour",
+  "LGC.Downtime.UseCurrentTime": "Utiliser le temps actuel",
+  "LGC.Downtime.Confirm": "Confirmer"
 }
