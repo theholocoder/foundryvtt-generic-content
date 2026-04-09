@@ -248,5 +248,9 @@
   "LGC.Downtime.DayOfMonth": "Jour",
   "LGC.Downtime.DayNumber": "Numéro de jour",
   "LGC.Downtime.UseCurrentTime": "Utiliser le temps actuel",
-  "LGC.Downtime.Confirm": "Confirmer"
+  "LGC.Downtime.Confirm": "Confirmer",
+  "LGC.Downtime.FinalizeDowntime": "Finaliser le temps libre",
+  "LGC.Downtime.FinalizeError": "La date d'activité et la date de fin doivent être définies avant de finaliser.",
+  "LGC.Downtime.History": "Historique",
+  "LGC.Downtime.NoHistory": "Aucun historique pour l'instant."
 }

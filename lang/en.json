@@ -248,5 +248,9 @@
   "LGC.Downtime.DayOfMonth": "Day",
   "LGC.Downtime.DayNumber": "Day number",
   "LGC.Downtime.UseCurrentTime": "Use current world time",
-  "LGC.Downtime.Confirm": "Confirm"
+  "LGC.Downtime.Confirm": "Confirm",
+  "LGC.Downtime.FinalizeDowntime": "Finalize Downtime",
+  "LGC.Downtime.FinalizeError": "Both last active date and end date must be set before finalizing.",
+  "LGC.Downtime.History": "History",
+  "LGC.Downtime.NoHistory": "No history yet."
 }

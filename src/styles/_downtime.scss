@@ -223,6 +223,53 @@
     font-weight: bold;
     font-size: 0.85rem;
   }
+
+  // ── History ──────────────────────────────────────────────────────────────
+
+  .lgc-downtime-history-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .lgc-downtime-history-title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .lgc-downtime-history-entry {
+    font-size: 0.85rem;
+
+    summary {
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+
+  .lgc-downtime-history-summary {
+    display: flex;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+
+  .lgc-downtime-history-days {
+    opacity: 0.65;
+    font-size: 0.8rem;
+  }
+
+  .lgc-downtime-history-list {
+    margin: 0.2rem 0 0 1rem;
+    padding: 0;
+    list-style: disc;
+    opacity: 0.8;
+  }
+
+  .lgc-downtime-history-activity {
+    font-size: 0.8rem;
+  }
 }
 
 // ── Activity dialog ──────────────────────────────────────────────────────────

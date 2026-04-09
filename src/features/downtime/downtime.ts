@@ -3,7 +3,7 @@ import { escapeHtml } from "../../lib/html";
 import { computeDowntimeDays, computeUsedDays } from "./compute";
 import { openActivityDialog } from "./activity-dialog";
 import { openDatePickerDialog } from "./date-dialog";
-import type { Activity, ActivityRoll, DowntimeData } from "./types";
+import type { Activity, ActivityRoll, DowntimeData, HistoryEntry } from "./types";
 
 const MODULE_ID = "lazybobcat-generic-content";
 const TAB_NAME = "lgc-downtime";
@@ -80,6 +80,30 @@ export function registerDowntime(): void {
         openDatePickerDialog(t("LGC.Downtime.SetEndDate"), current, async (ts) => {
           await actor.setFlag(MODULE_ID, "downtime.endTime", ts);
         });
+      });
+
+      $html.find(".lgc-downtime-finalize").on("click", async (ev) => {
+        ev.stopPropagation();
+        const data = actor.getFlag(MODULE_ID, "downtime") as DowntimeData | undefined;
+        const startTime = data?.lastActiveTime;
+        const endTime = data?.endTime;
+        if (startTime == null || endTime == null) {
+          ui?.notifications?.warn(t("LGC.Downtime.FinalizeError"));
+          return;
+        }
+        const entry: HistoryEntry = {
+          id: (foundry.utils as any).randomID() as string,
+          startTime,
+          endTime,
+          activities: data?.activities ?? [],
+        };
+        const newData: DowntimeData = {
+          lastActiveTime: endTime,
+          endTime: null,
+          activities: [],
+          history: [...(data?.history ?? []), entry],
+        };
+        await actor.setFlag(MODULE_ID, "downtime", newData);
       });
     }
 
@@ -218,6 +242,7 @@ interface Derived {
   lastActive: number | null;
   endTime: number | null;
   activities: Activity[];
+  history: HistoryEntry[];
   availableDays: number;
   usedDays: number;
   remainingDays: number;
@@ -231,6 +256,7 @@ function getDerived(actor: any): Derived {
   const lastActive = data?.lastActiveTime ?? null;
   const endTime = data?.endTime ?? null;
   const activities = data?.activities ?? [];
+  const history = data?.history ?? [];
   const now = currentWorldTime();
   const availableDays = computeDowntimeDays(lastActive, endTime ?? now);
   const usedDays = computeUsedDays(activities);
@@ -238,6 +264,7 @@ function getDerived(actor: any): Derived {
     lastActive,
     endTime,
     activities,
+    history,
     availableDays,
     usedDays,
     remainingDays: availableDays - usedDays,
@@ -349,6 +376,37 @@ function buildActivitiesList(activities: Activity[], isGM: boolean): string {
     .join("");
 }
 
+function buildHistorySection(history: HistoryEntry[]): string {
+  if (!history.length) {
+    return `<p class="lgc-downtime-empty">${t("LGC.Downtime.NoHistory")}</p>`;
+  }
+  return history
+    .slice()
+    .reverse()
+    .map((entry) => {
+      const days = computeDowntimeDays(entry.startTime, entry.endTime);
+      const startLabel = formatWorldDay(entry.startTime);
+      const endLabel = formatWorldDay(entry.endTime);
+      const rows = entry.activities
+        .map((a) => {
+          const outcomeLabel = a.outcome
+            ? t(a.outcome === "success" ? "LGC.Downtime.OutcomeSuccess" : "LGC.Downtime.OutcomeFailure")
+            : "—";
+          return `<li class="lgc-downtime-history-activity">${escapeHtml(a.type)} (${a.days}d) → ${escapeHtml(outcomeLabel)}</li>`;
+        })
+        .join("");
+      return `
+        <details class="lgc-downtime-history-entry">
+          <summary class="lgc-downtime-history-summary">
+            ${escapeHtml(startLabel)} → ${escapeHtml(endLabel)}
+            <em class="lgc-downtime-history-days">(${days} ${t("LGC.Downtime.Day")})</em>
+          </summary>
+          <ul class="lgc-downtime-history-list">${rows || `<li><em>${t("LGC.Downtime.NoActivities")}</em></li>`}</ul>
+        </details>`;
+    })
+    .join("");
+}
+
 function buildTabSection(d: Derived, isGM: boolean, canEdit: boolean): string {
   const gmButtons = isGM
     ? `<button type="button" class="lgc-downtime-set-active">
@@ -356,6 +414,9 @@ function buildTabSection(d: Derived, isGM: boolean, canEdit: boolean): string {
         </button>
         <button type="button" class="lgc-downtime-set-end">
           <i class="fa-solid fa-calendar-check"></i> ${t("LGC.Downtime.SetEndDate")}
+        </button>
+        <button type="button" class="lgc-downtime-finalize">
+          <i class="fa-solid fa-flag-checkered"></i> ${t("LGC.Downtime.FinalizeDowntime")}
         </button>`
     : "";
 
@@ -401,6 +462,11 @@ function buildTabSection(d: Derived, isGM: boolean, canEdit: boolean): string {
           <span class="lgc-downtime-warning" style="display:${d.exceeded ? "inline" : "none"}">
             <i class="fa-solid fa-triangle-exclamation"></i> ${t("LGC.Downtime.ExceededWarning")}
           </span>
+        </div>
+
+        <div class="lgc-downtime-history-section">
+          <h4 class="lgc-downtime-history-title">${t("LGC.Downtime.History")}</h4>
+          ${buildHistorySection(d.history)}
         </div>
 
       </div>

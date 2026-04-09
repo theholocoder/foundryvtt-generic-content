@@ -16,8 +16,16 @@ export interface Activity {
   rolls?: ActivityRoll[];
 }
 
+export interface HistoryEntry {
+  id: string;
+  startTime: number;
+  endTime: number;
+  activities: Activity[];
+}
+
 export interface DowntimeData {
   lastActiveTime: number | null;
   endTime: number | null;
   activities: Activity[];
+  history?: HistoryEntry[];
 }
