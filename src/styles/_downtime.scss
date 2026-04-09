@@ -1,34 +1,176 @@
 .lgc-downtime-tab {
   .lgc-downtime-content {
     padding: 0.75rem;
-    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
-  .lgc-downtime-stats {
+  // ── Header: dates + action buttons ──────────────────────────────────────
+
+  .lgc-downtime-header {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .lgc-downtime-dates {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0.25rem 1rem;
-    margin: 0 0 1rem;
+    gap: 0.15rem 0.75rem;
+    margin: 0;
+    flex: 1 1 auto;
 
-    dt {
-      font-weight: bold;
+    dt { font-weight: bold; white-space: nowrap; }
+    dd { margin: 0; }
+  }
+
+  .lgc-downtime-header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex-shrink: 0;
+
+    button {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.5rem;
+      cursor: pointer;
       white-space: nowrap;
-    }
-
-    dd {
-      margin: 0;
     }
   }
 
-  .lgc-downtime-actions {
+  // ── Available days ───────────────────────────────────────────────────────
+
+  .lgc-downtime-available {
+    font-size: 0.95rem;
+  }
+
+  // ── Activities ───────────────────────────────────────────────────────────
+
+  .lgc-downtime-activities-section {
     display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .lgc-downtime-activities-header {
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
-    flex-wrap: wrap;
+
+    h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
 
     button {
-      flex: 1 1 auto;
-      padding: 0.3rem 0.75rem;
+      font-size: 0.8rem;
+      padding: 0.15rem 0.5rem;
       cursor: pointer;
     }
+  }
+
+  .lgc-downtime-activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .lgc-downtime-empty {
+    font-style: italic;
+    opacity: 0.6;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .lgc-downtime-activity {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto auto auto;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.4rem;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.04);
+
+    &:hover { background: rgba(0, 0, 0, 0.08); }
+  }
+
+  .lgc-downtime-activity-type { font-weight: 500; }
+
+  .lgc-downtime-activity-days {
+    font-variant-numeric: tabular-nums;
+    opacity: 0.8;
+    font-size: 0.85rem;
+  }
+
+  .lgc-downtime-activity-status {
+    font-size: 0.8rem;
+    opacity: 0.75;
+  }
+
+  .lgc-downtime-status-completed { color: #2a7a2a; }
+  .lgc-downtime-status-planned   { color: #555; }
+
+  .lgc-downtime-activity-notes { opacity: 0.6; cursor: help; }
+
+  .lgc-downtime-edit-btn,
+  .lgc-downtime-delete-btn {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    opacity: 0.6;
+
+    &:hover { opacity: 1; }
+  }
+
+  .lgc-downtime-delete-btn:hover { color: #a00; }
+
+  // ── Summary ──────────────────────────────────────────────────────────────
+
+  .lgc-downtime-summary {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .lgc-downtime-warning {
+    color: #b54a00;
+    font-weight: bold;
+    font-size: 0.85rem;
+  }
+}
+
+// ── Activity dialog ──────────────────────────────────────────────────────────
+
+.lgc-downtime-dialog {
+  .lgc-dialog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .form-group {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    align-items: center;
+    gap: 0.4rem;
+
+    label { font-weight: bold; font-size: 0.9rem; }
+
+    input, select, textarea {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea { resize: vertical; }
   }
 }
