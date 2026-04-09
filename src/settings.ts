@@ -1,3 +1,6 @@
+import { ActivityTypesConfig } from "./features/downtime/activity-types-config";
+import { ACTIVITY_TYPES } from "./features/downtime/activity-types";
+
 export const MODULE_ID = "lazybobcat-generic-content";
 
 export const SETTINGS = {
@@ -6,6 +9,7 @@ export const SETTINGS = {
   NPC_SPEECH_ROLL_TABLE_UUID: "npcSpeechRollTableUuid",
   NPC_FOOD_ROLL_TABLE_UUID: "npcFoodRollTableUuid",
   DIRECTOR_DATA: "directorData",
+  DOWNTIME_ACTIVITY_TYPES: "downtimeActivityTypes",
 } as const;
 
 export const DEFAULTS = {
@@ -57,5 +61,21 @@ export function registerSettings(): void {
     config: false,
     type: Object,
     default: { sessions: [] },
+  });
+
+  (game.settings as any).registerMenu(MODULE_ID, "downtimeActivityTypesMenu", {
+    name: "LGC.Settings.ActivityTypesName",
+    label: "LGC.Settings.ActivityTypesLabel",
+    hint: "LGC.Settings.ActivityTypesHint",
+    icon: "fa-solid fa-list",
+    type: ActivityTypesConfig,
+    restricted: true,
+  });
+
+  (game.settings as any).register(MODULE_ID, SETTINGS.DOWNTIME_ACTIVITY_TYPES, {
+    scope: "world",
+    config: false,
+    type: Array,
+    default: [...ACTIVITY_TYPES],
   });
 }
