@@ -21,6 +21,7 @@ export interface HistoryEntry {
   startTime: number;
   endTime: number;
   activities: Activity[];
+  hpRestored?: number;
 }
 
 export interface DowntimeData {
@@ -28,4 +29,5 @@ export interface DowntimeData {
   endTime: number | null;
   activities: Activity[];
   history?: HistoryEntry[];
+  missingHpAtStart?: number | null;
 }

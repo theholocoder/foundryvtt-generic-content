@@ -8,6 +8,8 @@ import type { Activity, ActivityRoll, DowntimeData, HistoryEntry } from "./types
 const MODULE_ID = "lazybobcat-generic-content";
 const TAB_NAME = "lgc-downtime";
 const t = (k: string) => game.i18n?.localize(k) ?? k;
+const tf = (k: string, data: Record<string, unknown> = {}) =>
+  (game.i18n as any)?.format?.(k, data) ?? t(k);
 
 /**
  * Tracks the last active primary tab per sheet instance (keyed by app.appId).
@@ -70,6 +72,11 @@ export function registerDowntime(): void {
         const current = data?.lastActiveTime ?? currentWorldTime();
         openDatePickerDialog(t("LGC.Downtime.SetActiveDate"), current, async (ts) => {
           await actor.setFlag(MODULE_ID, "downtime.lastActiveTime", ts);
+          const sys = (actor as any).system;
+          const hpValue: number | null = sys?.attributes?.hp?.value ?? null;
+          const hpMax: number | null = sys?.attributes?.hp?.max ?? null;
+          const missingHp = hpValue !== null && hpMax !== null ? hpMax - hpValue : null;
+          await actor.setFlag(MODULE_ID, "downtime.missingHpAtStart", missingHp);
         });
       });
 
@@ -91,19 +98,44 @@ export function registerDowntime(): void {
           ui?.notifications?.warn(t("LGC.Downtime.FinalizeError"));
           return;
         }
+
+        // Compute passive HP recovery before building the history entry
+        const sys = (actor as any).system;
+        const currentHp: number | null = sys?.attributes?.hp?.value ?? null;
+        const maxHp: number | null = sys?.attributes?.hp?.max ?? null;
+        let hpRestored: number | undefined;
+        let newHpValue: number | null = null;
+        let newMissingHp: number | null = null;
+        if (currentHp !== null && maxHp !== null) {
+          const conMod: number = sys?.abilities?.con?.mod ?? 0;
+          const level: number = sys?.details?.level?.value ?? 1;
+          const regenPerDay = Math.max(1, conMod) * level;
+          const availableDays = computeDowntimeDays(startTime, endTime);
+          const restored = regenPerDay * availableDays;
+          newHpValue = Math.min(maxHp, currentHp + restored);
+          hpRestored = newHpValue - currentHp;
+          const remaining = maxHp - newHpValue;
+          newMissingHp = remaining > 0 ? remaining : null;
+        }
+
         const entry: HistoryEntry = {
           id: (foundry.utils as any).randomID() as string,
           startTime,
           endTime,
           activities: data?.activities ?? [],
+          hpRestored,
         };
         const newData: DowntimeData = {
           lastActiveTime: endTime,
           endTime: null,
           activities: [],
           history: [...(data?.history ?? []), entry],
+          missingHpAtStart: newMissingHp,
         };
         await actor.setFlag(MODULE_ID, "downtime", newData);
+        if (newHpValue !== null && newHpValue !== currentHp) {
+          await actor.update({ "system.attributes.hp.value": newHpValue });
+        }
       });
     }
 
@@ -249,6 +281,10 @@ interface Derived {
   exceeded: boolean;
   lastActiveDisplay: string;
   endTimeDisplay: string;
+  missingHpAtStart: number | null;
+  regenPerDay: number;
+  projectedHpRestored: number;
+  hpFullyRestored: boolean | null;
 }
 
 function getDerived(actor: any): Derived {
@@ -257,9 +293,15 @@ function getDerived(actor: any): Derived {
   const endTime = data?.endTime ?? null;
   const activities = data?.activities ?? [];
   const history = data?.history ?? [];
-  const now = currentWorldTime();
-  const availableDays = computeDowntimeDays(lastActive, endTime ?? now);
+  const availableDays = endTime != null ? computeDowntimeDays(lastActive, endTime) : 0;
   const usedDays = computeUsedDays(activities);
+  const missingHpAtStart =
+    data?.missingHpAtStart != null && data.missingHpAtStart > 0 ? data.missingHpAtStart : null;
+  const sys = (actor as any).system;
+  const conMod: number = sys?.abilities?.con?.mod ?? 0;
+  const level: number = sys?.details?.level?.value ?? 1;
+  const regenPerDay = Math.max(1, conMod) * level;
+  const projectedHpRestored = regenPerDay * availableDays;
   return {
     lastActive,
     endTime,
@@ -271,6 +313,10 @@ function getDerived(actor: any): Derived {
     exceeded: usedDays > availableDays,
     lastActiveDisplay: lastActive != null ? formatWorldDay(lastActive) : t("LGC.Downtime.NotSet"),
     endTimeDisplay: endTime != null ? formatWorldDay(endTime) : t("LGC.Downtime.NotSet"),
+    missingHpAtStart,
+    regenPerDay,
+    projectedHpRestored,
+    hpFullyRestored: missingHpAtStart !== null ? projectedHpRestored >= missingHpAtStart : null,
   };
 }
 
@@ -393,11 +439,15 @@ function buildHistorySection(history: HistoryEntry[]): string {
           return `<li class="lgc-downtime-history-activity">${escapeHtml(a.type)} (${a.days}d) → ${escapeHtml(outcomeLabel)}</li>`;
         })
         .join("");
+      const hpTag = entry.hpRestored != null && entry.hpRestored > 0
+        ? `<em class="lgc-downtime-history-days">${tf("LGC.Downtime.HistoryHpRestored", { n: entry.hpRestored })}</em>`
+        : "";
       return `
         <details class="lgc-downtime-history-entry">
           <summary class="lgc-downtime-history-summary">
             ${escapeHtml(startLabel)} → ${escapeHtml(endLabel)}
             <em class="lgc-downtime-history-days">(${days} ${t("LGC.Downtime.Day")})</em>
+            ${hpTag}
           </summary>
           <ul class="lgc-downtime-history-list">${rows || `<li><em>${t("LGC.Downtime.NoActivities")}</em></li>`}</ul>
         </details>`;
@@ -460,6 +510,15 @@ function buildTabSection(d: Derived, isGM: boolean, canEdit: boolean): string {
           <span class="lgc-downtime-warning" style="display:${d.exceeded ? "inline" : "none"}">
             <i class="fa-solid fa-triangle-exclamation"></i> ${t("LGC.Downtime.ExceededWarning")}
           </span>
+          ${d.missingHpAtStart !== null
+            ? `<span class="lgc-downtime-hp-regen">
+                ${t("LGC.Downtime.HpRegen")}: −${d.missingHpAtStart} → +${d.projectedHpRestored} (${tf("LGC.Downtime.HpRegenPerDay", { n: d.regenPerDay })})
+                ${d.hpFullyRestored
+                  ? `✓ ${t("LGC.Downtime.HpRegenFull")}`
+                  : `<span class="lgc-downtime-warning">⚠ ${tf("LGC.Downtime.HpRegenShort", { n: d.missingHpAtStart - d.projectedHpRestored })}</span>`
+                }
+              </span>`
+            : ""}
         </div>
 
         <div class="lgc-downtime-history-section">
