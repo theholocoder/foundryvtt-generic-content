@@ -276,18 +276,16 @@ function getDerived(actor: any): Derived {
 
 function formatWorldDay(seconds: number): string {
   const sc = (globalThis as any).SimpleCalendar?.api;
-  if (sc?.formatDateTime) {
+  if (sc) {
     try {
-      return sc.formatDateTime(sc.timestampToDate(seconds));
+      const date = sc.timestampToDate(seconds);
+      return date.display?.date ?? `${date.day} ${date.monthName ?? date.month + 1} ${date.year}`;
     } catch {
       // fall through
     }
   }
   const day = Math.floor(seconds / 86400);
-  const h = String(Math.floor((seconds % 86400) / 3600)).padStart(2, "0");
-  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
-  const s = String(seconds % 60).padStart(2, "0");
-  return `${t("LGC.Downtime.Day")} ${day}  ${h}:${m}:${s}`;
+  return `${t("LGC.Downtime.Day")} ${day}`;
 }
 
 function buildActivitiesList(activities: Activity[], isGM: boolean): string {
