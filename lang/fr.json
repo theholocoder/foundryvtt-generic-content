@@ -252,5 +252,13 @@
   "LGC.Downtime.FinalizeDowntime": "Finaliser le temps libre",
   "LGC.Downtime.FinalizeError": "La date d'activité et la date de fin doivent être définies avant de finaliser.",
   "LGC.Downtime.History": "Historique",
-  "LGC.Downtime.NoHistory": "Aucun historique pour l'instant."
+  "LGC.Downtime.NoHistory": "Aucun historique pour l'instant.",
+  "LGC.Settings.ActivityTypesName": "Types d'activités de temps libre",
+  "LGC.Settings.ActivityTypesLabel": "Configurer",
+  "LGC.Settings.ActivityTypesHint": "Gérez les types d'activités disponibles dans la liste déroulante du temps libre.",
+  "LGC.Settings.ActivityTypeTitle": "Configurer les types d'activités",
+  "LGC.Settings.ActivityTypeAdd": "Ajouter un type",
+  "LGC.Settings.ActivityTypeSave": "Enregistrer",
+  "LGC.Settings.ActivityTypeCancel": "Annuler",
+  "LGC.Settings.ActivityTypePlaceholder": "Nom de l'activité…"
 }

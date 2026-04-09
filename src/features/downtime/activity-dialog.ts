@@ -1,8 +1,10 @@
 import { escapeHtml } from "../../lib/html";
-import { ACTIVITY_TYPES } from "./activity-types";
 import type { Activity } from "./types";
 
+const MODULE_ID = "lazybobcat-generic-content";
 const t = (k: string) => game.i18n?.localize(k) ?? k;
+const getActivityTypes = (): string[] =>
+  ((game.settings as any).get(MODULE_ID, "downtimeActivityTypes") as string[] | undefined) ?? [];
 const DialogV2 = (foundry as any).applications.api.DialogV2;
 
 export type ActivityDialogResult = Omit<Activity, "id">;
@@ -24,7 +26,7 @@ export function openActivityDialog(
   const currentStatus = initialValues?.status ?? "planned";
   const currentOutcome = initialValues?.outcome ?? null;
 
-  const typeOptions = ACTIVITY_TYPES.map(
+  const typeOptions = getActivityTypes().map(
     (at) =>
       `<option value="${escapeHtml(at)}" ${initialValues?.type === at ? "selected" : ""}>${escapeHtml(at)}</option>`,
   ).join("");

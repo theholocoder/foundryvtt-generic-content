@@ -252,5 +252,13 @@
   "LGC.Downtime.FinalizeDowntime": "Finalize Downtime",
   "LGC.Downtime.FinalizeError": "Both last active date and end date must be set before finalizing.",
   "LGC.Downtime.History": "History",
-  "LGC.Downtime.NoHistory": "No history yet."
+  "LGC.Downtime.NoHistory": "No history yet.",
+  "LGC.Settings.ActivityTypesName": "Downtime Activity Types",
+  "LGC.Settings.ActivityTypesLabel": "Configure",
+  "LGC.Settings.ActivityTypesHint": "Manage the activity types available in the downtime dropdown.",
+  "LGC.Settings.ActivityTypeTitle": "Configure Activity Types",
+  "LGC.Settings.ActivityTypeAdd": "Add Type",
+  "LGC.Settings.ActivityTypeSave": "Save",
+  "LGC.Settings.ActivityTypeCancel": "Cancel",
+  "LGC.Settings.ActivityTypePlaceholder": "Activity name…"
 }

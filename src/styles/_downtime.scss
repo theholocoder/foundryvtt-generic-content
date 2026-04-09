@@ -272,6 +272,58 @@
   }
 }
 
+// ── Activity types config window ─────────────────────────────────────────────
+
+.lgc-activity-types-config {
+  .lgc-activity-types-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .lgc-activity-types-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .lgc-type-row {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+
+    input { flex: 1; box-sizing: border-box; }
+
+    .lgc-type-delete {
+      padding: 0.1rem 0.3rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      opacity: 0.5;
+      &:hover { opacity: 1; color: #a00; }
+    }
+  }
+
+  .lgc-type-add {
+    font-size: 0.85rem;
+    cursor: pointer;
+    align-self: flex-start;
+  }
+
+  .lgc-config-footer {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
 // ── Activity dialog ──────────────────────────────────────────────────────────
 
 .lgc-downtime-dialog {
