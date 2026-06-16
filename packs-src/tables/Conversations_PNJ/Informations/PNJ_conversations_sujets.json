@@ -1,0 +1,948 @@
+{
+  "folder": "MB2oHx5lE649dDjS",
+  "name": "PNJ_conversations_sujets",
+  "_id": "TxmhDKixth6kYPzf",
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "_id": "siGREyvgElWN8fEc",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un PNJ bien-aime</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.siGREyvgElWN8fEc"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "_id": "lQPnTBZkYQP6qcHu",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un bienfaiteur des PJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.lQPnTBZkYQP6qcHu"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "_id": "Ojuw54AhbjKm6q7z",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un PNJ belliqueux</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.Ojuw54AhbjKm6q7z"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "_id": "yazGf0AtMFYtrDWv",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un lieu dangereux pour les PJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.yazGf0AtMFYtrDWv"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "_id": "1M6FaekWDRh9CStN",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un PNJ deteste</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.1M6FaekWDRh9CStN"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "_id": "HYGoLBWCpj7SpYqJ",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un lieu eloigne</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.HYGoLBWCpj7SpYqJ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "_id": "ZYiIC56Hf65GI0ga",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un groupe favorable aux PJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.ZYiIC56Hf65GI0ga"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "_id": "ZVShGCGXdN5xS7x7",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un antagoniste principal</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.ZVShGCGXdN5xS7x7"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "_id": "13XUc4QmbqQfe1b8",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un artefact necessaire pour accomplir un voeu</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.13XUc4QmbqQfe1b8"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "_id": "4vl4Jn1uGsh9aifc",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un objet necessaire pour accomplir un voeu</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.4vl4Jn1uGsh9aifc"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "_id": "DwQZVORHph2Xj4hZ",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>une personne detenant des informations importantes sur une quete secondaire</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.DwQZVORHph2Xj4hZ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "_id": "kFEDFjdndraSap1h",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>une personne detenant des informations importantes sur une intrigue importante</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.kFEDFjdndraSap1h"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "_id": "AeQvsPGYa2e79ObW",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un personnage jusqu'ici inconnu lie a l'intrigue</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.AeQvsPGYa2e79ObW"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "_id": "FomrhA8ZDmMM3LnW",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un lieu sur pour les PJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.FomrhA8ZDmMM3LnW"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "_id": "047XIN8p6q9Z8dhp",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>une cachette secrete ennemie</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.047XIN8p6q9Z8dhp"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "_id": "sFAbosXFj1bcUEWV",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un seul PJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.sFAbosXFj1bcUEWV"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "_id": "gOxUEFYY0x64FrZe",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un statut special pour un antagoniste principal</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.gOxUEFYY0x64FrZe"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "_id": "5orSN04Ryosh7p6Z",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un statut special pour un PJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.5orSN04Ryosh7p6Z"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "_id": "4ql9QXiDbnncGiRG",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un statut special pour un PNJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.4ql9QXiDbnncGiRG"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "_id": "ZxOP2yKwR27sc47y",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un traitre aux PJ</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.ZxOP2yKwR27sc47y"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "_id": "447Ppv49Lavy8iTt",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un chef ennemi</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.447Ppv49Lavy8iTt"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "_id": "10IZlQQnvw4mx8Hy",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un serviteur ennemi</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.10IZlQQnvw4mx8Hy"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "_id": "jdxjFZNflnHUZ1Ms",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un espion ennemi</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.jdxjFZNflnHUZ1Ms"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "_id": "KvTZozCR4u0LNETK",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>une forteresse ennemie</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.KvTZozCR4u0LNETK"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "_id": "gblL1ywCovvr9fZ6",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un ennemi devenu allie</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.gblL1ywCovvr9fZ6"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        26,
+        26
+      ],
+      "_id": "oaJRga2IhyJApvd5",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>le plan actuel d'un ennemi</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.oaJRga2IhyJApvd5"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        27,
+        27
+      ],
+      "_id": "mzCvv3Hf7fsz1jBQ",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>le plan futur d'un ennemi</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.mzCvv3Hf7fsz1jBQ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        28,
+        28
+      ],
+      "_id": "7GAl70pLwqH775PR",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>une intrigue importante</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.7GAl70pLwqH775PR"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        29,
+        29
+      ],
+      "_id": "T1PDEgNR8c3ALEKY",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>un groupe oppose qui n'est pas l'antagoniste principal</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.T1PDEgNR8c3ALEKY"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        30,
+        30
+      ],
+      "_id": "A2g83H0dgj2IeqPC",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>le cadre actuel</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.A2g83H0dgj2IeqPC"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        31,
+        31
+      ],
+      "_id": "jjuzKbMEZoa53Fac",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>l'objectif actuel a court terme</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.jjuzKbMEZoa53Fac"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        32,
+        32
+      ],
+      "_id": "vOtRrs9YjLSOdYsb",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>les PJ dans leur ensemble</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.vOtRrs9YjLSOdYsb"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        33,
+        33
+      ],
+      "_id": "mEXacVi02BUOTcpQ",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>la route ou le passage vers le prochain lieu</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.mEXacVi02BUOTcpQ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        34,
+        34
+      ],
+      "_id": "Wc6N1R5kFB8RJbP6",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>une verite fondamentale du monde</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361231,
+        "modifiedTime": 1781643361231,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!TxmhDKixth6kYPzf.Wc6N1R5kFB8RJbP6"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "cmVdgkCvP47fJwWP": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.363",
+    "systemId": "pf2e",
+    "systemVersion": "8.1.2",
+    "createdTime": 1781643361231,
+    "modifiedTime": 1781643361231,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "formula": "1d34",
+  "_key": "!tables!TxmhDKixth6kYPzf"
+}

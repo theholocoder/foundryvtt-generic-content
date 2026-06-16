@@ -1,0 +1,28 @@
+{
+  "name": "PNJ Conversation",
+  "type": "script",
+  "_id": "dAGzRlYSgOrW2Rmc",
+  "author": "cmVdgkCvP47fJwWP",
+  "img": "icons/skills/social/thumbsup-approval-like.webp",
+  "scope": "global",
+  "command": "const tableType = game.tables.getName(\"PNJ_conversations_types\");\nconst tableTopic = game.tables.getName(\"PNJ_conversations_sujets\");\nconst resultType = await tableType.draw({displayChat: false});\nconst resultTopic = await tableTopic.draw({displayChat: false});\n\n// Affiche le résultat au MJ uniquement\nconst text1 = resultType.results.map(r => foundry.utils.parseHTML(r.text).textContent).join(\", \");\nconst text2 = resultTopic.results.map(r => foundry.utils.parseHTML(r.text).textContent).join(\", \");\nui.notifications.info(text1 + \" \" + text2);",
+  "folder": null,
+  "ownership": {
+    "default": 0,
+    "cmVdgkCvP47fJwWP": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.363",
+    "systemId": "pf2e",
+    "systemVersion": "8.1.2",
+    "createdTime": 1781643369091,
+    "modifiedTime": 1781643369105,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "sort": 200000,
+  "_key": "!macros!dAGzRlYSgOrW2Rmc"
+}

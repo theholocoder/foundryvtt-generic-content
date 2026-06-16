@@ -1,0 +1,28 @@
+{
+  "name": "Oracle",
+  "type": "script",
+  "_id": "Dksy0dR8MFFPXmgf",
+  "author": "cmVdgkCvP47fJwWP",
+  "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
+  "scope": "global",
+  "command": "const table = game.tables.getName(\"Oracle\");\nconst result = await table.draw({displayChat: false});\n\n// Affiche le résultat au MJ uniquement\nconst text = result.results.map(r => r.text).join(\", \");\nui.notifications.info(text);",
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.363",
+    "systemId": "pf2e",
+    "systemVersion": "8.1.2",
+    "createdTime": 1781640875461,
+    "modifiedTime": 1781643393126,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "cmVdgkCvP47fJwWP": 3
+  },
+  "sort": 300000,
+  "_key": "!macros!Dksy0dR8MFFPXmgf"
+}

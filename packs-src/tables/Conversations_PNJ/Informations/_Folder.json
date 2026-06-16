@@ -1,0 +1,23 @@
+{
+  "type": "RollTable",
+  "folder": "RELuMl74ddvmKZzK",
+  "name": "Informations",
+  "color": null,
+  "sorting": "a",
+  "_id": "MB2oHx5lE649dDjS",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.363",
+    "systemId": "pf2e",
+    "systemVersion": "8.1.2",
+    "createdTime": 1781643361202,
+    "modifiedTime": 1781643361202,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!folders!MB2oHx5lE649dDjS"
+}

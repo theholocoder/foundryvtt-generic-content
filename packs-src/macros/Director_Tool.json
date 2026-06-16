@@ -5,9 +5,9 @@
   "author": "tZbN4KcBYp8FFjDi",
   "img": "icons/commodities/tech/console-steel.webp",
   "scope": "global",
-  "command": "// Opens the Director Tool window (GM only)\nif (!game.user.isGM) return;\nDirectorSidebar.toggle()",
+  "command": "// Opens the Director Tool window\nDirectorSidebar.toggle()",
   "folder": null,
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0,
     "tZbN4KcBYp8FFjDi": 3
@@ -17,12 +17,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.363",
     "systemId": "pf2e",
     "systemVersion": "7.10.1",
     "createdTime": 1775435115836,
-    "modifiedTime": 1775435255332,
-    "lastModifiedBy": "tZbN4KcBYp8FFjDi"
+    "modifiedTime": 1781643369105,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP"
   },
   "_key": "!macros!SsRlekUaVZi7Vk4n"
 }
