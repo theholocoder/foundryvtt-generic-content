@@ -1,10 +1,10 @@
 {
   "id": "lazybobcat-generic-content",
   "title": "Lazybobcat - Generic Content",
-  "version": "1.5.0",
+  "version": "14.0.0",
   "compatibility": {
-    "minimum": "13",
-    "verified": "13"
+    "minimum": "14",
+    "verified": "14"
   },
   "relationships": {
     "requires": [

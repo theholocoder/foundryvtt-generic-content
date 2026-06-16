@@ -1,0 +1,948 @@
+{
+  "folder": "MB2oHx5lE649dDjS",
+  "name": "PNJ_conversations_types",
+  "_id": "xT8UsI4mMRJ9ZfJz",
+  "img": "icons/svg/d20-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "_id": "Ufq7iTXiUiOgNiHI",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un lien entre un PJ et</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.Ufq7iTXiUiOgNiHI"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "_id": "I6NUXTgc8GkGnTw2",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un lien entre un antagoniste et</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.I6NUXTgc8GkGnTw2"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "_id": "Ik97JQb7IfsLZgxc",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un lien entre un PNJ et</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.Ik97JQb7IfsLZgxc"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "_id": "KHJZkjgPsK6fyp6S",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un avantage financier impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.KHJZkjgPsK6fyp6S"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "_id": "wrNfylTpO6HFp8Md",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une perte financiere impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.wrNfylTpO6HFp8Md"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "_id": "BcM0mDV6WD06k6sX",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un gain d'influence impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.BcM0mDV6WD06k6sX"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "_id": "mPFOmSLsYHVFyM3j",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une perte d'influence impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.mPFOmSLsYHVFyM3j"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "_id": "ipXbQeSojxhkWgS0",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une occasion perdue impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.ipXbQeSojxhkWgS0"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "_id": "PeAslm2KToumFFEd",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un avantage materiel impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.PeAslm2KToumFFEd"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "_id": "2eTLbsgc2cE9DDFj",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une perte materielle impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.2eTLbsgc2cE9DDFj"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "_id": "u9I0ovzVkAotQlkQ",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un avantage mental impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.u9I0ovzVkAotQlkQ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "_id": "lGO7evUskI2J8PQT",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une perte mentale impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.lGO7evUskI2J8PQT"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        13,
+        13
+      ],
+      "_id": "0r2vWwAXlV1VkiNI",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un changement negatif concernant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.0r2vWwAXlV1VkiNI"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "_id": "QOxttyV8GfBepY04",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un avantage physique impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.QOxttyV8GfBepY04"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "_id": "kXqfiZ53s08UafBB",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une perte physique impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.kXqfiZ53s08UafBB"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "_id": "ygYtjRjC4vyKtjta",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un changement positif concernant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.ygYtjRjC4vyKtjta"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "_id": "R5TvdiXDsDEB7mKm",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une revelation importante liee a</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.R5TvdiXDsDEB7mKm"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "_id": "hP3XNcLgGb30Sz58",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un avantage spirituel impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.hP3XNcLgGb30Sz58"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "_id": "eZZsCW5VmAafsuZb",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une perte spirituelle impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.eZZsCW5VmAafsuZb"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "_id": "XPonWIBv7SCP6TOt",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une occasion supplementaire impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.XPonWIBv7SCP6TOt"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "_id": "ZFigCQhxhfHtRjjx",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une alteration de</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.ZFigCQhxhfHtRjjx"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "_id": "ESlOnb5jqMjQBOJa",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une embuscade concernant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.ESlOnb5jqMjQBOJa"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "_id": "MJYRTtcwLd9fUqek",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Un avantage emotionnel impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.MJYRTtcwLd9fUqek"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "_id": "7uD3lJmsrDdVx4WX",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Une perte emotionnelle impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.7uD3lJmsrDdVx4WX"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "_id": "XPPZUuZSzfoi0zop",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Des connaissances historiques ou de contexte sur</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.XPPZUuZSzfoi0zop"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        26,
+        26
+      ],
+      "_id": "yGiGYjLcK87CeZjo",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>De mauvaises nouvelles concernant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.yGiGYjLcK87CeZjo"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        27,
+        27
+      ],
+      "_id": "kqxsEKTEB0da17OO",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>De bonnes nouvelles concernant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.kqxsEKTEB0da17OO"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        28,
+        28
+      ],
+      "_id": "7G8tkDEAWlLajP0s",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>L'acquisition d'une capacite impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.7G8tkDEAWlLajP0s"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        29,
+        29
+      ],
+      "_id": "2juhKRBy2atev6UZ",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>L'acquisition d'une autorite impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.2juhKRBy2atev6UZ"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        30,
+        30
+      ],
+      "_id": "yQdIhtaPPAqV7ASH",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>L'identite de</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.yQdIhtaPPAqV7ASH"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        31,
+        31
+      ],
+      "_id": "QerfjBT2eSUqQjCx",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>L'emplacement de</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.QerfjBT2eSUqQjCx"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        32,
+        32
+      ],
+      "_id": "b3qAOLUd441w52Ev",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>La perte d'une capacite impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.b3qAOLUd441w52Ev"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        33,
+        33
+      ],
+      "_id": "gCixQN3o66UcXgpO",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>La perte d'une autorite impliquant</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.gCixQN3o66UcXgpO"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        34,
+        34
+      ],
+      "_id": "vugKWqdzg1z4JtAX",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>La verite est exactement l'inverse de ce que les PJ pensaient de</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643361227,
+        "modifiedTime": 1781643361227,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!xT8UsI4mMRJ9ZfJz.vugKWqdzg1z4JtAX"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "cmVdgkCvP47fJwWP": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.363",
+    "systemId": "pf2e",
+    "systemVersion": "8.1.2",
+    "createdTime": 1781643361227,
+    "modifiedTime": 1781643361227,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "formula": "1d34",
+  "_key": "!tables!xT8UsI4mMRJ9ZfJz"
+}

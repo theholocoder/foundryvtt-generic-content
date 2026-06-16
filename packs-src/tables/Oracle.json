@@ -1,0 +1,273 @@
+{
+  "name": "Oracle",
+  "_id": "NYwER2jZbBKkuh5P",
+  "img": "icons/svg/aura.svg",
+  "description": "<p>Oui et… Non mais… Lorsqu'un joueur pose une question, plutôt que de répondre non, la réponse peut être aléatoirement imposée.</p>",
+  "results": [
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "_id": "TKk19eLyUuJaulP6",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Oui et…</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.TKk19eLyUuJaulP6"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "_id": "s8l9WpTi0UuLJeaV",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Oui parce que…</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.s8l9WpTi0UuLJeaV"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "_id": "bXkOtx3m1YTxLjGu",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Oui mais…</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.bXkOtx3m1YTxLjGu"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "_id": "kgWSRF0Ilzpwrx29",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Favorable</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.kgWSRF0Ilzpwrx29"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "_id": "8hUhH9I4OryAPRNP",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Cela paraît incorrect</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.8hUhH9I4OryAPRNP"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "_id": "DkJCuG2nWOh4ThI7",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Défavorable</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.DkJCuG2nWOh4ThI7"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "_id": "gryKwkr2C3pn18U7",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Non mais…</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.gryKwkr2C3pn18U7"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "_id": "5CxYU4915vuqTe3L",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Non parce que…</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.5CxYU4915vuqTe3L"
+    },
+    {
+      "type": "text",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "_id": "XgOP8QASg62iRxZ1",
+      "name": "",
+      "img": "icons/svg/d20-black.svg",
+      "description": "<p>Non et…</p>",
+      "drawn": false,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.363",
+        "systemId": "pf2e",
+        "systemVersion": "8.1.2",
+        "createdTime": 1781643359352,
+        "modifiedTime": 1781643359352,
+        "lastModifiedBy": "cmVdgkCvP47fJwWP",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "documentUuid": null,
+      "_key": "!tables.results!NYwER2jZbBKkuh5P.XgOP8QASg62iRxZ1"
+    }
+  ],
+  "replacement": true,
+  "displayRoll": false,
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.363",
+    "systemId": "pf2e",
+    "systemVersion": "8.1.2",
+    "createdTime": 1781643359352,
+    "modifiedTime": 1781643359352,
+    "lastModifiedBy": "cmVdgkCvP47fJwWP",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "formula": "1d9",
+  "ownership": {
+    "default": 0,
+    "cmVdgkCvP47fJwWP": 3
+  },
+  "sort": 0,
+  "_key": "!tables!NYwER2jZbBKkuh5P"
+}
